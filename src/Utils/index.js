@@ -35,7 +35,7 @@ export const findAllMembers = async () => {
   }
 };
 
-export const loginUser = async (username, password) => {
+export const loginFamily = async (username, password) => {
   try {
     const response = await fetch(`http://localhost:5001/family/login`, {
       method: "POST",
@@ -67,7 +67,7 @@ export const loginUser = async (username, password) => {
   }
 };
 
-export const registerUser = async (username, email, password) => {
+export const registerFamily = async (username, email, password) => {
   try {
     const response = await fetch(`http://localhost:5001/family/register`, {
       method: "POST",
@@ -136,7 +136,7 @@ export const updatePassword = async (password, newPassword) => {
   }
 };
 
-export const deleteUser = async (username) => {
+export const deleteFamily = async (username) => {
   try {
     const response = await fetch("http://localhost:5001/family/login/delete", {
       method: "DELETE",
