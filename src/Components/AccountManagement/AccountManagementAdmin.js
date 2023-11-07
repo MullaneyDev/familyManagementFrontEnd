@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { useCollapse } from "react-collapsed";
 import Modal from "react-modal";
 import { writeCookie } from "../../Common";
+import { deleteFamily, updatePassword, updateUsername } from "../../Utils";
 
 Modal.setAppElement("#root");
 
@@ -28,7 +29,6 @@ const AccountManagementAdmin = ({
   const handleNewUsername = async (e) => {
     e.preventDefault();
     const response = await updateUsername(
-      //needs function
       username?.current?.value,
       newUsername?.current?.value
     );
@@ -40,7 +40,6 @@ const AccountManagementAdmin = ({
     console.log(newPassword?.current?.value);
 
     const response = await updatePassword(
-      //needs function
       password?.current?.value,
       newPassword?.current?.value,
       family.username
@@ -49,7 +48,7 @@ const AccountManagementAdmin = ({
   };
 
   const handleDelete = async (username) => {
-    await deleteFamily(username); //needs function
+    await deleteFamily(username);
     await writeCookie("jwt_token", family.token, 0);
     await setFamily({});
     await setMembers([]);
