@@ -1,10 +1,42 @@
-import React from 'react'
-import "./Header.css"
+import React from "react";
+import "./Header.css";
+import AccountManagementAdmin from "../../AccountManagement/AccountManagementAdmin";
+import AccountManagement from "../../AccountManagement/AccountManagement";
 
-const Header = () => {
+const Header = ({ admin, loggedIn, family, setFamily, setLoggedIn,setMembers,setUser }) => {
+  if (loggedIn) {
+    if (admin) {
+      return (
+        <div className="header">
+          <h1>BoxedOff</h1>
+          <AccountManagementAdmin
+            family={family}
+            setFamily={setFamily}
+            setLoggedIn={setLoggedIn}
+            setMembers={setMembers}
+            setUser={setUser}
+          />
+        </div>
+      );
+    }
+    <div className="header">
+      <h1>BoxedOff</h1>
+      <AccountManagement
+        family={family}
+        setFamily={setFamily}
+        setLoggedIn={setLoggedIn}
+        setMembers={setMembers}
+        setUser={setUser}
+      />
+    </div>;
+  }
+
   return (
-    <div>Header</div>
-  )
-}
+    <div className="header">
+      <h1>BoxedOff</h1>
+      <h3>Sign in / Sign up</h3>
+    </div>
+  );
+};
 
-export default Header
+export default Header;

@@ -15,7 +15,7 @@ function App() {
   if (!loggedIn) {
     return (
       <div className="App">
-        <Header />
+        <Header admin={admin} loggedIn={loggedIn} family={family} setFamily={setFamily} setLoggedIn={setLoggedIn} setMembers={setMembers} setUser={setUser}/>
         <NotLoggedIn
           setLoggedIn={setLoggedIn}
           setAdmin={setAdmin}
@@ -34,15 +34,9 @@ function App() {
     <div className="App">
       <Header />
       <LoggedIn
-        setLoggedIn={setLoggedIn}
-        admin={admin}
-        setAdmin={setAdmin}
         family={family}
-        setFamily={setFamily}
         members={members}
-        setMembers={setMembers}
         user={user}
-        setUser={setUser}
       />
       <Footer />
     </div>
