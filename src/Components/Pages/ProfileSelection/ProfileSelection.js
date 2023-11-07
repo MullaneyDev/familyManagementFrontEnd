@@ -10,6 +10,7 @@ const ProfileSelection = ({
   members,
   avatar,
   setAvatar,
+  user,
 }) => {
   useEffect(() => {
     const fetchAvatarData = async () => {
