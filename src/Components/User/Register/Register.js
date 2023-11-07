@@ -1,24 +1,24 @@
 import React from "react";
 import "./Register.css";
-import registerFamily from "../../../Utils/index.js"
+import { registerFamily } from "../../../Utils/index.js";
 
 import { useState } from "react";
 
 const Register = () => {
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [message, setMessage] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-    const handleChange = (e, setter) => {
-      setter(e.target.value);
-    };
+  const handleChange = (e, setter) => {
+    setter(e.target.value);
+  };
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      const response = await registerFamily(username, email, password);
-      await setMessage(response.message);
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await registerFamily(username, email, password);
+    await setMessage(response.message);
+  };
 
   return (
     <div className="register">
