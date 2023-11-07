@@ -15,7 +15,7 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const response = await registerUser(username, email, password); // needs registeruser function in utils
+      const response = await registerUser(username, email, password); // needs registerUser function in utils
       await setMessage(response.message);
     };
 
