@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./Header.css";
 
@@ -18,4 +19,5 @@ const Header = ({ user, loggedIn }) => {
   }
 };
 
-export default Header;
+export default Header
+
