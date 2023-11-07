@@ -12,6 +12,8 @@ const NotLoggedIn = ({
   family,
   members,
   setMembers,
+  avatar,
+  setAvatar,
 }) => {
   const [verified, setVerified] = useState(false);
 
@@ -31,6 +33,8 @@ const NotLoggedIn = ({
       setLoggedIn={setLoggedIn}
       family={family}
       members={members}
+      avatar={avatar}
+      setAvatar={setAvatar}
     />
   );
 };
