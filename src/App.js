@@ -1,7 +1,8 @@
 import "./App.css";
 import { useState } from "react";
-import Footer from "./Components/layout/Footer/Footer";
-import Header from "./Components/layout/Header/Header";
+import Footer from "./Components/Layout/Footer/Footer";
+
+import Header from "./Components/Layout/Header/Header";
 import NotLoggedIn from "./Components/Pages/NotLoggedIn/NotLoggedIn";
 import LoggedIn from "./Components/Pages/LoggedIn/LoggedIn";
 
@@ -16,8 +17,17 @@ function App() {
   if (!loggedIn) {
     return (
       <div className="App">
-        <Header admin={admin} loggedIn={loggedIn} family={family} setFamily={setFamily} setLoggedIn={setLoggedIn} setMembers={setMembers} setUser={setUser}/>
+        <Header
+          admin={admin}
+          loggedIn={loggedIn}
+          family={family}
+          setFamily={setFamily}
+          setLoggedIn={setLoggedIn}
+          setMembers={setMembers}
+          setUser={setUser}
+        />
         <NotLoggedIn
+          user={user}
           setLoggedIn={setLoggedIn}
           setAdmin={setAdmin}
           admin={admin}
@@ -36,11 +46,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <LoggedIn
-        family={family}
-        members={members}
-        user={user}
-      />
+      <LoggedIn family={family} members={members} user={user} />
       <Footer />
     </div>
   );
