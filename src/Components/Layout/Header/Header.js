@@ -31,6 +31,7 @@ const Header = ({ admin, loggedIn, family, setFamily, setLoggedIn,setMembers,set
     </div>;
   }
 
+
   return (
     <div className="header">
       <h1>BoxedOff</h1>
@@ -40,3 +41,6 @@ const Header = ({ admin, loggedIn, family, setFamily, setLoggedIn,setMembers,set
 };
 
 export default Header;
+
+
+
