@@ -1,16 +1,7 @@
-import React from 'react'
-import "./LoggedIn.css"
+import React from "react";
+import "./LoggedIn.css";
+import TaskContainer from "../../Tasks/TaskContainer/TaskContainer";
 
-const LoggedIn = ({admin}) => {
+const LoggedIn = ({}) => {};
 
-    if (admin) {
-        return (
-            <div>LoggedInAsAdmin</div>
-        )
-    }
-  return (
-    <div>LoggedIn</div>
-  )
-}
-
-export default LoggedIn
+export default LoggedIn;
