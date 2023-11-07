@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ProfileSelection.css";
 
+const apiKey = yWrOSvTVeZ4RFA;
 const ProfileSelection = ({
   setAdmin,
   setUser,
@@ -11,9 +12,9 @@ const ProfileSelection = ({
   setAvatar,
 }) => {
   useEffect(() => {
-    const fetchAvatarData = async (user) => {
+    const fetchAvatarData = async () => {
       const response = await fetch(
-        `https://api.multiavatar.com/${user.name}.svg`
+        `https://api.multiavatar.com/${user.name}.svg?apikey=${apiKey}`
       );
       const data = await response.json();
       setAvatar(data);
@@ -26,10 +27,12 @@ const ProfileSelection = ({
       <h1>Who are you?</h1>
       {members.map((user, index) => {
         return (
-          <div key={index} className="user-container">
+          <div key={index} className="indi-user-container">
             <img src={avatar} alt="avatar" />
             <h4>{user.name}</h4>
-            <button onClick={setLoggedIn(true)}>Login</button>
+            <button className="login-button" onClick={setLoggedIn(true)}>
+              Login
+            </button>
           </div>
         );
       })}

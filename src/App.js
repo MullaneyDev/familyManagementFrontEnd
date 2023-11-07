@@ -11,7 +11,7 @@ function App() {
   const [family, setFamily] = useState({});
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});
-  const [avatar, setAvatar] = useState([]);
+  const [avatar, setAvatar] = useState("");
 
   if (!loggedIn) {
     return (
