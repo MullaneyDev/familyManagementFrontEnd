@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import "./ProfileSelection.css";
 
-const ProfileSelection = () => {
-  return (
-    <div>ProfileSelection</div>
-  )
-}
+const ProfileSelection = ({
+  setAdmin,
+  setUser,
+  setLoggedIn,
+  family,
+  members,
+}) => {
+  return <div>ProfileSelection</div>;
+};
 
-export default ProfileSelection
+export default ProfileSelection;
