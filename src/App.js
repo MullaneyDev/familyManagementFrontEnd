@@ -7,12 +7,17 @@ import LoggedIn from "./Components/Pages/LoggedIn/LoggedIn";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
+  const [admin,setAdmin] = useState(false)
+  const [family,setFamily] = useState({})
+  const [members, setMembers] = useState([])
+  const [user, setUser] = useState({})
+
 
   if (loggedIn) {
     return (
       <div className="App">
         <Header />
-        <NotLoggedIn />
+        <NotLoggedIn setLoggedIn={setLoggedIn} setAdmin={setAdmin} setFamily={setFamily} setMembers={setMembers} setUser={setUser} />
         <Footer />
       </div>
     );
@@ -20,7 +25,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <LoggedIn />
+      <LoggedIn setLoggedIn={setLoggedIn} admin={admin} setAdmin={setAdmin} family={family} setFamily={setFamily} members={members} setMembers={setMembers} user={user} setUser={setUser}/>
       <Footer />
     </div>
   );
