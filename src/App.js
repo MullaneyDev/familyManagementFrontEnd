@@ -12,7 +12,7 @@ function App() {
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});
 
-  if (loggedIn) {
+  if (!loggedIn) {
     return (
       <div className="App">
         <Header />
