@@ -11,6 +11,7 @@ function App() {
   const [family, setFamily] = useState({});
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});
+  const [avatar, setAvatar] = useState("");
 
   if (!loggedIn) {
     return (
@@ -25,6 +26,8 @@ function App() {
           setMembers={setMembers}
           members={members}
           setUser={setUser}
+          avatar={avatar}
+          setAvatar={setAvatar}
         />
         <Footer />
       </div>
