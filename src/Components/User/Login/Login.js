@@ -1,6 +1,6 @@
 import React from "react";
 import "./Login.css";
-import loginFamily from "../../../Utils/index.js"
+import { loginFamily } from "../../../Utils/index.js";
 
 import { useState } from "react";
 
@@ -16,14 +16,13 @@ const Login = ({ setFamily, setMembers, setVerified }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-      const response = await loginFamily(username, password);
-      await setMessage(response.message);
-      if (response.message === "Success!") {
-        await setFamily(response.family);
-        await setMembers(response.family.members)
-        await setVerified(true);
-        return;
-      
+    const response = await loginFamily(username, password);
+    await setMessage(response.message);
+    if (response.message === "Success!") {
+      await setFamily(response.family);
+      await setMembers(response.family.members);
+      await setVerified(true);
+      return;
     }
   };
 
