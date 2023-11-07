@@ -1,5 +1,6 @@
 import React from "react";
 import "./Register.css";
+import registerFamily from "../../../Utils/index.js"
 
 import { useState } from "react";
 
@@ -15,7 +16,7 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const response = await registerUser(username, email, password); // needs registerUser function in utils
+      const response = await registerFamily(username, email, password);
       await setMessage(response.message);
     };
 
