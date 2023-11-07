@@ -1,4 +1,5 @@
 import React from 'react'
+import "./LoggedIn.css"
 
 const LoggedIn = ({admin}) => {
 

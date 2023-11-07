@@ -1,18 +1,38 @@
-import React from 'react'
+import React from "react";
 import { useState } from "react";
-import ProfileSelection from '../ProfileSelection/ProfileSelection';
+import "./NotLoggedIn.css";
+import ProfileSelection from "../ProfileSelection/ProfileSelection";
+import UserContainer from "../../User/UserContainer/UserContainer";
 
-const NotLoggedIn = () => {
-    const [verified,setVerified] =  useState(false)
+const NotLoggedIn = ({
+  setLoggedIn,
+  setAdmin,
+  setFamily,
+  setUser,
+  family,
+  members,
+  setMembers,
+}) => {
+  const [verified, setVerified] = useState(false);
 
-    if (!verified) {
-        return (
-            <div>log in/register</div>
-        )
-    }
+  if (!verified) {
+    return (
+      <UserContainer
+        setVerified={setVerified}
+        setFamily={setFamily}
+        setMembers={setMembers}
+      />
+    );
+  }
   return (
-    <div><ProfileSelection /></div>
-  )
-}
+    <ProfileSelection
+      setAdmin={setAdmin}
+      setUser={setUser}
+      setLoggedIn={setLoggedIn}
+      family={family}
+      members={members}
+    />
+  );
+};
 
-export default NotLoggedIn
+export default NotLoggedIn;
