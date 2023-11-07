@@ -8,7 +8,18 @@ const ProfileSelection = ({
   family,
   members,
 }) => {
-  return <div>ProfileSelection</div>;
+  return (
+    <div className="netflix-container">
+      <h1>Who are you?</h1>
+      {members.map((user, index) => {
+        return (
+          <div key={index} className="user-container">
+            <button onClick={setLoggedIn(true)}>{user.name}</button>
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default ProfileSelection;
