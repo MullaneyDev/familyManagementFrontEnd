@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "./ProfileSelection.css";
 import { addMember } from "../../../Utils";
@@ -18,11 +17,9 @@ const ProfileSelection = ({
   const [name, setName] = useState([]);
   console.log(name);
 
-
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
     const response = await addMember(name);
-
 
     let storedName = [...name];
     storedName.push(userInput);
@@ -39,25 +36,22 @@ const ProfileSelection = ({
   const [userInput, setUserInput] = useState("");
   const changeHandler = (e) => {
     setUserInput(e.target.value);
-
   };
 
   return (
     <div className="netflix-container">
-      <div className="add-member-container">
-        <form onSubmit={handleAddMemberSubmit}>
-          <label>Add a Member</label>
-          <input
-            type="text"
-            name="name"
-            className="input-field"
-            placeholder="Member Name"
-            onChange={(e) => changeHandler(e)}
+      <form className="add-member-container" onSubmit={handleAddMemberSubmit}>
+        <label>Add a Member</label>
+        <input
+          type="text"
+          name="name"
+          className="input-field"
+          placeholder="Member Name"
+          onChange={(e) => changeHandler(e)}
+        />
+        <input type="submit" value="Add Member" />
+      </form>
 
-          />
-          <input type="submit" value="Add Member" />
-        </form>
-      </div>
       <h1>Who are you?</h1>
       {/* {members.map((user, index) => {
         return (

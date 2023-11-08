@@ -15,13 +15,19 @@
 
 }
 
+.netflix-container {
+
+    text-align: center;
+}
+
+
 .login-button:hover {
     transition: all .1s ease;
     box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
 }
 
 .name-map-image {
-    height: 25vh;
+    height: 300px;
 }
 
 .name-map-items {
