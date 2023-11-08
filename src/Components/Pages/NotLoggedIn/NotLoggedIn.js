@@ -35,6 +35,7 @@ const NotLoggedIn = ({
       user={user}
       family={family}
       members={members}
+      setMembers={setMembers}
       avatar={avatar}
       setAvatar={setAvatar}
     />

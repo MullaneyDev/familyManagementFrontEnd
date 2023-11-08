@@ -23,8 +23,25 @@ const ProfileSelection = ({
     fetchAvatarData();
   }, []);
 
+  const handleAddMemberSubmit = () => {};
+
+  const handleAddMember = () => {};
+
   return (
     <div className="netflix-container">
+      <div className="add-member-container">
+        <form onSubmit={handleAddMemberSubmit}>
+          <label>Add a Member</label>
+          <input
+            type="text"
+            name="member"
+            className="input-field"
+            placeholder="Member Name"
+            onChange={handleAddMember}
+          />
+          <input type="submit" value="Add Member" />
+        </form>
+      </div>
       <h1>Who are you?</h1>
       {members.map((user, index) => {
         return (
