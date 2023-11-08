@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProfileSelection.css";
+import { addMember } from "../../../Utils";
 
 const apiKey = "yWrOSvTVeZ4RFA";
 const ProfileSelection = ({
@@ -10,22 +11,29 @@ const ProfileSelection = ({
   members,
   avatar,
   setAvatar,
-  user,
 }) => {
   useEffect(() => {
     const fetchAvatarData = async () => {
       const response = await fetch(
-        `https://api.multiavatar.com/${user.name}.svg?apikey=${apiKey}`
+        `https://api.multiavatar.com/cheese.svg?apikey=${apiKey}`
       );
       const data = await response.json();
       setAvatar(data);
     };
     fetchAvatarData();
-  }, []);
+  }, [setAvatar]);
 
-  const handleAddMemberSubmit = () => {};
+  const [name, setName] = useState("");
 
-  const handleAddMember = () => {};
+  const handleAddMemberSubmit = async (e) => {
+    e.preventDefault();
+    const response = await addMember(name);
+    console.log(response);
+  };
+
+  const handleAddMember = (e) => {
+    setName(e.target.value);
+  };
 
   return (
     <div className="netflix-container">
@@ -34,10 +42,10 @@ const ProfileSelection = ({
           <label>Add a Member</label>
           <input
             type="text"
-            name="member"
+            name="name"
             className="input-field"
             placeholder="Member Name"
-            onChange={handleAddMember}
+            onChange={(e) => handleAddMember(e)}
           />
           <input type="submit" value="Add Member" />
         </form>

@@ -92,7 +92,7 @@ export const registerFamily = async (username, email, password) => {
 export const updateUsername = async (username, newUsername) => {
   try {
     const response = await fetch(
-      `http://localhost:5001/family/login/updateUsername`,
+      `http://localhost:5001/family/account/updateUsername`,
       {
         method: "PUT",
         mode: "cors",
@@ -115,7 +115,7 @@ export const updateUsername = async (username, newUsername) => {
 export const updatePassword = async (password, newPassword) => {
   try {
     const response = await fetch(
-      `http://localhost:5001/family/login/updatePassword`,
+      `http://localhost:5001/family/account/updatePassword`,
       {
         method: "PUT",
         mode: "cors",
@@ -138,14 +138,36 @@ export const updatePassword = async (password, newPassword) => {
 
 export const deleteFamily = async (username) => {
   try {
-    const response = await fetch("http://localhost:5001/family/login/delete", {
-      method: "DELETE",
+    const response = await fetch(
+      "http://localhost:5001/family/account/delete",
+      {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+        }),
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const addMember = async (name) => {
+  try {
+    const response = await fetch("http://localhost:5001/member", {
+      method: "POST",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: username,
+        name: name,
       }),
     });
     const data = await response.json();
