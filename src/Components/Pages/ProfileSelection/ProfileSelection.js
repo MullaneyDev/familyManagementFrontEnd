@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "./ProfileSelection.css";
 import { addMember } from "../../../Utils";
@@ -11,14 +12,17 @@ const ProfileSelection = ({
   members,
   avatar,
   setAvatar,
+
   setVerified,
 }) => {
   const [name, setName] = useState([]);
   console.log(name);
 
+
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
     const response = await addMember(name);
+
 
     let storedName = [...name];
     storedName.push(userInput);
@@ -35,6 +39,7 @@ const ProfileSelection = ({
   const [userInput, setUserInput] = useState("");
   const changeHandler = (e) => {
     setUserInput(e.target.value);
+
   };
 
   return (
@@ -48,6 +53,7 @@ const ProfileSelection = ({
             className="input-field"
             placeholder="Member Name"
             onChange={(e) => changeHandler(e)}
+
           />
           <input type="submit" value="Add Member" />
         </form>

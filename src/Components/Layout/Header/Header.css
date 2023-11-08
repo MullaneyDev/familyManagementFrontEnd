@@ -4,9 +4,8 @@
   flex-direction: row;
   top: 0;
   width: 100vw;
-  /* position: fixed; */
   justify-content: space-around;
-  height: 3vw;
+  height: 6vh;
   align-content: center;
   color: #1b3358;
   background-image: linear-gradient(var(--user-blue), white);
