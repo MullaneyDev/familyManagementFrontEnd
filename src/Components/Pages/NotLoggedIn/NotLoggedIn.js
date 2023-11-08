@@ -38,6 +38,7 @@ const NotLoggedIn = ({
       setMembers={setMembers}
       avatar={avatar}
       setAvatar={setAvatar}
+      setVerified={setVerified}
     />
   );
 };

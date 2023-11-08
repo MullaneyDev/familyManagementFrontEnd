@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+
+import React, { useState } from "react";
 import "./ProfileSelection.css";
 import { addMember } from "../../../Utils";
 
@@ -11,28 +12,34 @@ const ProfileSelection = ({
   members,
   avatar,
   setAvatar,
-}) => {
-  useEffect(() => {
-    const fetchAvatarData = async () => {
-      const response = await fetch(
-        `https://api.multiavatar.com/cheese.svg?apikey=${apiKey}`
-      );
-      const data = await response.json();
-      setAvatar(data);
-    };
-    fetchAvatarData();
-  }, [setAvatar]);
 
-  const [name, setName] = useState("");
+  setVerified,
+}) => {
+  const [name, setName] = useState([]);
+  console.log(name);
+
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
     const response = await addMember(name);
+
+
+    let storedName = [...name];
+    storedName.push(userInput);
+    setName(storedName);
     console.log(response);
   };
 
-  const handleAddMember = (e) => {
-    setName(e.target.value);
+  const deleteBtn = async (i) => {
+    let storedName = [...name];
+    storedName.splice(i, 1);
+    setName(storedName);
+  };
+
+  const [userInput, setUserInput] = useState("");
+  const changeHandler = (e) => {
+    setUserInput(e.target.value);
+
   };
 
   return (
@@ -45,13 +52,14 @@ const ProfileSelection = ({
             name="name"
             className="input-field"
             placeholder="Member Name"
-            onChange={(e) => handleAddMember(e)}
+            onChange={(e) => changeHandler(e)}
+
           />
           <input type="submit" value="Add Member" />
         </form>
       </div>
       <h1>Who are you?</h1>
-      {members.map((user, index) => {
+      {/* {members.map((user, index) => {
         return (
           <div key={index} className="indi-user-container">
             <img src={avatar} alt="avatar" />
@@ -59,6 +67,31 @@ const ProfileSelection = ({
             <button className="login-button" onClick={setLoggedIn(true)}>
               Login
             </button>
+          </div>
+        );
+      })} */}
+      {/* test bench for the map */}
+      {name.map((names, i) => {
+        return (
+          <div className="name-map-container">
+            <div key={i} className="name-map-items">
+              {/* <img src={avatar} alt="avatar" /> */}
+              <img
+                className="name-map-image"
+                src={`https://api.multiavatar.com/${names}.svg?apikey=${apiKey}`}
+                alt="avatar"
+              />
+              <h1 className="name-map-names">{names}</h1>
+              <button
+                className="login-button"
+                onClick={() => setLoggedIn(true)}
+              >
+                Login
+              </button>
+              <button className="delete-button" onClick={() => deleteBtn(i)}>
+                Delete
+              </button>
+            </div>
           </div>
         );
       })}
