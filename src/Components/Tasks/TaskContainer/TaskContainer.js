@@ -2,7 +2,7 @@ import React from "react";
 import "./TaskContainer.css";
 
 const TaskContainer = () => {
-  return <div>TaskContainer</div>;
+  return <div class="TaskContainer">TaskContainer</div>;
 };
 
 export default TaskContainer;
