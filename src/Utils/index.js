@@ -49,11 +49,12 @@ export const loginFamily = async (username, password) => {
       }),
     });
     const data = await response.json();
+    console.log(data)
     if (
       data.message !== "Invalid username." &&
       data.message !== "Unauthorised Login!"
     ) {
-      writeCookie("jwt_token", data.user.token, 7);
+      writeCookie("jwt_token", data.family.token, 7);
       return data;
     }
     if (data.message === "Invalid username.") {
