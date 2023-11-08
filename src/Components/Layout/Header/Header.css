@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
-
 .header {
   display: flex;
   flex-wrap: wrap;
@@ -12,11 +9,11 @@
   height: 3vw;
   align-content: center;
   color: #1b3358;
-  background-image: linear-gradient(#9cbcff, white);
-  font-family: pacifico;
+  background-image: linear-gradient(var(--user-blue), white);
+  font-family: var(--font-brand);
 }
 
 .signIn {
-    font-family: Patrick Hand;
+    font-family: var(--font-body);
     align-self: center;
 }

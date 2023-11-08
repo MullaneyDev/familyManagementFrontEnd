@@ -5,22 +5,28 @@
 
 ## Members Palette
 
-lilac - #f1bdff
-green - #bfffd0
-blue - #9cbcff
-red - #ffa2a2
-yellow - #ffde9f
+lilac - #f1bdff     --user-lilac
+green - #bfffd0     --user-green
+blue - #9cbcff      --user-blue
+red - #ffa2a2       --user-red
+yellow - #ffde9f    --user-yellow
 
 ## App Palette
 
 ## Fonts
 
 Logo/Brand -
+
+variable = --font-brand
+
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 font-family: pacifico;
 
 Body -
+
+variable = --font-body
+
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
 font-family: Patrick Hand;
