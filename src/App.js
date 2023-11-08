@@ -13,6 +13,7 @@ function App() {
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});
   const [avatar, setAvatar] = useState([]);
+  const [verified, setVerified] = useState(false);
 
   if (!loggedIn) {
     return (
@@ -25,6 +26,8 @@ function App() {
           setLoggedIn={setLoggedIn}
           setMembers={setMembers}
           setUser={setUser}
+          verified={verified}
+          setVerified={setVerified}
         />
         <NotLoggedIn
           user={user}
@@ -38,6 +41,8 @@ function App() {
           setUser={setUser}
           avatar={avatar}
           setAvatar={setAvatar}
+          verified={verified}
+          setVerified={setVerified}
         />
         <Footer />
       </div>
