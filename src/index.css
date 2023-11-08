@@ -16,3 +16,9 @@ body {
   margin: 0;
   font-family: var(--font-body);
 }
+
+.input-field {
+  font-family: inherit;
+  text-align: center;
+  font-size: large;
+}

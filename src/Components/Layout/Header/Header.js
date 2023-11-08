@@ -35,7 +35,7 @@ const Header = ({ admin, loggedIn, family, setFamily, setLoggedIn,setMembers,set
   return (
     <div className="header">
       <h1>BoxedOff</h1>
-      <h3 className="signIn">Sign in / Sign up</h3>
+      <h3 className="signIn">Sign up / Sign in</h3>
     </div>
   );
 };
