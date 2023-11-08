@@ -18,7 +18,7 @@ const Login = ({ setFamily, setMembers, setVerified }) => {
 
     const response = await loginFamily(username, password);
     await setMessage(response.message);
-    if (response.message === "Success!") {
+    if (response.message === "Successful Token Check!") {
       await setFamily(response.family);
       await setMembers(response.family.members);
       await setVerified(true);
