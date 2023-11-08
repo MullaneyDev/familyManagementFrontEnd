@@ -22,7 +22,8 @@ const Register = () => {
 
   return (
     <div className="register">
-      <form className="registerForm" onSubmit={handleSubmit}>
+      <h1 className="formHeader">Sign up</h1>
+      <form className="Form" onSubmit={handleSubmit}>
         <input
           type="text"
           id="usernameRegister"

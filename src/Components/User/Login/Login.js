@@ -28,7 +28,8 @@ const Login = ({ setFamily, setMembers, setVerified }) => {
 
   return (
     <div className="login">
-      <form className="loginForm" onSubmit={handleSubmit}>
+      <h1 className="formHeader">Sign In</h1>
+      <form className="Form" onSubmit={handleSubmit}>
         <input
           type="text"
           id="usernameLogin"
