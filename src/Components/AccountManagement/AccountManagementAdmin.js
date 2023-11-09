@@ -14,6 +14,7 @@ const AccountManagementAdmin = ({
   setLoggedIn,
   setMembers,
   setUser,
+  setVerified,
 }) => {
   const [message, setMessage] = useState("");
   const [modalDelete, setModalDelete] = useState(false);
@@ -34,6 +35,7 @@ const AccountManagementAdmin = ({
     );
     await setMessage(response.message);
   };
+
   const handleNewPassword = async (e) => {
     e.preventDefault();
     console.log(password?.current?.value);
@@ -53,17 +55,28 @@ const AccountManagementAdmin = ({
     await setFamily({});
     await setMembers([]);
     await setUser({});
+    await setVerified(false);
     await setLoggedIn(false);
   };
   const handleLogout = async () => {
     await writeCookie("jwt_token", family.token, 0);
     await setFamily({});
+    await setMembers([]);
+    await setUser({});
+    await setVerified(false);
     await setLoggedIn(false);
   };
+
+  const handleSwitchUser = async () => {
+    await setUser({})
+    await setVerified(true)
+    await setLoggedIn(false)
+  }
 
   const openModal = async (setter) => {
     await setter(true);
   };
+
   const closeModal = async (setter) => {
     await setter(false);
   };
@@ -83,6 +96,12 @@ const AccountManagementAdmin = ({
         </div>
         <div {...getCollapseProps()}>
           <div className="content">
+            <button
+              className="accountBtn"
+              onClick={() => handleSwitchUser()}
+            >
+              Switch User
+            </button>
             <button
               className="accountBtn"
               onClick={() => openModal(setModalUpdateFamilyname)}
@@ -190,7 +209,7 @@ const AccountManagementAdmin = ({
             </Modal>
             <button
               className="accountBtn"
-              onClick={() => openModal(modalLogout)}
+              onClick={() => openModal(setModalLogout)}
             >
               Log Out
             </button>
@@ -202,7 +221,7 @@ const AccountManagementAdmin = ({
               <>
                 <h3> Are you sure you want to log out?</h3>
                 <button className="accountBtn" onClick={() => handleLogout()}>
-                  Confirm Delete
+                  Confirm Log Out
                 </button>
               </>
             </Modal>
@@ -212,9 +231,7 @@ const AccountManagementAdmin = ({
     );
   }
 
-  return (
-      <Collapsible />
-  );
+  return <Collapsible />;
 };
 
 export default AccountManagementAdmin;

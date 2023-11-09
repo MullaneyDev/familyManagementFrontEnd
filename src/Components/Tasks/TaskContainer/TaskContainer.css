@@ -1,8 +1,9 @@
 .TaskContainer {
   display: center;
+  margin-top: 30vh;
+  margin-left: 37vw;
   height: 500px;
   width: 400px;
-  margin: 10px;
   border: 2px solid black;
   border-radius: 5px;
   align-content: center;

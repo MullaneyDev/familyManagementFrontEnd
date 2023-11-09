@@ -4,7 +4,7 @@ import { loginFamily } from "../../../Utils/index.js";
 
 import { useState } from "react";
 
-const Login = ({ setFamily, setMembers, setVerified }) => {
+const Login = ({ setFamily, setMembers, setVerified, members }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");

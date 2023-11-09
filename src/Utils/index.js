@@ -160,7 +160,7 @@ export const deleteFamily = async (username) => {
   }
 };
 
-export const addMember = async (name) => {
+export const addMember = async (name, url) => {
   try {
     const token = getTokenFromCookie("jwt_token");
     const response = await fetch("http://localhost:5001/member", {
@@ -172,9 +172,11 @@ export const addMember = async (name) => {
       },
       body: JSON.stringify({
         name: name,
+        url: url,
       }),
     });
     const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {}
 };

@@ -1,20 +1,17 @@
 import "./App.css";
 import { useState } from "react";
 import Footer from "./Components/Layout/Footer/Footer";
-
 import Header from "./Components/Layout/Header/Header";
 import NotLoggedIn from "./Components/Pages/NotLoggedIn/NotLoggedIn";
 import LoggedIn from "./Components/Pages/LoggedIn/LoggedIn";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(true);
   const [family, setFamily] = useState({});
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});
   const [verified, setVerified] = useState(false);
-
-  // const [url, setUrl] = useState("");      //stretch goal
 
   if (!loggedIn) {
     return (

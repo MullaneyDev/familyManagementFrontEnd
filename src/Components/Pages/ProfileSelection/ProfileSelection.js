@@ -10,26 +10,37 @@ const ProfileSelection = ({
   family,
   members,
   setVerified,
+  setMembers,
 }) => {
   const [name, setName] = useState([]);
-  const [userInput, setUserInput] = useState("");
-  const [url, setUrl] = useState("");
-
-  console.log(name);
-  console.log(members);
-  console.log(family);
+  const [url, setUrl] = useState();
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
-    await addMember(name);
+    const response = await addMember(name, url);
+    let storedMember = [...members];
+    storedMember.push(response.result);
+    setMembers(storedMember);
   };
 
-  const deleteMemberOnClick = async (id) => {
+  const deleteMemberOnClick = async (id, i) => {
     await deleteMember(id);
+    let storedMember = [...members];
+    storedMember.splice(i, 1);
+    setMembers(storedMember);
   };
 
   const changeHandler = (e) => {
     setName(e.target.value);
+    setUrl(
+      `https://api.multiavatar.com/${e.target.value}.svg?apikey=yWrOSvTVeZ4RFA`
+    );
+  };
+
+  const loginHandler = async (user) => {
+    setLoggedIn(true);
+    setUser(user);
+    console.log(user);
   };
 
   return (
@@ -48,47 +59,22 @@ const ProfileSelection = ({
 
       <h1>Who are you?</h1>
       {members.map((user, i) => {
-        console.log(user);
         return (
           <div key={i} className="indi-user-container">
-            <img src={user.url} alt="avatar" />
+            <img className="map-item-img" src={user.url} alt="avatar" />
             <h4>{user.name}</h4>
-            <button className="login-button" onClick={() => setLoggedIn(true)}>
+            <button className="login-button" onClick={() => loginHandler(user)}>
               Login
             </button>
             <button
               className="delete-button"
-              onClick={() => deleteMemberOnClick(user.id)}
+              onClick={() => deleteMemberOnClick(user.id, i)}
             >
               Delete
             </button>
           </div>
         );
       })}
-      {/* test bench for the map */}
-      {/* {name.map((names, i) => {
-        return (
-          <div className="name-map-container">
-            <div key={i} className="name-map-items">
-              <img
-                className="name-map-image"
-                src={`https://api.multiavatar.com/${names}.svg?apikey=${apiKey}`}
-                alt="avatar"
-              />
-              <h1 className="name-map-names">{names}</h1>
-              <button
-                className="login-button"
-                onClick={() => setLoggedIn(true)}
-              >
-                Login
-              </button>
-              <button className="delete-button" onClick={() => deleteBtn(i)}>
-                Delete
-              </button>
-            </div>
-          </div>
-        );
-      })} */}
     </div>
   );
 };
