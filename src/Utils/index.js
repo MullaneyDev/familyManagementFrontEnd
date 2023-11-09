@@ -160,17 +160,37 @@ export const deleteFamily = async (username) => {
   }
 };
 
-export const addMember = async (name, url) => {
+export const addMember = async (name) => {
   try {
+    const token = getTokenFromCookie("jwt_token");
     const response = await fetch("http://localhost:5001/member", {
       method: "POST",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         name: name,
-        url: url,
+      }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {}
+};
+
+export const deleteMember = async (id) => {
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch("http://localhost:5001/member", {
+      method: "DELETE",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        id: id,
       }),
     });
     const data = await response.json();

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ProfileSelection.css";
-import { addMember } from "../../../Utils";
+import { addMember, deleteMember } from "../../../Utils";
 
 const apiKey = "yWrOSvTVeZ4RFA";
 const ProfileSelection = ({
@@ -21,16 +21,15 @@ const ProfileSelection = ({
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
-    const response = await addMember(name, url);
+    await addMember(name);
+  };
 
-    let storedName = [...name];
-    storedName.push(userInput);
-    setName(storedName);
-    console.log(response);
+  const deleteMemberOnClick = async (id) => {
+    await deleteMember(id);
   };
 
   const changeHandler = (e) => {
-    setUserInput(e.target.value);
+    setName(e.target.value);
   };
 
   return (
@@ -49,6 +48,7 @@ const ProfileSelection = ({
 
       <h1>Who are you?</h1>
       {members.map((user, i) => {
+        console.log(user);
         return (
           <div key={i} className="indi-user-container">
             <img src={user.url} alt="avatar" />
@@ -56,7 +56,12 @@ const ProfileSelection = ({
             <button className="login-button" onClick={() => setLoggedIn(true)}>
               Login
             </button>
-            <button className="delete-button"></button>
+            <button
+              className="delete-button"
+              onClick={() => deleteMemberOnClick(user.id)}
+            >
+              Delete
+            </button>
           </div>
         );
       })}
