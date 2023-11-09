@@ -8,7 +8,7 @@ import LoggedIn from "./Components/Pages/LoggedIn/LoggedIn";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(true);
   const [family, setFamily] = useState({});
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});

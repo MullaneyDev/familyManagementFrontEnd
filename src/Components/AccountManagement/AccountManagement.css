@@ -15,8 +15,16 @@
 }
 
 .collapsible {
+  display: grid;
+  position: absolute;
   width: 4vw;
-  align-self: center;
+  align-self: bottom;
   justify-self: end;
   margin-right: 3vw;
+}
+
+.accountBtn {
+  font-family: var(--font-body);
+  background-color: var(--user-blue);
+  border: none;
 }

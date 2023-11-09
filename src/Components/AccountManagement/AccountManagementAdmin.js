@@ -14,6 +14,7 @@ const AccountManagementAdmin = ({
   setLoggedIn,
   setMembers,
   setUser,
+  setVerified,
 }) => {
   const [message, setMessage] = useState("");
   const [modalDelete, setModalDelete] = useState(false);
@@ -53,11 +54,15 @@ const AccountManagementAdmin = ({
     await setFamily({});
     await setMembers([]);
     await setUser({});
+    await setVerified(false);
     await setLoggedIn(false);
   };
   const handleLogout = async () => {
     await writeCookie("jwt_token", family.token, 0);
     await setFamily({});
+    await setMembers([]);
+    await setUser({});
+    await setVerified(false);
     await setLoggedIn(false);
   };
 
@@ -190,7 +195,7 @@ const AccountManagementAdmin = ({
             </Modal>
             <button
               className="accountBtn"
-              onClick={() => openModal(modalLogout)}
+              onClick={() => openModal(setModalLogout)}
             >
               Log Out
             </button>
@@ -202,7 +207,7 @@ const AccountManagementAdmin = ({
               <>
                 <h3> Are you sure you want to log out?</h3>
                 <button className="accountBtn" onClick={() => handleLogout()}>
-                  Confirm Delete
+                  Confirm Log Out
                 </button>
               </>
             </Modal>
@@ -212,9 +217,7 @@ const AccountManagementAdmin = ({
     );
   }
 
-  return (
-      <Collapsible />
-  );
+  return <Collapsible />;
 };
 
 export default AccountManagementAdmin;

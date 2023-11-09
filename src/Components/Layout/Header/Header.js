@@ -12,6 +12,7 @@ const Header = ({
   setMembers,
   setUser,
   verified,
+  setVerified
 }) => {
   if (verified && !loggedIn) {
     return (
@@ -33,6 +34,8 @@ const Header = ({
             setLoggedIn={setLoggedIn}
             setMembers={setMembers}
             setUser={setUser}
+            verified={verified}
+            setVerified={setVerified}
           />
         </div>
       );
@@ -46,6 +49,8 @@ const Header = ({
           setLoggedIn={setLoggedIn}
           setMembers={setMembers}
           setUser={setUser}
+          verified={verified}
+          setVerified={setVerified}
         />
       </div>
     );
