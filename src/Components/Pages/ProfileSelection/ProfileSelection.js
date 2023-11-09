@@ -13,20 +13,14 @@ const ProfileSelection = ({
   setMembers,
 }) => {
   const [name, setName] = useState([]);
-  const [userInput, setUserInput] = useState("");
-  const [url, setUrl] = useState("");
-
-  console.log(name);
-  console.log(members);
-  console.log(family);
+  const [url, setUrl] = useState();
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
-    const response = await addMember(name);
+    const response = await addMember(name, url);
     let storedMember = [...members];
     storedMember.push(response.result);
     setMembers(storedMember);
-    console.log(response);
   };
 
   const deleteMemberOnClick = async (id, i) => {
@@ -38,7 +32,15 @@ const ProfileSelection = ({
 
   const changeHandler = (e) => {
     setName(e.target.value);
-    setUserInput(e.target.value);
+    setUrl(
+      `https://api.multiavatar.com/${e.target.value}.svg?apikey=yWrOSvTVeZ4RFA`
+    );
+  };
+
+  const loginHandler = async (user) => {
+    setLoggedIn(true);
+    setUser(user);
+    console.log(user);
   };
 
   return (
@@ -57,12 +59,11 @@ const ProfileSelection = ({
 
       <h1>Who are you?</h1>
       {members.map((user, i) => {
-        console.log(user);
         return (
           <div key={i} className="indi-user-container">
-            <img src={user.url} alt="avatar" />
+            <img className="map-item-img" src={user.url} alt="avatar" />
             <h4>{user.name}</h4>
-            <button className="login-button" onClick={() => setLoggedIn(true)}>
+            <button className="login-button" onClick={() => loginHandler(user)}>
               Login
             </button>
             <button

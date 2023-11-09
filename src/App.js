@@ -14,16 +14,6 @@ function App() {
   const [user, setUser] = useState({});
   const [verified, setVerified] = useState(false);
 
-  // useEffect(() => {
-  //   async function fetchMembers() {
-  //     const response = await findAllMembers();
-  //     setMembers(response);
-  //   }
-  //   fetchMembers();
-  // }, [members]);
-
-  // const [url, setUrl] = useState("");      //stretch goal
-
   if (!loggedIn) {
     return (
       <div className="App">
