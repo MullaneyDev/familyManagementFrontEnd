@@ -6,10 +6,14 @@ const TaskCard = ({ task }) => {
     <div className="TaskCard">
       <div className="TaskCardInner">
         <p>{task.taskname}</p>
-        <p>
-          <p>{task.points}</p>
-        </p>
-        {/* <button className=""></button> */}
+
+        <p>{task.points}</p>
+
+        <button className="Assigned">Assigned</button>
+
+        <button className="Done">Done</button>
+
+        <button className="Delete">Delete</button>
       </div>
     </div>
   );
