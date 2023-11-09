@@ -1,7 +1,6 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Footer from "./Components/Layout/Footer/Footer";
-import { findAllMembers } from "./Utils";
 import Header from "./Components/Layout/Header/Header";
 import NotLoggedIn from "./Components/Pages/NotLoggedIn/NotLoggedIn";
 import LoggedIn from "./Components/Pages/LoggedIn/LoggedIn";
