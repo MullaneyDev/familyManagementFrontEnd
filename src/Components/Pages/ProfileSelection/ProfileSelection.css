@@ -16,6 +16,7 @@
 }
 
 .netflix-container {
+    margin-top: 10vh;
     grid-row: 1;
     text-align: center;
     margin-top: 10vh;
