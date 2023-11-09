@@ -9,6 +9,7 @@ const TaskCard = ({ task }) => {
         <p>
           <p>{task.points}</p>
         </p>
+        {/* <button className=""></button> */}
       </div>
     </div>
   );

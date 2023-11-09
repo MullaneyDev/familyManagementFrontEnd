@@ -15,18 +15,21 @@ const LoggedIn = ({
   user,
 }) => {
   return (
-    <TaskContainer
-      setLoggedIn={setLoggedIn}
-      setAdmin={setAdmin}
-      setFamily={setFamily}
-      setUser={setUser}
-      family={family}
-      members={members}
-      setMembers={setMembers}
-      avatar={avatar}
-      setAvatar={setAvatar}
-      user={user}
-    />
+    <div>
+      <h1>Hello{user.name}</h1>
+      <TaskContainer
+        setLoggedIn={setLoggedIn}
+        setAdmin={setAdmin}
+        setFamily={setFamily}
+        setUser={setUser}
+        family={family}
+        members={members}
+        setMembers={setMembers}
+        avatar={avatar}
+        setAvatar={setAvatar}
+        user={user}
+      />
+    </div>
   );
 };
 
