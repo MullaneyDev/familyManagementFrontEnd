@@ -10,6 +10,7 @@ const ProfileSelection = ({
   family,
   members,
   setVerified,
+  setMembers,
 }) => {
   const [name, setName] = useState([]);
   const [userInput, setUserInput] = useState("");
@@ -21,15 +22,23 @@ const ProfileSelection = ({
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
-    await addMember(name);
+    const response = await addMember(name);
+    let storedMember = [...members];
+    storedMember.push(response.result);
+    setMembers(storedMember);
+    console.log(response);
   };
 
-  const deleteMemberOnClick = async (id) => {
+  const deleteMemberOnClick = async (id, i) => {
     await deleteMember(id);
+    let storedMember = [...members];
+    storedMember.splice(i, 1);
+    setMembers(storedMember);
   };
 
   const changeHandler = (e) => {
     setName(e.target.value);
+    setUserInput(e.target.value);
   };
 
   return (
@@ -58,37 +67,13 @@ const ProfileSelection = ({
             </button>
             <button
               className="delete-button"
-              onClick={() => deleteMemberOnClick(user.id)}
+              onClick={() => deleteMemberOnClick(user.id, i)}
             >
               Delete
             </button>
           </div>
         );
       })}
-      {/* test bench for the map */}
-      {/* {name.map((names, i) => {
-        return (
-          <div className="name-map-container">
-            <div key={i} className="name-map-items">
-              <img
-                className="name-map-image"
-                src={`https://api.multiavatar.com/${names}.svg?apikey=${apiKey}`}
-                alt="avatar"
-              />
-              <h1 className="name-map-names">{names}</h1>
-              <button
-                className="login-button"
-                onClick={() => setLoggedIn(true)}
-              >
-                Login
-              </button>
-              <button className="delete-button" onClick={() => deleteBtn(i)}>
-                Delete
-              </button>
-            </div>
-          </div>
-        );
-      })} */}
     </div>
   );
 };

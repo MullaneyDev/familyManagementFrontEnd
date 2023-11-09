@@ -13,16 +13,15 @@ const NotLoggedIn = ({
   setMembers,
   user,
   verified,
-  setVerified
+  setVerified,
 }) => {
-  
-
   if (!verified) {
     return (
       <UserContainer
         setVerified={setVerified}
         setFamily={setFamily}
         setMembers={setMembers}
+        members={members}
       />
     );
   }

@@ -1,7 +1,7 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "./Components/Layout/Footer/Footer";
-
+import { findAllMembers } from "./Utils";
 import Header from "./Components/Layout/Header/Header";
 import NotLoggedIn from "./Components/Pages/NotLoggedIn/NotLoggedIn";
 import LoggedIn from "./Components/Pages/LoggedIn/LoggedIn";
@@ -13,6 +13,14 @@ function App() {
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});
   const [verified, setVerified] = useState(false);
+
+  // useEffect(() => {
+  //   async function fetchMembers() {
+  //     const response = await findAllMembers();
+  //     setMembers(response);
+  //   }
+  //   fetchMembers();
+  // }, [members]);
 
   // const [url, setUrl] = useState("");      //stretch goal
 
