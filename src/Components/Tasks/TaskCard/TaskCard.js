@@ -4,11 +4,12 @@ import "./TaskCard.css";
 const TaskCard = ({ task }) => {
   return (
     <div className="TaskCard">
-      <p>
-        {task.taskname}
-        <></> <></> <></>
-        {task.points}
-      </p>
+      <div className="TaskCardInner">
+        <p>{task.taskname}</p>
+        <p>
+          <p>{task.points}</p>
+        </p>
+      </div>
     </div>
   );
 };
