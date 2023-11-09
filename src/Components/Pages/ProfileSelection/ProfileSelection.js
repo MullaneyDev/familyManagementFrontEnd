@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "./ProfileSelection.css";
 import { addMember } from "../../../Utils";
@@ -10,19 +9,19 @@ const ProfileSelection = ({
   setLoggedIn,
   family,
   members,
-  avatar,
-  setAvatar,
-
   setVerified,
 }) => {
   const [name, setName] = useState([]);
-  console.log(name);
+  const [userInput, setUserInput] = useState("");
+  const [url, setUrl] = useState("");
 
+  console.log(name);
+  console.log(members);
+  console.log(family);
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
-    const response = await addMember(name);
-
+    const response = await addMember(name, url);
 
     let storedName = [...name];
     storedName.push(userInput);
@@ -30,52 +29,42 @@ const ProfileSelection = ({
     console.log(response);
   };
 
-  const deleteBtn = async (i) => {
-    let storedName = [...name];
-    storedName.splice(i, 1);
-    setName(storedName);
-  };
-
-  const [userInput, setUserInput] = useState("");
   const changeHandler = (e) => {
     setUserInput(e.target.value);
-
   };
 
   return (
     <div className="netflix-container">
-      <div className="add-member-container">
-        <form onSubmit={handleAddMemberSubmit}>
-          <label>Add a Member</label>
-          <input
-            type="text"
-            name="name"
-            className="input-field"
-            placeholder="Member Name"
-            onChange={(e) => changeHandler(e)}
+      <form className="add-member-container" onSubmit={handleAddMemberSubmit}>
+        <label>Add a Member</label>
+        <input
+          type="text"
+          name="name"
+          className="input-field"
+          placeholder="Member Name"
+          onChange={(e) => changeHandler(e)}
+        />
+        <input type="submit" value="Add Member" />
+      </form>
 
-          />
-          <input type="submit" value="Add Member" />
-        </form>
-      </div>
       <h1>Who are you?</h1>
-      {/* {members.map((user, index) => {
+      {members.map((user, i) => {
         return (
-          <div key={index} className="indi-user-container">
-            <img src={avatar} alt="avatar" />
+          <div key={i} className="indi-user-container">
+            <img src={user.url} alt="avatar" />
             <h4>{user.name}</h4>
-            <button className="login-button" onClick={setLoggedIn(true)}>
+            <button className="login-button" onClick={() => setLoggedIn(true)}>
               Login
             </button>
+            <button className="delete-button"></button>
           </div>
         );
-      })} */}
+      })}
       {/* test bench for the map */}
-      {name.map((names, i) => {
+      {/* {name.map((names, i) => {
         return (
           <div className="name-map-container">
             <div key={i} className="name-map-items">
-              {/* <img src={avatar} alt="avatar" /> */}
               <img
                 className="name-map-image"
                 src={`https://api.multiavatar.com/${names}.svg?apikey=${apiKey}`}
@@ -94,7 +83,7 @@ const ProfileSelection = ({
             </div>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 };

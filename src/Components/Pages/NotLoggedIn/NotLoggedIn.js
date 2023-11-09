@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import "./NotLoggedIn.css";
 import ProfileSelection from "../ProfileSelection/ProfileSelection";
 import UserContainer from "../../User/UserContainer/UserContainer";
@@ -12,11 +11,11 @@ const NotLoggedIn = ({
   family,
   members,
   setMembers,
-  avatar,
-  setAvatar,
   user,
+  verified,
+  setVerified
 }) => {
-  const [verified, setVerified] = useState(false);
+  
 
   if (!verified) {
     return (
@@ -36,8 +35,6 @@ const NotLoggedIn = ({
       family={family}
       members={members}
       setMembers={setMembers}
-      avatar={avatar}
-      setAvatar={setAvatar}
       setVerified={setVerified}
     />
   );

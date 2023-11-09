@@ -3,7 +3,23 @@ import "./Header.css";
 import AccountManagementAdmin from "../../AccountManagement/AccountManagementAdmin";
 import AccountManagement from "../../AccountManagement/AccountManagement";
 
-const Header = ({ admin, loggedIn, family, setFamily, setLoggedIn,setMembers,setUser }) => {
+const Header = ({
+  admin,
+  loggedIn,
+  family,
+  setFamily,
+  setLoggedIn,
+  setMembers,
+  setUser,
+  verified,
+}) => {
+  if (verified) {
+    <div className="header">
+      <h1>BoxedOff</h1>
+      <h3 className="signIn">Choose Your User</h3>
+    </div>;
+  }
+
   if (loggedIn) {
     if (admin) {
       return (
@@ -31,7 +47,6 @@ const Header = ({ admin, loggedIn, family, setFamily, setLoggedIn,setMembers,set
     </div>;
   }
 
-
   return (
     <div className="header">
       <h1>BoxedOff</h1>
@@ -41,6 +56,3 @@ const Header = ({ admin, loggedIn, family, setFamily, setLoggedIn,setMembers,set
 };
 
 export default Header;
-
-
-

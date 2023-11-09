@@ -12,7 +12,9 @@ function App() {
   const [family, setFamily] = useState({});
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});
-  const [avatar, setAvatar] = useState([]);
+  const [verified, setVerified] = useState(false);
+
+  // const [url, setUrl] = useState("");      //stretch goal
 
   if (!loggedIn) {
     return (
@@ -25,6 +27,8 @@ function App() {
           setLoggedIn={setLoggedIn}
           setMembers={setMembers}
           setUser={setUser}
+          verified={verified}
+          setVerified={setVerified}
         />
         <NotLoggedIn
           user={user}
@@ -36,8 +40,6 @@ function App() {
           setMembers={setMembers}
           members={members}
           setUser={setUser}
-          avatar={avatar}
-          setAvatar={setAvatar}
         />
         <Footer />
       </div>
@@ -45,7 +47,17 @@ function App() {
   }
   return (
     <div className="App">
-      <Header />
+      <Header
+        admin={admin}
+        loggedIn={loggedIn}
+        family={family}
+        setFamily={setFamily}
+        setLoggedIn={setLoggedIn}
+        setMembers={setMembers}
+        setUser={setUser}
+        verified={verified}
+        setVerified={setVerified}
+      />
       <LoggedIn family={family} members={members} user={user} />
       <Footer />
     </div>

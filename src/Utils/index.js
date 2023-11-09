@@ -20,7 +20,7 @@ export const authCheck = async (jwt) => {
 export const findAllMembers = async () => {
   try {
     const token = getTokenFromCookie("jwt_token");
-    const response = await fetch(`http://localhost:5001/members`, {
+    const response = await fetch(`http://localhost:5001/member`, {
       method: "GET",
       mode: "cors",
       headers: {
@@ -29,6 +29,7 @@ export const findAllMembers = async () => {
       },
     });
     const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -49,11 +50,12 @@ export const loginFamily = async (username, password) => {
       }),
     });
     const data = await response.json();
+    console.log(data);
     if (
       data.message !== "Invalid username." &&
       data.message !== "Unauthorised Login!"
     ) {
-      writeCookie("jwt_token", data.user.token, 7);
+      writeCookie("jwt_token", data.family.token, 7);
       return data;
     }
     if (data.message === "Invalid username.") {
@@ -158,7 +160,7 @@ export const deleteFamily = async (username) => {
   }
 };
 
-export const addMember = async (name) => {
+export const addMember = async (name, url) => {
   try {
     const response = await fetch("http://localhost:5001/member", {
       method: "POST",
@@ -168,6 +170,7 @@ export const addMember = async (name) => {
       },
       body: JSON.stringify({
         name: name,
+        url: url,
       }),
     });
     const data = await response.json();
