@@ -40,6 +40,8 @@ function App() {
           setMembers={setMembers}
           members={members}
           setUser={setUser}
+          verified={verified}
+          setVerified={setVerified}
         />
         <Footer />
       </div>

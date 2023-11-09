@@ -74,7 +74,7 @@ const AccountManagementAdmin = ({
     return (
       <div className="collapsible">
         <div
-          className="header"
+          className="accountOptions"
           {...getToggleProps({
             onClick: () => setExpanded((prevExpanded) => !prevExpanded),
           })}
@@ -212,7 +212,9 @@ const AccountManagementAdmin = ({
     );
   }
 
-  return <Collapsible />;
+  return (
+      <Collapsible />
+  );
 };
 
 export default AccountManagementAdmin;

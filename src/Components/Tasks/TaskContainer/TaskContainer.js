@@ -4,6 +4,7 @@ import { useState } from "react";
 import TaskCard from "../TaskCard/TaskCard";
 
 const TaskContainer = () => {
+
   const tempTasks = [
     { id: 2, taskname: "Cleaning", points: 10 },
     { id: 1, taskname: "Homework", points: 5 },

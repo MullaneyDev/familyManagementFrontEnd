@@ -13,15 +13,17 @@ const Header = ({
   setUser,
   verified,
 }) => {
-  if (verified) {
-    <div className="header">
-      <h1>BoxedOff</h1>
-      <h3 className="signIn">Choose Your User</h3>
-    </div>;
+  if (verified && !loggedIn) {
+    return (
+      <div className="header">
+        <h1>BoxedOff</h1>
+        <h3 className="signIn">Choose Your User</h3>
+      </div>
+    );
   }
 
-  if (loggedIn) {
-    if (admin) {
+  if (verified && loggedIn) {
+      if (admin) {
       return (
         <div className="header">
           <h1>BoxedOff</h1>
@@ -35,16 +37,18 @@ const Header = ({
         </div>
       );
     }
-    <div className="header">
-      <h1>BoxedOff</h1>
-      <AccountManagement
-        family={family}
-        setFamily={setFamily}
-        setLoggedIn={setLoggedIn}
-        setMembers={setMembers}
-        setUser={setUser}
-      />
-    </div>;
+    return (
+      <div className="header">
+        <h1>BoxedOff</h1>
+        <AccountManagement
+          family={family}
+          setFamily={setFamily}
+          setLoggedIn={setLoggedIn}
+          setMembers={setMembers}
+          setUser={setUser}
+        />
+      </div>
+    );
   }
 
   return (

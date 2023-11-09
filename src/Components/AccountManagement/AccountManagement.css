@@ -13,3 +13,10 @@
   grid-gap: 5px;
   column-gap: 10px;
 }
+
+.collapsible {
+  width: 4vw;
+  align-self: center;
+  justify-self: end;
+  margin-right: 3vw;
+}

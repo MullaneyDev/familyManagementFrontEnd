@@ -13,6 +13,7 @@ const AccountManagement = ({
   setLoggedIn,
   setMembers,
   setUser,
+  setVerified
 }) => {
   const [modalLogout, setModalLogout] = useState(false);
 
@@ -21,6 +22,7 @@ const AccountManagement = ({
     await setFamily({});
     await setMembers([]);
     await setUser({});
+    await setVerified(false)
     await setLoggedIn(false);
   };
   const openModal = async (setter) => {
@@ -35,7 +37,7 @@ const AccountManagement = ({
     return (
       <div className="collapsible">
         <div
-          className="header"
+          className="accountOptions"
           {...getToggleProps({
             onClick: () => setExpanded((prevExpanded) => !prevExpanded),
           })}
@@ -46,7 +48,7 @@ const AccountManagement = ({
           <div className="content">
             <button
               className="accountBtn"
-              onClick={() => openModal(modalLogout)}
+              onClick={() => openModal(setModalLogout)}
             >
               Log Out
             </button>
@@ -58,7 +60,7 @@ const AccountManagement = ({
               <>
                 <h3> Are you sure you want to log out?</h3>
                 <button className="accountBtn" onClick={() => handleLogout()}>
-                  Confirm Delete
+                  Confirm logout
                 </button>
               </>
             </Modal>
@@ -68,7 +70,9 @@ const AccountManagement = ({
     );
   }
 
-  return <Collapsible />;
+  return (
+      <Collapsible />
+  );
 };
 
 export default AccountManagement;
