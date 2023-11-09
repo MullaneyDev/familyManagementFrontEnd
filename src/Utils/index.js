@@ -114,7 +114,7 @@ export const updateUsername = async (username, newUsername) => {
   }
 };
 
-export const updatePassword = async (password, newPassword) => {
+export const updatePassword = async (password, newPassword,username) => {
   try {
     const response = await fetch(
       `http://localhost:5001/family/account/updatePassword`,
@@ -125,6 +125,7 @@ export const updatePassword = async (password, newPassword) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          username: username,
           password: password,
           newPassword: newPassword,
         }),
