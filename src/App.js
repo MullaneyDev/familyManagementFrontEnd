@@ -12,7 +12,9 @@ function App() {
   const [family, setFamily] = useState({});
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});
+
   const [url, setUrl] = useState("");
+
 
   if (!loggedIn) {
     return (
@@ -25,6 +27,8 @@ function App() {
           setLoggedIn={setLoggedIn}
           setMembers={setMembers}
           setUser={setUser}
+          verified={verified}
+          setVerified={setVerified}
         />
         <NotLoggedIn
           user={user}
@@ -36,6 +40,7 @@ function App() {
           setMembers={setMembers}
           members={members}
           setUser={setUser}
+
         />
         <Footer />
       </div>
