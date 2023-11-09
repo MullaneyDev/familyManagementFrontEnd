@@ -18,6 +18,7 @@
 .netflix-container {
     grid-row: 1;
     text-align: center;
+    margin-top: 10vh;
 }
 
 
@@ -26,9 +27,6 @@
     box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
 }
 
-.name-map-image {
-    height: 300px;
-}
 
 .name-map-items {
     grid-row: 1;
@@ -63,4 +61,8 @@
 
 .map-item-img {
     height: 5em;
+}
+
+.indi-user-container {
+    margin-bottom: 3vh;
 }
