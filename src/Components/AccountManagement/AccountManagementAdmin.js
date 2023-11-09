@@ -35,6 +35,7 @@ const AccountManagementAdmin = ({
     );
     await setMessage(response.message);
   };
+
   const handleNewPassword = async (e) => {
     e.preventDefault();
     console.log(password?.current?.value);
@@ -66,9 +67,16 @@ const AccountManagementAdmin = ({
     await setLoggedIn(false);
   };
 
+  const handleSwitchUser = async () => {
+    await setUser({})
+    await setVerified(true)
+    await setLoggedIn(false)
+  }
+
   const openModal = async (setter) => {
     await setter(true);
   };
+
   const closeModal = async (setter) => {
     await setter(false);
   };
@@ -88,6 +96,12 @@ const AccountManagementAdmin = ({
         </div>
         <div {...getCollapseProps()}>
           <div className="content">
+            <button
+              className="accountBtn"
+              onClick={() => handleSwitchUser()}
+            >
+              Switch User
+            </button>
             <button
               className="accountBtn"
               onClick={() => openModal(setModalUpdateFamilyname)}

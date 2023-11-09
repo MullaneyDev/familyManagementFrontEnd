@@ -13,7 +13,7 @@ const AccountManagement = ({
   setLoggedIn,
   setMembers,
   setUser,
-  setVerified
+  setVerified,
 }) => {
   const [modalLogout, setModalLogout] = useState(false);
 
@@ -22,12 +22,19 @@ const AccountManagement = ({
     await setFamily({});
     await setMembers([]);
     await setUser({});
-    await setVerified(false)
+    await setVerified(false);
     await setLoggedIn(false);
   };
+  const handleSwitchUser = async () => {
+    await setUser({});
+    await setVerified(true);
+    await setLoggedIn(false);
+  };
+
   const openModal = async (setter) => {
     await setter(true);
   };
+
   const closeModal = async (setter) => {
     await setter(false);
   };
@@ -46,6 +53,9 @@ const AccountManagement = ({
         </div>
         <div {...getCollapseProps()}>
           <div className="content">
+            <button className="accountBtn" onClick={() => handleSwitchUser()}>
+              Switch User
+            </button>
             <button
               className="accountBtn"
               onClick={() => openModal(setModalLogout)}
@@ -70,9 +80,7 @@ const AccountManagement = ({
     );
   }
 
-  return (
-      <Collapsible />
-  );
+  return <Collapsible />;
 };
 
 export default AccountManagement;
