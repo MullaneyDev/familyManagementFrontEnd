@@ -15,6 +15,10 @@ const NotLoggedIn = ({
   user,
   verified,
   setVerified,
+  activeTasks,
+  setActiveTasks,
+  nullTasks,
+  setNullTasks,
 }) => {
   if (!verified) {
     return (
@@ -37,6 +41,10 @@ const NotLoggedIn = ({
       members={members}
       setMembers={setMembers}
       setVerified={setVerified}
+      activeTasks={activeTasks}
+      setActiveTasks={setActiveTasks}
+      nullTasks={nullTasks}
+      setNullTasks={setNullTasks}
     />
   );
 };

@@ -2,7 +2,12 @@ import React from "react";
 import "./TaskContainer.css";
 import TaskCard from "../TaskCard/TaskCard";
 
-const TaskContainer = () => {
+const TaskContainer = ({
+  activeTasks,
+  setActiveTasks,
+  nullTasks,
+  setNullTasks,
+}) => {
   const tempTasks = [
     { id: 2, taskname: "Cleaning", points: 10 },
     { id: 1, taskname: "Homework", points: 5 },
@@ -15,14 +20,17 @@ const TaskContainer = () => {
     { id: 7, taskname: "Sort laundry", points: 14 },
     { id: 9, taskname: "Make bed", points: 7 },
   ];
+  if (!nullTasks) {
+    return <p>loading</p>;
+  }
   return (
     <div className="TaskContainer">
-      <h1>My tasks</h1>
-      {tempMyTasks.map((task) => (
+      <h1>My Challenges</h1>
+      {activeTasks.map((task) => (
         <TaskCard task={task} />
       ))}
-      <h2>Tasks</h2>
-      {tempTasks.map((task) => (
+      <h2>Available Challenges</h2>
+      {nullTasks.map((task) => (
         <TaskCard task={task} />
       ))}
     </div>

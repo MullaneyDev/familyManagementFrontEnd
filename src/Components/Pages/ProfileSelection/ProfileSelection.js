@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ProfileSelection.css";
-import { addMember, deleteMember } from "../../../Utils";
+import { addMember, deleteMember, getFamilyTasks } from "../../../Utils";
 
 const apiKey = "yWrOSvTVeZ4RFA";
 const ProfileSelection = ({
@@ -12,6 +12,10 @@ const ProfileSelection = ({
   members,
   setVerified,
   setMembers,
+  activeTasks,
+  setActiveTasks,
+  nullTasks,
+  setNullTasks,
 }) => {
   const [name, setName] = useState([]);
   const [url, setUrl] = useState();
@@ -41,9 +45,15 @@ const ProfileSelection = ({
   };
 
   const loginHandler = async (user) => {
-    setLoggedIn(true);
-    setUser(user);
-    console.log(user);
+    await setLoggedIn(true);
+    await setUser(user);
+    const result = await getFamilyTasks(user);
+    console.log("HELOOOOOOOO", result);
+    console.log("NULLTASKMF", result.activeTasks);
+
+    await setActiveTasks(result.activeTasks);
+    await setNullTasks(result.nullTasks);
+    console.log("NULLTASKMF", activeTasks);
   };
 
   const adminPriv = async () => {

@@ -14,6 +14,8 @@ function App() {
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});
   const [verified, setVerified] = useState(false);
+  const [activeTasks, setActiveTasks] = useState([]);
+  const [nullTasks, setNullTasks] = useState([]);
 
   useEffect(() => {
     if (document.cookie) {
@@ -27,10 +29,11 @@ function App() {
     }
   }, []);
 
-  const loginWithToken = async (token, setFamily) => {
+  const loginWithToken = async (token) => {
     const persistentFamily = await authCheck(token);
-    await setFamily(persistentFamily);
-    await setLoggedIn(true);
+    await setFamily(persistentFamily.family);
+    await setMembers(persistentFamily.family.members);
+    setVerified(true);
   };
 
   if (!loggedIn) {
@@ -59,6 +62,10 @@ function App() {
           setUser={setUser}
           verified={verified}
           setVerified={setVerified}
+          activeTasks={activeTasks}
+          setActiveTasks={setActiveTasks}
+          nullTasks={nullTasks}
+          setNullTasks={setNullTasks}
         />
         <Footer />
       </div>
@@ -77,7 +84,15 @@ function App() {
         verified={verified}
         setVerified={setVerified}
       />
-      <LoggedIn family={family} members={members} user={user} />
+      <LoggedIn
+        family={family}
+        members={members}
+        user={user}
+        activeTasks={activeTasks}
+        setActiveTasks={setActiveTasks}
+        nullTasks={nullTasks}
+        setNullTasks={setNullTasks}
+      />
       <Footer />
     </div>
   );

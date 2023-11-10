@@ -203,3 +203,26 @@ export const deleteMember = async (id) => {
     console.log(error);
   }
 };
+
+export const getFamilyTasks = async (user) => {
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/task/getFamilyTasks/${user.id}`,
+      {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log("DDDDDDDDDDDDDDDDDDDDDDDDDDDDD", response);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
