@@ -23,7 +23,7 @@ function App() {
   useEffect(() => {
     if (document.cookie) {
       let token = getTokenFromCookie("jwt_token");
-      if (token === false) {
+      if (!token) {
         setFamily({});
         setLoggedIn(false);
       } else {
