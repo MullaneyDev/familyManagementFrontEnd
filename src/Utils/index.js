@@ -161,7 +161,7 @@ export const deleteFamily = async (username) => {
   }
 };
 
-export const addMember = async (name, url, addAdmin) => {
+export const addMember = async (name, url, addAdmin, colour) => {
   try {
     const token = getTokenFromCookie("jwt_token");
     const response = await fetch("http://localhost:5001/member", {
@@ -175,6 +175,7 @@ export const addMember = async (name, url, addAdmin) => {
         name: name,
         url: url,
         admin: addAdmin,
+        colour: colour,
       }),
     });
     const data = await response.json();

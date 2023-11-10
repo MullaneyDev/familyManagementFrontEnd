@@ -16,3 +16,6 @@
     font-family: var(--font-body);
     align-self: center;
 }
+.accountOptions {
+  font-size: x-large;
+}

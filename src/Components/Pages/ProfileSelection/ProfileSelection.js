@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ProfileSelection.css";
 import { addMember, deleteMember, getFamilyTasks } from "../../../Utils";
 
-const apiKey = "yWrOSvTVeZ4RFA";
+// const apiKey = "yWrOSvTVeZ4RFA";
 const ProfileSelection = ({
   admin,
   setAdmin,
@@ -21,10 +21,11 @@ const ProfileSelection = ({
   const [url, setUrl] = useState();
   const [isChecked, setIsChecked] = useState(false);
   const [addAdmin, setAddAdmin] = useState();
+  const [colour, setColour] = useState("var(--user-blue)");
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
-    const response = await addMember(name, url, addAdmin);
+    const response = await addMember(name, url, addAdmin, colour);
     let storedMember = [...members];
     storedMember.push(response.result);
     setMembers(storedMember);
@@ -68,6 +69,10 @@ const ProfileSelection = ({
     }
   }, [isChecked]);
 
+  const changeColor = async (value) => {
+    setColour(value);
+  };
+
   return (
     <div className="netflix-container">
       <form className="add-member-container" onSubmit={handleAddMemberSubmit}>
@@ -82,6 +87,13 @@ const ProfileSelection = ({
         <label>Admin?</label>
         <input type="checkbox" id="adminCheckBox" onClick={() => adminPriv()} />
         <input type="submit" value="Add Member" />
+        <select onChange={(e) => changeColor(e.target.value)}>
+          <option value={"var(--user-blue)"}>Blue</option>
+          <option value={"var(--user-lilac)"}>Lilac</option>
+          <option value={"var(--user-green)"}>Green</option>
+          <option value={"var(--user-yellow)"}>Yellow</option>
+          <option value={"var(--user-red)"}>Red</option>
+        </select>
       </form>
 
       <h1>Who are you?</h1>
