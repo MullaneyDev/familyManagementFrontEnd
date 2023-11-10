@@ -18,19 +18,20 @@ function App() {
   useEffect(() => {
     if (document.cookie) {
       let token = getTokenFromCookie("jwt_token");
-      if (token === false) {
+      if (!token) {
         setFamily({});
         setLoggedIn(false);
       } else {
-        loginWithToken(token, setFamily);
+        loginWithToken(token, setFamily, setMembers);
       }
     }
   }, []);
 
-  const loginWithToken = async (token, setFamily) => {
+  const loginWithToken = async (token, setFamily, setMembers) => {
     const persistentFamily = await authCheck(token);
-    await setFamily(persistentFamily);
-    await setLoggedIn(true);
+    await setFamily(persistentFamily.family);
+    await setMembers(persistentFamily.family.members);
+    setVerified(true);
   };
 
   if (!loggedIn) {
