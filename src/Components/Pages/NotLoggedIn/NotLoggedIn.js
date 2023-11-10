@@ -6,6 +6,7 @@ import UserContainer from "../../User/UserContainer/UserContainer";
 const NotLoggedIn = ({
   setLoggedIn,
   setAdmin,
+  admin,
   setFamily,
   setUser,
   family,
@@ -28,6 +29,7 @@ const NotLoggedIn = ({
   return (
     <ProfileSelection
       setAdmin={setAdmin}
+      admin={admin}
       setUser={setUser}
       setLoggedIn={setLoggedIn}
       user={user}
