@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProfileSelection.css";
 import { addMember, deleteMember } from "../../../Utils";
 
 const apiKey = "yWrOSvTVeZ4RFA";
 const ProfileSelection = ({
+  admin,
   setAdmin,
   setUser,
   setLoggedIn,
@@ -14,10 +15,12 @@ const ProfileSelection = ({
 }) => {
   const [name, setName] = useState([]);
   const [url, setUrl] = useState();
+  const [isChecked, setIsChecked] = useState(false);
+  const [addAdmin, setAddAdmin] = useState();
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
-    const response = await addMember(name, url);
+    const response = await addMember(name, url, addAdmin);
     let storedMember = [...members];
     storedMember.push(response.result);
     setMembers(storedMember);
@@ -43,6 +46,18 @@ const ProfileSelection = ({
     console.log(user);
   };
 
+  const adminPriv = async () => {
+    setIsChecked((prevCheck) => !prevCheck);
+  };
+
+  useEffect(() => {
+    if (isChecked === true) {
+      setAddAdmin(true);
+    } else {
+      setAdmin(false);
+    }
+  }, [isChecked]);
+
   return (
     <div className="netflix-container">
       <form className="add-member-container" onSubmit={handleAddMemberSubmit}>
@@ -54,6 +69,8 @@ const ProfileSelection = ({
           placeholder="Member Name"
           onChange={(e) => changeHandler(e)}
         />
+        <label>Admin?</label>
+        <input type="checkbox" id="adminCheckBox" onClick={() => adminPriv()} />
         <input type="submit" value="Add Member" />
       </form>
 

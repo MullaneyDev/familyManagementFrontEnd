@@ -114,7 +114,7 @@ export const updateUsername = async (username, newUsername) => {
   }
 };
 
-export const updatePassword = async (password, newPassword,username) => {
+export const updatePassword = async (password, newPassword, username) => {
   try {
     const response = await fetch(
       `http://localhost:5001/family/account/updatePassword`,
@@ -161,7 +161,7 @@ export const deleteFamily = async (username) => {
   }
 };
 
-export const addMember = async (name, url) => {
+export const addMember = async (name, url, addAdmin) => {
   try {
     const token = getTokenFromCookie("jwt_token");
     const response = await fetch("http://localhost:5001/member", {
@@ -174,6 +174,7 @@ export const addMember = async (name, url) => {
       body: JSON.stringify({
         name: name,
         url: url,
+        admin: addAdmin,
       }),
     });
     const data = await response.json();
