@@ -1,9 +1,12 @@
 import React from 'react'
 import "./LeaderboardCard.css"
 
-const LeaderboardCard = () => {
+const LeaderboardCard = ({member}) => {
   return (
-    <div>LeaderboardCard</div>
+    <div className='leaderboardCard'>
+        <p>{member.name}</p>
+        <p>{member.totalPoints}</p>
+    </div>
   )
 }
 
