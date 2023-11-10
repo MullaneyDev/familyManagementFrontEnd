@@ -18,12 +18,12 @@ const TaskContainer = () => {
   return (
     <div className="TaskContainer">
       <h1>My tasks</h1>
-      {tempMyTasks.map((task) => (
-        <TaskCard task={task} />
+      {tempMyTasks.map((task, index) => (
+        <TaskCard key={index}task={task} />
       ))}
       <h2>Tasks</h2>
-      {tempTasks.map((task) => (
-        <TaskCard task={task} />
+      {tempTasks.map((task,index) => (
+        <TaskCard key={index}task={task} />
       ))}
     </div>
   );

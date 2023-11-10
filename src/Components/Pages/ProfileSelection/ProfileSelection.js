@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ProfileSelection.css";
 import { addMember, deleteMember } from "../../../Utils";
 
-const apiKey = "yWrOSvTVeZ4RFA";
+// const apiKey = "yWrOSvTVeZ4RFA";
 const ProfileSelection = ({
   admin,
   setAdmin,

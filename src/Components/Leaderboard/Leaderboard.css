@@ -1,5 +1,6 @@
 .leaderboard {
-    height: 100%;
+    margin-top: 15vh;
+    margin-left: 30vw ;
     width: 40vw;
     border: solid var(--user-blue);
     border-radius: 10px;
