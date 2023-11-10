@@ -18,13 +18,17 @@ const ProfileSelection = ({
   const [isChecked, setIsChecked] = useState(false);
   const [addAdmin, setAddAdmin] = useState();
   const [colour, setColour] = useState("var(--user-blue)");
+  const [totalPoints, setTotalPoints] = useState(0)
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
-    const response = await addMember(name, url, addAdmin, colour);
+    setTotalPoints(0)
+    const response = await addMember(name, url, addAdmin, colour, totalPoints);
     let storedMember = [...members];
     storedMember.push(response.result);
+    console.log(storedMember)
     setMembers(storedMember);
+    
   };
 
   const deleteMemberOnClick = async (id, i) => {
@@ -44,7 +48,6 @@ const ProfileSelection = ({
   const loginHandler = async (user) => {
     setLoggedIn(true);
     setUser(user);
-    console.log(user);
   };
 
   const adminPriv = async () => {

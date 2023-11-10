@@ -29,12 +29,12 @@ const Leaderboard = ({members}) => {
       colour: "var(--user-yellow)"
     },
   ];
-  const testMembersOrdered = testMembers.sort(function(a,b){return b.totalPoints-a.totalPoints})
+  const membersOrdered = members.sort(function(a,b){return b.totalPoints-a.totalPoints})
 
   return (
     <div className="leaderboard">
       <h1>Leaderboard</h1>
-      {testMembersOrdered.map((member, index) => (
+      {membersOrdered.map((member, index) => (
         <LeaderboardCard key={index} member={member} />
       ))}
     </div>

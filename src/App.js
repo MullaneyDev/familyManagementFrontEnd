@@ -104,8 +104,6 @@ function App() {
             <img className="navimg" src={leadrboardimg} alt="Leaderboard" />
           </Link>
         </nav>
-
-        <Footer />
       </BrowserRouter>
     </div>
   );
