@@ -1,5 +1,7 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getTokenFromCookie } from "./Common";
+import { authCheck } from "./Utils";
 import Footer from "./Components/Layout/Footer/Footer";
 import Header from "./Components/Layout/Header/Header";
 import NotLoggedIn from "./Components/Pages/NotLoggedIn/NotLoggedIn";
@@ -12,6 +14,24 @@ function App() {
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});
   const [verified, setVerified] = useState(false);
+
+  useEffect(() => {
+    if (document.cookie) {
+      let token = getTokenFromCookie("jwt_token");
+      if (token === false) {
+        setFamily({});
+        setLoggedIn(false);
+      } else {
+        loginWithToken(token, setFamily);
+      }
+    }
+  }, []);
+
+  const loginWithToken = async (token, setFamily) => {
+    const persistentFamily = await authCheck(token);
+    await setFamily(persistentFamily);
+    await setLoggedIn(true);
+  };
 
   if (!loggedIn) {
     return (
