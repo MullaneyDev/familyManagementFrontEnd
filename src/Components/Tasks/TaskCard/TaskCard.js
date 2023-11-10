@@ -11,9 +11,9 @@ const TaskCard = ({ task, mytask }) => {
 
         <button className="Assigned">Accept Task</button>
 
-        <button className="Done">Completed</button>
+        <button className="Done">Edit</button>
 
-        <button className="Delete">Trash Task</button>
+        <button className="Delete">Delete Task</button>
       </div>
     </div>
   );

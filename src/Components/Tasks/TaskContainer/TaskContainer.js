@@ -1,6 +1,7 @@
 import React from "react";
 import "./TaskContainer.css";
 import TaskCard from "../TaskCard/TaskCard";
+import ActiveTaskCard from "../ActiveTaskCard/ActiveTaskCard";
 
 const TaskContainer = ({
   activeTasks,
@@ -26,12 +27,12 @@ const TaskContainer = ({
   return (
     <div className="TaskContainer">
       <h1>My Challenges</h1>
-      {activeTasks.map((task) => (
-        <TaskCard task={task} />
+      {activeTasks.map((task, index) => (
+        <ActiveTaskCard task={task} key={index} />
       ))}
       <h2>Available Challenges</h2>
-      {nullTasks.map((task) => (
-        <TaskCard task={task} />
+      {nullTasks.map((task, index) => (
+        <TaskCard task={task} key={index} />
       ))}
     </div>
   );
