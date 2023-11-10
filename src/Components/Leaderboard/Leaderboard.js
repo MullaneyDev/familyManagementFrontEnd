@@ -2,7 +2,7 @@ import React from "react";
 import "./Leaderboard.css";
 import LeaderboardCard from "./LeaderboardCard";
 
-const Leaderboard = () => {
+const Leaderboard = ({members}) => {
   const testMembers = [
     {
       name: "mum",

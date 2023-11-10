@@ -1,7 +1,6 @@
 import React from "react";
 import "./LoggedIn.css";
 import TaskContainer from "../../Tasks/TaskContainer/TaskContainer";
-import Leaderboard from "../../Leaderboard/Leaderboard";
 
 const LoggedIn = ({
   setLoggedIn,
@@ -17,7 +16,6 @@ const LoggedIn = ({
 }) => {
   return (
     <div>
-      <h1>Hello{user.name}</h1>
       <TaskContainer
         setLoggedIn={setLoggedIn}
         setAdmin={setAdmin}
@@ -30,9 +28,8 @@ const LoggedIn = ({
         setAvatar={setAvatar}
         user={user}
       />
-      <Leaderboard />
     </div>
-  );
+);
 };
 
 export default LoggedIn;
