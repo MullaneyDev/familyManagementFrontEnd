@@ -14,6 +14,7 @@ const AccountManagement = ({
   setMembers,
   setUser,
   setVerified,
+  user
 }) => {
   const [modalLogout, setModalLogout] = useState(false);
 
@@ -74,6 +75,10 @@ const AccountManagement = ({
                 </button>
               </>
             </Modal>
+            <div className="userProfile">
+              <h3>{user.name}</h3>
+              <img className="avatar" src={user.url} alt="Avatar" />
+            </div>
           </div>
         </div>
       </div>
