@@ -229,26 +229,48 @@ export const getFamilyTasks = async (user) => {
   }
 };
 
-export const updatePoints = async (user,points,totalPoints) => {
+export const updatePoints = async (user, points, totalPoints) => {
   try {
-    const newTotalPoints = totalPoints + points
-      const response = await fetch(
-        `http://localhost:5001/member/pointsUpdate`, {
-        method: "PUT",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: user.id,
-          newTotalPoints: newTotalPoints,
-        }),
-      }
-      );
-    const data = await response.json()
-    console.log(data)
-    return data
+    const newTotalPoints = totalPoints + points;
+    const response = await fetch(`http://localhost:5001/member/pointsUpdate`, {
+      method: "PUT",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: user.id,
+        newTotalPoints: newTotalPoints,
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    return data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
+
+export const assignMember = async (MemberId, taskid) => {
+  console.log("HELLO FROM ASSIGN MEMBER", MemberId);
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(`http://localhost:5001/task/assignMember`, {
+      method: "PUT",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        MemberId: MemberId,
+        taskid: taskid,
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
