@@ -2,17 +2,24 @@ import React from "react";
 import "./TaskContainer.css";
 import TaskCard from "../TaskCard/TaskCard";
 import ActiveTaskCard from "../ActiveTaskCard/ActiveTaskCard";
+
+import { deleteTask } from "../../../Utils";
 import { assignMember } from "../../../Utils";
 import { addFamilyTask } from "../../../Utils";
 import { useState } from "react";
 import Modal from "react-modal";
+
 
 const TaskContainer = ({
   activeTasks,
   setActiveTasks,
   nullTasks,
   setNullTasks,
+
+  setTasks,
+
   user,
+
 }) => {
   const [taskname, setTaskname] = useState();
   const [points, setPoints] = useState();
@@ -62,6 +69,16 @@ const TaskContainer = ({
     { value: 150, display: 150 },
   ];
 
+
+  const handleDelete = async (e, id) => {
+    e.preventDefault();
+
+    const deletedTask = await deleteTask(id);
+
+    const newTasks = nullTasks.filter((task) => task.id !== id);
+
+    setNullTasks(newTasks);
+
   const handleAcceptTask = async (e, MemberId, taskid) => {
     e.preventDefault();
 
@@ -71,6 +88,7 @@ const TaskContainer = ({
     } catch (error) {
       console.error(error);
     }
+
   };
 
   if (!nullTasks) {
@@ -124,6 +142,7 @@ const TaskContainer = ({
       </Modal>
       <h1>My Challenges</h1>
       {activeTasks.map((task, index) => (
+
         <ActiveTaskCard
           task={task}
           key={index}
@@ -140,6 +159,7 @@ const TaskContainer = ({
           key={index}
           handleAcceptTask={handleAcceptTask}
         />
+
       ))}
     </div>
   );

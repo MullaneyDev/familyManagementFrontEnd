@@ -1,7 +1,10 @@
 import React from "react";
 import "./TaskCard.css";
 
+
+
 const TaskCard = ({ user, task, mytask, handleAcceptTask }) => {
+
   return (
     <div className="TaskCard">
       <div className="TaskCardInner">
@@ -18,7 +21,9 @@ const TaskCard = ({ user, task, mytask, handleAcceptTask }) => {
 
         <button className="Done">Edit</button>
 
-        <button className="Delete">Delete Task</button>
+        <button className="Delete" onClick={(e) => handleDelete(e, task.id)}>
+          Delete Task
+        </button>
       </div>
     </div>
   );

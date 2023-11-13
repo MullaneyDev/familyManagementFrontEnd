@@ -286,3 +286,27 @@ export const assignMember = async (MemberId, taskid) => {
     console.log(error);
   }
 };
+
+export const deleteTask = async (id) => {
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/task/deleteTask`,
+      {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          id: id,
+        }),
+      }
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
