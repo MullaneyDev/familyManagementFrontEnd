@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./ProfileSelection.css";
 import { addMember, deleteMember, getFamilyTasks } from "../../../Utils";
+import Modal from "react-modal";
 
-// const apiKey = "yWrOSvTVeZ4RFA";
 const ProfileSelection = ({
   admin,
   setAdmin,
@@ -21,8 +21,9 @@ const ProfileSelection = ({
   const [url, setUrl] = useState();
   const [isChecked, setIsChecked] = useState(false);
   const [addAdmin, setAddAdmin] = useState();
-  const [colour, setColour] = useState("var(--user-blue)");
+  const [colour, setColour] = useState();
   const [totalPoints, setTotalPoints] = useState(0);
+  const [modalLogout, setModalLogout] = useState(false);
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
@@ -71,32 +72,70 @@ const ProfileSelection = ({
     setColour(value);
   };
 
+  const openModal = async (setter) => {
+    await setter(true);
+  };
+
+  const closeModal = async (setter) => {
+    await setter(false);
+    await setColour();
+  };
+
   return (
     <div className="netflix-container">
-      <form className="add-member-container" onSubmit={handleAddMemberSubmit}>
-        <label>Add a Member</label>
-        <input
-          type="text"
-          name="name"
-          className="input-field"
-          placeholder="Member Name"
-          onChange={(e) => changeHandler(e)}
-        />
-        <label>Admin?</label>
-        <input type="checkbox" id="adminCheckBox" onClick={() => adminPriv()} />
-        <input type="submit" value="Add Member" />
-        <select onChange={(e) => changeColor(e.target.value)}>
-          <option value={"var(--user-blue)"}>Blue</option>
-          <option value={"var(--user-lilac)"}>Lilac</option>
-          <option value={"var(--user-green)"}>Green</option>
-          <option value={"var(--user-yellow)"}>Yellow</option>
-          <option value={"var(--user-red)"}>Red</option>
-        </select>
-      </form>
-
+      <Modal
+        className="ModalStyle"
+        isOpen={modalLogout}
+        onRequestClose={() => closeModal(setModalLogout)}
+      >
+        <form className="add-member-container" onSubmit={handleAddMemberSubmit}>
+          <input
+            type="text"
+            name="name"
+            className="input-field"
+            placeholder="Member Name"
+            onChange={(e) => changeHandler(e)}
+          />
+          <label className="admin-checkbox-container">
+            Admin?
+            <input
+              type="checkbox"
+              id="adminCheckBox"
+              onClick={() => adminPriv()}
+            />
+          </label>
+          <select
+            style={{ backgroundColor: colour }}
+            onChange={(e) => changeColor(e.target.value)}
+          >
+            <option>Select Profile Colour</option>
+            <option id="blue-option" value={"var(--user-blue)"}>
+              Blue
+            </option>
+            <option id="lilac-option" value={"var(--user-lilac)"}>
+              Lilac
+            </option>
+            <option id="green-option" value={"var(--user-green)"}>
+              Green
+            </option>
+            <option id="yellow-option" value={"var(--user-yellow)"}>
+              Yellow
+            </option>
+            <option id="red-option" value={"var(--user-red)"}>
+              Red
+            </option>
+          </select>
+          <input className="create-new-user" type="submit" value="Add Member" />
+        </form>
+      </Modal>
       <h1>Who are you?</h1>
+      <button
+        className="create-new-user"
+        onClick={() => openModal(setModalLogout)}
+      >
+        Create New User
+      </button>
       {members.map((user, i) => {
-        console.log(user);
         return (
           <div key={i} className="indi-user-container">
             <img className="map-item-img" src={user.url} alt="avatar" />
