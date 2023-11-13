@@ -141,10 +141,6 @@ const TaskContainer = ({
           handleAcceptTask={handleAcceptTask}
         />
       ))}
-      <h2>Available Challenges</h2>
-      {nullTasks.map((task, index) => (
-        <TaskCard task={task} key={index} user={user} />
-      ))}
     </div>
   );
 };
