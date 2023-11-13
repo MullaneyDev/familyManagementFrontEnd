@@ -49,12 +49,9 @@ const ProfileSelection = ({
     await setLoggedIn(true);
     await setUser(user);
     const result = await getFamilyTasks(user);
-    console.log("HELOOOOOOOO", result);
-    console.log("NULLTASKMF", result.activeTasks);
 
     await setActiveTasks(result.activeTasks);
     await setNullTasks(result.nullTasks);
-    console.log("NULLTASKMF", activeTasks);
   };
 
   const adminPriv = async () => {
