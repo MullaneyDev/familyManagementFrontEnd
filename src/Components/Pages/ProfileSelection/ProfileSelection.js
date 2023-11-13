@@ -22,17 +22,15 @@ const ProfileSelection = ({
   const [isChecked, setIsChecked] = useState(false);
   const [addAdmin, setAddAdmin] = useState();
   const [colour, setColour] = useState("var(--user-blue)");
-  const [totalPoints, setTotalPoints] = useState(0)
+  const [totalPoints, setTotalPoints] = useState(0);
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
-    setTotalPoints(0)
+    setTotalPoints(0);
     const response = await addMember(name, url, addAdmin, colour, totalPoints);
     let storedMember = [...members];
     storedMember.push(response.result);
-    console.log(storedMember)
     setMembers(storedMember);
-    
   };
 
   const deleteMemberOnClick = async (id, i) => {
@@ -98,10 +96,12 @@ const ProfileSelection = ({
 
       <h1>Who are you?</h1>
       {members.map((user, i) => {
+        console.log(user);
         return (
           <div key={i} className="indi-user-container">
             <img className="map-item-img" src={user.url} alt="avatar" />
             <h4>{user.name}</h4>
+            <h5>{user.admin ? "Admin ✔" : ""}</h5>
             <button className="login-button" onClick={() => loginHandler(user)}>
               Login
             </button>
