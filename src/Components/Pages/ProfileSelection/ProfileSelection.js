@@ -66,7 +66,7 @@ const ProfileSelection = ({
     if (isChecked === true) {
       setAddAdmin(true);
     } else {
-      setAdmin(false);
+      setAddAdmin(false);
     }
   }, [isChecked]);
 
@@ -109,6 +109,7 @@ const ProfileSelection = ({
               name="name"
               className="input-field"
               placeholder="Member Name"
+              required="true"
               onChange={(e) => changeHandler(e)}
             />
             <label className="admin-checkbox-container">
@@ -122,8 +123,9 @@ const ProfileSelection = ({
             <select
               style={{ backgroundColor: colour }}
               onChange={(e) => changeColor(e.target.value)}
+              required
             >
-              <option>Select Profile Colour</option>
+              <option value="">Select Profile Colour</option>
               <option id="blue-option" value={"var(--user-blue)"}>
                 Blue
               </option>
