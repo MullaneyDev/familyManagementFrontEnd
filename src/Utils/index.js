@@ -239,7 +239,7 @@ export const addFamilyTask = async (taskname, points) => {
       },
       body: JSON.stringify({
         taskname: taskname,
-        points: points,
+        points: parseInt(points),
       }),
     });
     const data = await response.json();
