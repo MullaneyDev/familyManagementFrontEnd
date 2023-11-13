@@ -2,12 +2,14 @@ import React from "react";
 import "./TaskContainer.css";
 import TaskCard from "../TaskCard/TaskCard";
 import ActiveTaskCard from "../ActiveTaskCard/ActiveTaskCard";
+import { deleteTask } from "../../../Utils";
 
 const TaskContainer = ({
   activeTasks,
   setActiveTasks,
   nullTasks,
   setNullTasks,
+  setTasks,
 }) => {
   const tempTasks = [
     { id: 2, taskname: "Cleaning", points: 10 },
@@ -22,12 +24,14 @@ const TaskContainer = ({
     { id: 9, taskname: "Make bed", points: 7 },
   ];
 
-  const handleDeleteActive = (e, id) => {
+  const handleDelete = async (e, id) => {
     e.preventDefault();
-    console.log("deleteButton");
-    const newActiveTasks = activeTasks.filter((task) => task.id !== id);
-    console.log(newActiveTasks);
-    setActiveTasks(newActiveTasks);
+
+    const deletedTask = await deleteTask(id);
+
+    const newTasks = nullTasks.filter((task) => task.id !== id);
+
+    setNullTasks(newTasks);
   };
 
   if (!nullTasks) {
@@ -37,16 +41,11 @@ const TaskContainer = ({
     <div className="TaskContainer">
       <h1>My Challenges</h1>
       {activeTasks.map((task, index) => (
-        <ActiveTaskCard
-          task={task}
-          key={index}
-          id={task.id}
-          handleDeleteActive={handleDeleteActive}
-        />
+        <ActiveTaskCard task={task} key={index} id={task.id} />
       ))}
       <h2>Available Challenges</h2>
       {nullTasks.map((task, index) => (
-        <TaskCard task={task} key={index} />
+        <TaskCard task={task} key={index} handleDelete={handleDelete} />
       ))}
     </div>
   );
