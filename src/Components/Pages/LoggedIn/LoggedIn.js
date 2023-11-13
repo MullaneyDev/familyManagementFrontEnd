@@ -13,6 +13,10 @@ const LoggedIn = ({
   avatar,
   setAvatar,
   user,
+  activeTasks,
+  setActiveTasks,
+  nullTasks,
+  setNullTasks,
 }) => {
   return (
     <div>
@@ -27,6 +31,10 @@ const LoggedIn = ({
         avatar={avatar}
         setAvatar={setAvatar}
         user={user}
+        activeTasks={activeTasks}
+        setActiveTasks={setActiveTasks}
+        nullTasks={nullTasks}
+        setNullTasks={setNullTasks}
       />
     </div>
 );
