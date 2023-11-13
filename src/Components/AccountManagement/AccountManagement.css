@@ -28,3 +28,6 @@
   background-color: var(--user-blue);
   border: none;
 }
+.avatar {
+  max-height: 10vh;
+}

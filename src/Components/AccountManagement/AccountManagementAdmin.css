@@ -13,3 +13,6 @@
   grid-gap: 5px;
   column-gap: 10px;
 }
+.avatar {
+  max-height: 10vh;
+}

@@ -15,6 +15,7 @@ const AccountManagementAdmin = ({
   setMembers,
   setUser,
   setVerified,
+  user
 }) => {
   const [message, setMessage] = useState("");
   const [modalDelete, setModalDelete] = useState(false);
@@ -225,6 +226,10 @@ const AccountManagementAdmin = ({
                 </button>
               </>
             </Modal>
+            <div className="userProfile">
+              <h3>{user.name}</h3>
+              <img className="avatar"src={user.url} alt="Avatar" />
+            </div>
           </div>
         </div>
       </div>
