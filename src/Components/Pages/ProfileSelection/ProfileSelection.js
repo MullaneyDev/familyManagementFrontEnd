@@ -66,7 +66,7 @@ const ProfileSelection = ({
     if (isChecked === true) {
       setAddAdmin(true);
     } else {
-      setAdmin(false);
+      setAddAdmin(false);
     }
   }, [isChecked]);
 

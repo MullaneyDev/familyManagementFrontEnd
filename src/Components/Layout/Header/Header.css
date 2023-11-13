@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 1fr;
   position: absolute;
   top: 0;
-  width: 100vw;
+  width: 100%;
   justify-content: space-around;
   height: 6vh;
   align-content: center;
