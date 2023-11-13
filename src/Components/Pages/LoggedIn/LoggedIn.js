@@ -1,6 +1,7 @@
 import React from "react";
 import "./LoggedIn.css";
 import TaskContainer from "../../Tasks/TaskContainer/TaskContainer";
+import userEvent from "@testing-library/user-event";
 
 const LoggedIn = ({
   setLoggedIn,
@@ -37,7 +38,7 @@ const LoggedIn = ({
         setNullTasks={setNullTasks}
       />
     </div>
-);
+  );
 };
 
 export default LoggedIn;

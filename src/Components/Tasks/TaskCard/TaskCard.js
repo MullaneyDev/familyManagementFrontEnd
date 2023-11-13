@@ -1,7 +1,10 @@
 import React from "react";
 import "./TaskCard.css";
 
-const TaskCard = ({ task, mytask, handleDelete, id }) => {
+
+
+const TaskCard = ({ user, task, mytask, handleAcceptTask }) => {
+
   return (
     <div className="TaskCard">
       <div className="TaskCardInner">
@@ -9,7 +12,12 @@ const TaskCard = ({ task, mytask, handleDelete, id }) => {
 
         <p>{task.points}</p>
 
-        <button className="Assigned">Accept Task</button>
+        <button
+          className="Assigned"
+          onClick={(e) => handleAcceptTask(e, user.id, task.id)}
+        >
+          Accept Task
+        </button>
 
         <button className="Done">Edit</button>
 

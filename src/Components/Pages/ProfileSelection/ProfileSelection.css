@@ -15,11 +15,22 @@
 
 }
 
+.top-page {
+    margin-top: 8vh;
+}
+
 .netflix-container {
     margin-top: 8vh;
     grid-row: 1;
     text-align: center;
     margin-bottom: 8vh;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.indi-user-container {
+
+    width: 45vw;
 }
 
 
@@ -86,13 +97,13 @@
     text-align: center;
     padding: 17px 48px 17px;
     color: #fff;
-    background-color: #1ED760;
+    background-color: var(--user-blue);
     margin-bottom: 1vh;
 }
 
 .create-new-user:hover {
     transform: scale(1.04);
-    background-color: #21e065;
+    background-color: rgb(107, 107, 228);
 
 }
 
