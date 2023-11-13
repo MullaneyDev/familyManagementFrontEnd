@@ -4,7 +4,7 @@ import TaskCard from "../TaskCard/TaskCard";
 import ActiveTaskCard from "../ActiveTaskCard/ActiveTaskCard";
 import { assignMember } from "../../../Utils";
 import { addFamilyTask } from "../../../Utils";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Modal from "react-modal";
 
 const TaskContainer = ({
