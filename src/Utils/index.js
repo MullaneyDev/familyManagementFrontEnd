@@ -161,7 +161,7 @@ export const deleteFamily = async (username) => {
   }
 };
 
-export const addMember = async (name, url, addAdmin, colour) => {
+export const addMember = async (name, url, addAdmin, colour, totalPoints) => {
   try {
     const token = getTokenFromCookie("jwt_token");
     const response = await fetch("http://localhost:5001/member", {
@@ -176,6 +176,7 @@ export const addMember = async (name, url, addAdmin, colour) => {
         url: url,
         admin: addAdmin,
         colour: colour,
+        totalPoints: totalPoints,
       }),
     });
     const data = await response.json();
@@ -249,3 +250,27 @@ export const addFamilyTask = async (taskname, points) => {
     console.log(error);
   }
 };
+
+export const updatePoints = async (user,points,totalPoints) => {
+  try {
+    const newTotalPoints = totalPoints + points
+      const response = await fetch(
+        `http://localhost:5001/member/pointsUpdate`, {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: user.id,
+          newTotalPoints: newTotalPoints,
+        }),
+      }
+      );
+    const data = await response.json()
+    console.log(data)
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}

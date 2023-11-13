@@ -54,6 +54,7 @@ function App() {
           setUser={setUser}
           verified={verified}
           setVerified={setVerified}
+          user={user}
         />
         <NotLoggedIn
           user={user}
@@ -89,6 +90,7 @@ function App() {
           setUser={setUser}
           verified={verified}
           setVerified={setVerified}
+          user={user}
         />
         <Routes>
           <Route
@@ -120,8 +122,6 @@ function App() {
             <img className="navimg" src={leadrboardimg} alt="Leaderboard" />
           </Link>
         </nav>
-
-        <Footer />
       </BrowserRouter>
     </div>
   );

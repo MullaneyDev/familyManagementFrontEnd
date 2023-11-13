@@ -15,11 +15,22 @@
 
 }
 
+.top-page {
+    margin-top: 8vh;
+}
+
 .netflix-container {
-    margin-top: 10vh;
+    margin-top: 8vh;
     grid-row: 1;
     text-align: center;
-    margin-top: 10vh;
+    margin-bottom: 8vh;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.indi-user-container {
+
+    width: 45vw;
 }
 
 
@@ -66,4 +77,76 @@
 
 .indi-user-container {
     margin-bottom: 3vh;
+}
+
+.create-new-user {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 500px;
+    transition-property: background-color, border-color, color, box-shadow, filter;
+    transition-duration: .3s;
+    border: 1px solid transparent;
+    letter-spacing: 2px;
+    min-width: 160px;
+    text-transform: uppercase;
+    white-space: normal;
+    font-weight: 700;
+    text-align: center;
+    padding: 17px 48px 17px;
+    color: #fff;
+    background-color: var(--user-blue);
+    margin-bottom: 1vh;
+}
+
+.create-new-user:hover {
+    transform: scale(1.04);
+    background-color: rgb(107, 107, 228);
+
+}
+
+.add-member-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 1vw;
+    grid-row-gap: 1vh;
+}
+
+.admin-checkbox-container {
+    font-size: 20px;
+}
+
+#adminCheckBox {
+    width: 20px;
+    height: 20px;
+}
+
+select {
+    font: inherit;
+}
+
+option {
+    height: 30px;
+}
+
+#blue-option {
+    background-color: var(--user-blue)
+}
+
+#lilac-option {
+    background-color: var(--user-lilac);
+}
+
+#green-option {
+    background-color: var(--user-green);
+}
+
+#yellow-option {
+    background-color: var(--user-yellow);
+}
+
+#red-option {
+    background-color: var(--user-red);
 }
