@@ -19,6 +19,8 @@ function App() {
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});
   const [verified, setVerified] = useState(false);
+  const [activeTasks, setActiveTasks] = useState([]);
+  const [nullTasks, setNullTasks] = useState([]);
 
   useEffect(() => {
     if (document.cookie) {
@@ -65,6 +67,10 @@ function App() {
           setUser={setUser}
           verified={verified}
           setVerified={setVerified}
+          activeTasks={activeTasks}
+          setActiveTasks={setActiveTasks}
+          nullTasks={nullTasks}
+          setNullTasks={setNullTasks}
         />
         <Footer />
       </div>
@@ -87,7 +93,17 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<LoggedIn family={family} members={members} user={user} />}
+            element={
+              <LoggedIn
+                family={family}
+                members={members}
+                user={user}
+                activeTasks={activeTasks}
+                setActiveTasks={setActiveTasks}
+                nullTasks={nullTasks}
+                setNullTasks={setNullTasks}
+              />
+            }
           />
           <Route
             path="/leaderboard"
@@ -104,8 +120,6 @@ function App() {
             <img className="navimg" src={leadrboardimg} alt="Leaderboard" />
           </Link>
         </nav>
-
-        <Footer />
       </BrowserRouter>
     </div>
   );

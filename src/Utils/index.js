@@ -161,7 +161,7 @@ export const deleteFamily = async (username) => {
   }
 };
 
-export const addMember = async (name, url, addAdmin, colour) => {
+export const addMember = async (name, url, addAdmin, colour, totalPoints) => {
   try {
     const token = getTokenFromCookie("jwt_token");
     const response = await fetch("http://localhost:5001/member", {
@@ -176,6 +176,7 @@ export const addMember = async (name, url, addAdmin, colour) => {
         url: url,
         admin: addAdmin,
         colour: colour,
+        totalPoints: totalPoints,
       }),
     });
     const data = await response.json();
@@ -199,6 +200,29 @@ export const deleteMember = async (id) => {
       }),
     });
     const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getFamilyTasks = async (user) => {
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/task/getFamilyTasks/${user.id}`,
+      {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log("DDDDDDDDDDDDDDDDDDDDDDDDDDDDD", response);
+    const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

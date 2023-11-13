@@ -1,7 +1,7 @@
 import React from "react";
 import "./TaskCard.css";
 
-const TaskCard = ({ task }) => {
+const TaskCard = ({ task, mytask }) => {
   return (
     <div className="TaskCard">
       <div className="TaskCardInner">
@@ -9,11 +9,11 @@ const TaskCard = ({ task }) => {
 
         <p>{task.points}</p>
 
-        <button className="Assigned">Assigned</button>
+        <button className="Assigned">Accept Task</button>
 
-        <button className="Done">Done</button>
+        <button className="Done">Edit</button>
 
-        <button className="Delete">Delete</button>
+        <button className="Delete">Delete Task</button>
       </div>
     </div>
   );

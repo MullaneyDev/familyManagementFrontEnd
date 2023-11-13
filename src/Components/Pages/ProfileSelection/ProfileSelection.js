@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ProfileSelection.css";
-import { addMember, deleteMember } from "../../../Utils";
+import { addMember, deleteMember, getFamilyTasks } from "../../../Utils";
 
 // const apiKey = "yWrOSvTVeZ4RFA";
 const ProfileSelection = ({
@@ -12,19 +12,27 @@ const ProfileSelection = ({
   members,
   setVerified,
   setMembers,
+  activeTasks,
+  setActiveTasks,
+  nullTasks,
+  setNullTasks,
 }) => {
   const [name, setName] = useState([]);
   const [url, setUrl] = useState();
   const [isChecked, setIsChecked] = useState(false);
   const [addAdmin, setAddAdmin] = useState();
   const [colour, setColour] = useState("var(--user-blue)");
+  const [totalPoints, setTotalPoints] = useState(0)
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
-    const response = await addMember(name, url, addAdmin, colour);
+    setTotalPoints(0)
+    const response = await addMember(name, url, addAdmin, colour, totalPoints);
     let storedMember = [...members];
     storedMember.push(response.result);
+    console.log(storedMember)
     setMembers(storedMember);
+    
   };
 
   const deleteMemberOnClick = async (id, i) => {
@@ -42,9 +50,11 @@ const ProfileSelection = ({
   };
 
   const loginHandler = async (user) => {
-    setLoggedIn(true);
-    setUser(user);
-    console.log(user);
+    await setLoggedIn(true);
+    await setUser(user);
+    const result = await getFamilyTasks(user);
+    await setActiveTasks(result.activeTasks);
+    await setNullTasks(result.nullTasks);
   };
 
   const adminPriv = async () => {
