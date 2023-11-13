@@ -22,13 +22,17 @@ const ProfileSelection = ({
   const [isChecked, setIsChecked] = useState(false);
   const [addAdmin, setAddAdmin] = useState();
   const [colour, setColour] = useState("var(--user-blue)");
+  const [totalPoints, setTotalPoints] = useState(0)
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
-    const response = await addMember(name, url, addAdmin, colour);
+    setTotalPoints(0)
+    const response = await addMember(name, url, addAdmin, colour, totalPoints);
     let storedMember = [...members];
     storedMember.push(response.result);
+    console.log(storedMember)
     setMembers(storedMember);
+    
   };
 
   const deleteMemberOnClick = async (id, i) => {
@@ -49,12 +53,8 @@ const ProfileSelection = ({
     await setLoggedIn(true);
     await setUser(user);
     const result = await getFamilyTasks(user);
-    console.log("HELOOOOOOOO", result);
-    console.log("NULLTASKMF", result.activeTasks);
-
     await setActiveTasks(result.activeTasks);
     await setNullTasks(result.nullTasks);
-    console.log("NULLTASKMF", activeTasks);
   };
 
   const adminPriv = async () => {
