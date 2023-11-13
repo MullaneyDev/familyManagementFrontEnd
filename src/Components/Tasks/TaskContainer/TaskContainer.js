@@ -10,7 +10,7 @@ const TaskContainer = ({
   setActiveTasks,
   nullTasks,
   setNullTasks,
-  user
+  user,
 }) => {
   const [taskname, setTaskname] = useState();
   const [points, setPoints] = useState();
@@ -98,11 +98,17 @@ const TaskContainer = ({
       </div>
       <h1>My Challenges</h1>
       {activeTasks.map((task, index) => (
-        <ActiveTaskCard task={task} key={index} user={user} />
+        <ActiveTaskCard
+          task={task}
+          key={index}
+          user={user}
+          activeTasks={activeTasks}
+          setActiveTasks={activeTasks}
+        />
       ))}
       <h2>Available Challenges</h2>
       {nullTasks.map((task, index) => (
-        <TaskCard task={task} key={index} user={user}/>
+        <TaskCard task={task} key={index} user={user} />
       ))}
     </div>
   );
