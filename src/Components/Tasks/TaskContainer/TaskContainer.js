@@ -62,7 +62,6 @@ const TaskContainer = ({
     { value: 150, display: 150 },
   ];
 
-
   const handleAcceptTask = async (e, MemberId, taskid) => {
     e.preventDefault();
 
@@ -125,16 +124,6 @@ const TaskContainer = ({
       </Modal>
       <h1>My Challenges</h1>
       {activeTasks.map((task, index) => (
-        <ActiveTaskCard task={task} user={user} key={index} />
-      ))}
-      <h2>Available Challenges</h2>
-      {nullTasks.map((task, index) => (
-        <TaskCard
-          task={task}
-          user={user}
-          key={index}
-          handleAcceptTask={handleAcceptTask}
-        />
         <ActiveTaskCard
           task={task}
           key={index}
@@ -145,7 +134,12 @@ const TaskContainer = ({
       ))}
       <h2>Available Challenges</h2>
       {nullTasks.map((task, index) => (
-        <TaskCard task={task} key={index} user={user} />
+        <TaskCard
+          task={task}
+          user={user}
+          key={index}
+          handleAcceptTask={handleAcceptTask}
+        />
       ))}
     </div>
   );
