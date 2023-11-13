@@ -4,6 +4,7 @@ import TaskCard from "../TaskCard/TaskCard";
 import ActiveTaskCard from "../ActiveTaskCard/ActiveTaskCard";
 import { addFamilyTask } from "../../../Utils";
 import { useState, useEffect } from "react";
+import Modal from "react-modal";
 
 const TaskContainer = ({
   activeTasks,
@@ -15,6 +16,7 @@ const TaskContainer = ({
   const [taskname, setTaskname] = useState();
   const [points, setPoints] = useState();
   const [errorMessage, setErrorMessage] = useState("");
+  const [modalAddTask, setModalAddTask] = useState(false);
 
   const handleTaskSubmit = async (e) => {
     e.preventDefault();
@@ -42,6 +44,14 @@ const TaskContainer = ({
     setPoints(value);
   };
 
+  const openModal = async (setter) => {
+    await setter(true);
+  };
+
+  const closeModal = async (setter) => {
+    await setter(false);
+  };
+
   const pointOptions = [
     { value: "", display: "Choose an Option" },
     { value: 10, display: 10 },
@@ -56,46 +66,50 @@ const TaskContainer = ({
   }
   return (
     <div className="TaskContainer">
-      <div className="addtask-container">
-        <form className="add-task" onSubmit={handleTaskSubmit}>
-          <label>Add a Family Task</label>
-          <input
-            type="text"
-            name="taskname"
-            className="input-field"
-            placeholder="New task info"
-            value={taskname}
-            required="true"
-            onChange={(e) => changeHandler(e)}
-          />
+      <button
+        className="addtask-container"
+        onClick={() => openModal(setModalAddTask)}
+      >
+        Add New Family Task
+      </button>
+      <Modal
+        className="ModalStyle"
+        isOpen={modalAddTask}
+        onRequestClose={() => closeModal(setModalAddTask)}
+      >
+        <div className="addtask-container">
+          <form className="add-task" onSubmit={handleTaskSubmit}>
+            <label>Add a Family Task</label>
+            <input
+              type="text"
+              name="taskname"
+              className="input-field"
+              placeholder="New task info"
+              value={taskname}
+              required="true"
+              onChange={(e) => changeHandler(e)}
+            />
 
-          <select
-            required
-            value={points}
-            onChange={(e) => handleSetPoints(e.target.value)}
-          >
-            {pointOptions.map((option) => (
-              <option
-                disabled={option.disabled}
-                key={option.value}
-                value={option.value}
-              >
-                {option.display}
-              </option>
-            ))}
-            {/* <option disabled={true} value="">
-              Choose an option
-            </option>
-            <option value={10}>10</option>
-            <option value={20}>20</option>
-            <option value={50}>50</option>
-            <option value={100}>100</option>
-            <option value={150}>150</option> */}
-          </select>
-          <input type="submit" value="Add Task" />
-        </form>
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      </div>
+            <select
+              required
+              value={points}
+              onChange={(e) => handleSetPoints(e.target.value)}
+            >
+              {pointOptions.map((option) => (
+                <option
+                  disabled={option.disabled}
+                  key={option.value}
+                  value={option.value}
+                >
+                  {option.display}
+                </option>
+              ))}
+            </select>
+            <input type="submit" value="Add Task" />
+          </form>
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        </div>
+      </Modal>
       <h1>My Challenges</h1>
       {activeTasks.map((task, index) => (
         <ActiveTaskCard
