@@ -123,7 +123,7 @@ const ProfileSelection = ({
               style={{ backgroundColor: colour }}
               onChange={(e) => changeColor(e.target.value)}
             >
-              <option value="">Select Profile Colour</option>
+              <option>Select Profile Colour</option>
               <option id="blue-option" value={"var(--user-blue)"}>
                 Blue
               </option>
