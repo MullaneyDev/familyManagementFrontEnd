@@ -2,7 +2,6 @@ import React from "react";
 import "./ActiveTaskCard.css";
 import { updatePoints } from "../../../Utils";
 
-
 const ActiveTaskCard = ({ key, task, user, activeTasks, setActiveTasks }) => {
   const completeTask = async (index) => {
     const userId = user.id;
