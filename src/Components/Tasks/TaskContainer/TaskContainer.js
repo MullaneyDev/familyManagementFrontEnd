@@ -21,6 +21,15 @@ const TaskContainer = ({
     { id: 7, taskname: "Sort laundry", points: 14 },
     { id: 9, taskname: "Make bed", points: 7 },
   ];
+
+  const handleDeleteActive = (e, id) => {
+    e.preventDefault();
+    console.log("deleteButton");
+    const newActiveTasks = activeTasks.filter((task) => task.id !== id);
+    console.log(newActiveTasks);
+    setActiveTasks(newActiveTasks);
+  };
+
   if (!nullTasks) {
     return <p>loading</p>;
   }
@@ -28,7 +37,12 @@ const TaskContainer = ({
     <div className="TaskContainer">
       <h1>My Challenges</h1>
       {activeTasks.map((task, index) => (
-        <ActiveTaskCard task={task} key={index} />
+        <ActiveTaskCard
+          task={task}
+          key={index}
+          id={task.id}
+          handleDeleteActive={handleDeleteActive}
+        />
       ))}
       <h2>Available Challenges</h2>
       {nullTasks.map((task, index) => (
