@@ -26,7 +26,6 @@ const TaskContainer = ({
 
   const handleAcceptTask = async (e, MemberId, taskid) => {
     e.preventDefault();
-    console.log("HELLO FROM TASK CARD", user, taskid);
 
     try {
       const response = await assignMember(MemberId, taskid);
@@ -36,7 +35,6 @@ const TaskContainer = ({
     }
   };
 
-  console.log("HELLO FROM CONTAINER", user);
   if (!nullTasks) {
     return <p>loading</p>;
   }

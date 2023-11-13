@@ -50,7 +50,6 @@ const ProfileSelection = ({
   };
 
   const loginHandler = async (user) => {
-    console.log("HELLO PROFILE", user);
     await setLoggedIn(true);
     await setUser(user);
     await setAdmin(user.admin);

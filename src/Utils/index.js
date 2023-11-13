@@ -252,7 +252,6 @@ export const updatePoints = async (user, points, totalPoints) => {
 };
 
 export const assignMember = async (MemberId, taskid) => {
-  console.log("HELLO FROM ASSIGN MEMBER", MemberId);
   try {
     const token = getTokenFromCookie("jwt_token");
     const response = await fetch(`http://localhost:5001/task/assignMember`, {

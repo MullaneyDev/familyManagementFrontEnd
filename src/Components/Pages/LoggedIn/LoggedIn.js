@@ -19,7 +19,6 @@ const LoggedIn = ({
   nullTasks,
   setNullTasks,
 }) => {
-  console.log("HELLO FROM LOGGED IN", user);
   return (
     <div>
       <TaskContainer

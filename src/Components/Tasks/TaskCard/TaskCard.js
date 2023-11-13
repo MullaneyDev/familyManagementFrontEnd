@@ -2,7 +2,6 @@ import React from "react";
 import "./TaskCard.css";
 
 const TaskCard = ({ user, task, mytask, handleAcceptTask }) => {
-  console.log("HELLO TASK CARD", user);
   return (
     <div className="TaskCard">
       <div className="TaskCardInner">
