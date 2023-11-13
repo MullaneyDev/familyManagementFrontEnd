@@ -2,6 +2,7 @@ import React from "react";
 import "./TaskContainer.css";
 import TaskCard from "../TaskCard/TaskCard";
 import ActiveTaskCard from "../ActiveTaskCard/ActiveTaskCard";
+import { assignMember } from "../../../Utils";
 import { addFamilyTask } from "../../../Utils";
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
@@ -61,6 +62,18 @@ const TaskContainer = ({
     { value: 150, display: 150 },
   ];
 
+
+  const handleAcceptTask = async (e, MemberId, taskid) => {
+    e.preventDefault();
+
+    try {
+      const response = await assignMember(MemberId, taskid);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   if (!nullTasks) {
     return <p>loading</p>;
   }
@@ -112,6 +125,16 @@ const TaskContainer = ({
       </Modal>
       <h1>My Challenges</h1>
       {activeTasks.map((task, index) => (
+        <ActiveTaskCard task={task} user={user} key={index} />
+      ))}
+      <h2>Available Challenges</h2>
+      {nullTasks.map((task, index) => (
+        <TaskCard
+          task={task}
+          user={user}
+          key={index}
+          handleAcceptTask={handleAcceptTask}
+        />
         <ActiveTaskCard
           task={task}
           key={index}
