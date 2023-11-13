@@ -63,6 +63,10 @@ const ProfileSelection = ({
     setColour(value);
   };
 
+  const adminDisplay = async () => {
+    
+  }
+
   return (
     <div className="netflix-container">
       <form className="add-member-container" onSubmit={handleAddMemberSubmit}>
