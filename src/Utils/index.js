@@ -220,7 +220,29 @@ export const getFamilyTasks = async (user) => {
         },
       }
     );
-    console.log("DDDDDDDDDDDDDDDDDDDDDDDDDDDDD", response);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const addFamilyTask = async (taskname, points) => {
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/task`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        taskname: taskname,
+        points: parseInt(points),
+      }),
+    });
     const data = await response.json();
     console.log(data);
     return data;
