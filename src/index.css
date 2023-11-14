@@ -10,11 +10,26 @@
 
   --font-body: Patrick Hand;
   --font-brand: pacifico;
+
+  --background-color: white;
+  --font-color: black
 }
 
 body {
   margin: 0;
   font-family: var(--font-body);
+  background-color: var(--background-color);
+  color: var(--font-color);
+}
+
+[data-theme="dark"] {
+  --background-color: rgb(66, 64, 64);
+  --font-color: white;
+
+  .logoLarge path {
+    fill: white;
+    transition: fill 250ms ease-in-out;
+  }
 }
 
 .input-field {
