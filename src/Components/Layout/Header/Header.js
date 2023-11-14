@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 import AccountManagementAdmin from "../../AccountManagement/AccountManagementAdmin";
 import AccountManagement from "../../AccountManagement/AccountManagement";
+import DarkMode from "./DarkMode";
 
 const Header = ({
   admin,
@@ -13,11 +14,14 @@ const Header = ({
   setUser,
   verified,
   setVerified,
-  user
+  user,
+  isDark,
+  setIsDark,
 }) => {
   if (verified && !loggedIn) {
     return (
       <div className="header">
+        <DarkMode isDark={isDark} setIsDark={setIsDark} />
         <h1>BoxedOff</h1>
         <h3 className="signIn">Choose Your User</h3>
       </div>
@@ -25,9 +29,10 @@ const Header = ({
   }
 
   if (verified && loggedIn) {
-      if (admin) {
+    if (admin) {
       return (
         <div className="header">
+          <DarkMode isDark={isDark} setIsDark={setIsDark} />
           <h1>BoxedOff</h1>
           <AccountManagementAdmin
             family={family}
@@ -44,6 +49,7 @@ const Header = ({
     }
     return (
       <div className="header">
+        <DarkMode isDark={isDark} setIsDark={setIsDark} />
         <h1>BoxedOff</h1>
         <AccountManagement
           family={family}
@@ -61,6 +67,7 @@ const Header = ({
 
   return (
     <div className="header">
+      <DarkMode isDark={isDark} setIsDark={setIsDark} />
       <h1>BoxedOff</h1>
       <h3 className="signIn">Sign up / Sign in</h3>
     </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ProfileSelection.css";
 import { addMember, deleteMember, getFamilyTasks } from "../../../Utils";
-import Modal from "react-modal";
+import CreateMember from "./CreateMember";
 
 const ProfileSelection = ({
   admin,
@@ -33,6 +33,7 @@ const ProfileSelection = ({
     storedMember.push(response.result);
     setMembers(storedMember);
     setModalLogout(false);
+    // setColour() ask john if handlesubmit has priority
   };
 
   const deleteMemberOnClick = async (id, i) => {
@@ -40,6 +41,7 @@ const ProfileSelection = ({
     let storedMember = [...members];
     storedMember.splice(i, 1);
     setMembers(storedMember);
+    setColour();
   };
 
   const changeHandler = (e) => {
@@ -70,85 +72,18 @@ const ProfileSelection = ({
     }
   }, [isChecked]);
 
-  const changeColor = async (value) => {
-    setColour(value);
-  };
-
-  const openModal = async (setter) => {
-    await setter(true);
-  };
-
-  const closeModal = async (setter) => {
-    await setter(false);
-    await setColour();
-  };
-
   return (
     <div className="profile-selection">
-      <section className="top-page">
-        <h1>Who are you?</h1>
-        <button
-          className="create-new-user"
-          onClick={() => openModal(setModalLogout)}
-        >
-          Create New User
-        </button>
-      </section>
+      <CreateMember
+        adminPriv={adminPriv}
+        handleAddMemberSubmit={handleAddMemberSubmit}
+        colour={colour}
+        setColour={setColour}
+        changeHandler={changeHandler}
+        setModalLogout={setModalLogout}
+        modalLogout={modalLogout}
+      />
       <div className="netflix-container">
-        <Modal
-          className="ModalStyle"
-          isOpen={modalLogout}
-          onRequestClose={() => closeModal(setModalLogout)}
-        >
-          <form
-            className="add-member-container"
-            onSubmit={handleAddMemberSubmit}
-          >
-            <input
-              type="text"
-              name="name"
-              className="input-field"
-              placeholder="Member Name"
-              required="true"
-              onChange={(e) => changeHandler(e)}
-            />
-            <label className="admin-checkbox-container">
-              Admin?
-              <input
-                type="checkbox"
-                id="adminCheckBox"
-                onClick={() => adminPriv()}
-              />
-            </label>
-            <select
-              style={{ backgroundColor: colour }}
-              onChange={(e) => changeColor(e.target.value)}
-              required
-            >
-              <option value="">Select Profile Colour</option>
-              <option id="blue-option" value={"var(--user-blue)"}>
-                Blue
-              </option>
-              <option id="lilac-option" value={"var(--user-lilac)"}>
-                Lilac
-              </option>
-              <option id="green-option" value={"var(--user-green)"}>
-                Green
-              </option>
-              <option id="yellow-option" value={"var(--user-yellow)"}>
-                Yellow
-              </option>
-              <option id="red-option" value={"var(--user-red)"}>
-                Red
-              </option>
-            </select>
-            <input
-              className="create-new-user"
-              type="submit"
-              value="Add Member"
-            />
-          </form>
-        </Modal>
         {members.map((user, i) => {
           return (
             <div key={i} className="indi-user-container">

@@ -21,6 +21,7 @@ function App() {
   const [verified, setVerified] = useState(false);
   const [activeTasks, setActiveTasks] = useState([]);
   const [nullTasks, setNullTasks] = useState([]);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     if (document.cookie) {
@@ -43,7 +44,7 @@ function App() {
 
   if (!loggedIn) {
     return (
-      <div className="App">
+      <div className="App" data-theme={isDark ? "dark" : "light"}>
         <Header
           admin={admin}
           loggedIn={loggedIn}
@@ -55,6 +56,8 @@ function App() {
           verified={verified}
           setVerified={setVerified}
           user={user}
+          isDark={isDark}
+          setIsDark={setIsDark}
         />
         <NotLoggedIn
           user={user}
@@ -78,7 +81,7 @@ function App() {
     );
   }
   return (
-    <div className="App">
+    <div className="App" data-theme={isDark ? "dark" : "light"}>
       <BrowserRouter>
         <Header
           admin={admin}
@@ -91,6 +94,8 @@ function App() {
           verified={verified}
           setVerified={setVerified}
           user={user}
+          isDark={isDark}
+          setIsDark={setIsDark}
         />
         <Routes>
           <Route

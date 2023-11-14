@@ -272,11 +272,12 @@ export const updatePoints = async (user, points, totalPoints) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: user.id,
+          id: user,
           newTotalPoints: newTotalPoints,
         }),
       }
     );
+
     const data = await response.json();
     console.log(data);
     return data;
