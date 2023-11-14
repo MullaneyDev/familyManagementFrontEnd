@@ -1,6 +1,5 @@
 import React from "react";
 import "./TaskCard.css";
-import { editTaskDetails } from "../../../Utils";
 import Modal from "react-modal";
 import { useState } from "react";
 

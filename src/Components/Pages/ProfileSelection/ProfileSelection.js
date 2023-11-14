@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./ProfileSelection.css";
 import { addMember, deleteMember, getFamilyTasks } from "../../../Utils";
 import CreateMember from "./CreateMember";

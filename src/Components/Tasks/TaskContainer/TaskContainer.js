@@ -6,7 +6,7 @@ import ActiveTaskCard from "../ActiveTaskCard/ActiveTaskCard";
 import { deleteTask } from "../../../Utils";
 import { assignMember } from "../../../Utils";
 import { addFamilyTask, editTaskDetails } from "../../../Utils";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Modal from "react-modal";
 
 const TaskContainer = ({
@@ -76,7 +76,7 @@ const TaskContainer = ({
   const handleTask = async (e, MemberId, taskid, action) => {
     e.preventDefault();
     try {
-      const response = await assignMember(MemberId, taskid);
+      await assignMember(MemberId, taskid);
     } catch (error) {
       console.error(error);
     }
@@ -86,9 +86,9 @@ const TaskContainer = ({
     e.preventDefault();
 
     try {
-      const response = await editTaskDetails(id, taskname, points);
+      await editTaskDetails(id, taskname, points);
       for (let task of nullTasks) {
-        if (task.id == id) {
+        if (task.id === id) {
           task["taskname"] = taskname;
           task["points"] = points;
         }
