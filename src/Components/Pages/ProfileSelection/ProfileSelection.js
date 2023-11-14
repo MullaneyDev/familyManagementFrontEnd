@@ -19,8 +19,7 @@ const ProfileSelection = ({
 }) => {
   const [name, setName] = useState([]);
   const [url, setUrl] = useState();
-  const [isChecked, setIsChecked] = useState(false);
-  const [addAdmin, setAddAdmin] = useState();
+  const [addAdmin, setAddAdmin] = useState(false);
   const [colour, setColour] = useState();
   const [totalPoints, setTotalPoints] = useState(0);
   const [modalLogout, setModalLogout] = useState(false);
@@ -33,7 +32,8 @@ const ProfileSelection = ({
     storedMember.push(response.result);
     setMembers(storedMember);
     setModalLogout(false);
-    // setColour() ask john if handlesubmit has priority
+    setColour("");
+    setAddAdmin(false);
   };
 
   const deleteMemberOnClick = async (id, i) => {
@@ -41,7 +41,7 @@ const ProfileSelection = ({
     let storedMember = [...members];
     storedMember.splice(i, 1);
     setMembers(storedMember);
-    setColour();
+    setColour("");
   };
 
   const changeHandler = (e) => {
@@ -61,16 +61,8 @@ const ProfileSelection = ({
   };
 
   const adminPriv = async () => {
-    setIsChecked((prevCheck) => !prevCheck);
+    setAddAdmin(!addAdmin);
   };
-
-  useEffect(() => {
-    if (isChecked === true) {
-      setAddAdmin(true);
-    } else {
-      setAddAdmin(false);
-    }
-  }, [isChecked]);
 
   return (
     <div className="profile-selection">
@@ -82,6 +74,7 @@ const ProfileSelection = ({
         changeHandler={changeHandler}
         setModalLogout={setModalLogout}
         modalLogout={modalLogout}
+        members={members}
       />
       <div className="netflix-container">
         {members.map((user, i) => {
