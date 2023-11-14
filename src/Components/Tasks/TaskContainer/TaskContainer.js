@@ -3,7 +3,7 @@ import "./TaskContainer.css";
 import TaskCard from "../TaskCard/TaskCard";
 import ActiveTaskCard from "../ActiveTaskCard/ActiveTaskCard";
 import { assignMember } from "../../../Utils";
-import { addFamilyTask } from "../../../Utils";
+import { addFamilyTask, editTaskDetails } from "../../../Utils";
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
 
@@ -67,7 +67,24 @@ const TaskContainer = ({
 
     try {
       const response = await assignMember(MemberId, taskid);
-      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleEditTask = async (e, id, taskname, points) => {
+    e.preventDefault();
+
+    try {
+      const response = await editTaskDetails(id, taskname, points);
+      for (let task of nullTasks) {
+        if (task.id == id) {
+          task["taskname"] = taskname;
+          task["points"] = points;
+        }
+      }
+      setPoints("");
+      setTaskname("");
     } catch (error) {
       console.error(error);
     }
@@ -122,6 +139,7 @@ const TaskContainer = ({
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </div>
       </Modal>
+
       <h1>My Challenges</h1>
       {activeTasks.map((task, index) => (
         <ActiveTaskCard
@@ -138,7 +156,17 @@ const TaskContainer = ({
           task={task}
           user={user}
           key={index}
+          nullTasks={nullTasks}
+          setNullTasks={setNullTasks}
           handleAcceptTask={handleAcceptTask}
+          handleEditTask={handleEditTask}
+          pointOptions={pointOptions}
+          changeHandler={changeHandler}
+          taskname={taskname}
+          setTaskname={setTaskname}
+          points={points}
+          setPoints={setPoints}
+          handleSetPoints={handleSetPoints}
         />
       ))}
     </div>
