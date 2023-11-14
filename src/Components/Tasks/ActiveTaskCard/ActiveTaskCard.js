@@ -11,13 +11,14 @@ const ActiveTaskCard = ({
   handleTask,
   action,
 }) => {
-  const completeTask = async (index) => {
+  const completeTask = async (e,key) => {
+    e.preventDefault()
     const userId = user.id;
     const points = task.points;
     const totalPoints = user.totalPoints;
     await updatePoints(userId, points, totalPoints);
     const updateArray = [...activeTasks];
-    updateArray.splice(index, 1);
+    updateArray.splice(key, 1);
     setActiveTasks(updateArray);
   };
 
@@ -28,7 +29,7 @@ const ActiveTaskCard = ({
 
         <p>{task.points}</p>
 
-        <button className="Done" onClick={() => completeTask(key)}>
+        <button className="Done" onClick={(e) => completeTask(e,key)}>
           Completed
         </button>
 

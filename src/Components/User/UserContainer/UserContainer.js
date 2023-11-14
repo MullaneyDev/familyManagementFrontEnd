@@ -1,6 +1,5 @@
 import React from "react";
 import "./UserContainer.css";
-import logo from "../../../assets/logo.svg";
 import { ReactComponent as Logo } from "../../../assets/logo.svg";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
