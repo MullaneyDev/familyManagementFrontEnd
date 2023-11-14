@@ -2,6 +2,8 @@ import React from "react";
 import "./TaskContainer.css";
 import TaskCard from "../TaskCard/TaskCard";
 import ActiveTaskCard from "../ActiveTaskCard/ActiveTaskCard";
+
+import { deleteTask } from "../../../Utils";
 import { assignMember } from "../../../Utils";
 import { addFamilyTask, editTaskDetails } from "../../../Utils";
 import { useState, useEffect } from "react";
@@ -12,7 +14,9 @@ const TaskContainer = ({
   setActiveTasks,
   nullTasks,
   setNullTasks,
+  setTasks,
   user,
+  action,
 }) => {
   const [taskname, setTaskname] = useState();
   const [points, setPoints] = useState();
@@ -62,9 +66,15 @@ const TaskContainer = ({
     { value: 150, display: 150 },
   ];
 
-  const handleAcceptTask = async (e, MemberId, taskid) => {
+  const handleDelete = async (e, id) => {
     e.preventDefault();
+    await deleteTask(id);
+    const newTasks = nullTasks.filter((task) => task.id !== id);
+    setNullTasks(newTasks);
+  };
 
+  const handleTask = async (e, MemberId, taskid, action) => {
+    e.preventDefault();
     try {
       const response = await assignMember(MemberId, taskid);
     } catch (error) {
@@ -147,7 +157,9 @@ const TaskContainer = ({
           key={index}
           user={user}
           activeTasks={activeTasks}
-          setActiveTasks={activeTasks}
+          setActiveTasks={setActiveTasks}
+          handleTask={handleTask}
+          action={action}
         />
       ))}
       <h2>Available Challenges</h2>
@@ -158,7 +170,9 @@ const TaskContainer = ({
           key={index}
           nullTasks={nullTasks}
           setNullTasks={setNullTasks}
-          handleAcceptTask={handleAcceptTask}
+          handleTask={handleTask}
+          handleDelete={handleDelete}
+          action={action}
           handleEditTask={handleEditTask}
           pointOptions={pointOptions}
           changeHandler={changeHandler}

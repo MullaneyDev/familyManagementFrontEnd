@@ -1,14 +1,13 @@
 import React from "react";
 import "./UserContainer.css";
-import logo from "../../../assets/logo.svg";
-
+import { ReactComponent as Logo } from "../../../assets/logo.svg";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 
 const UserContainer = ({ setVerified, setFamily, setMembers, members }) => {
   return (
     <div className="userContainer">
-      <img className="logoLarge" src={logo} alt="Boxed Off Logo" />
+      <Logo className="logoLarge" />
       <Register />
       <Login
         setVerified={setVerified}

@@ -29,7 +29,6 @@
 }
 
 .indi-user-container {
-
     width: 45vw;
 }
 
@@ -115,7 +114,14 @@
 }
 
 .admin-checkbox-container {
+    display: flex;
+    align-items: center;
     font-size: 20px;
+}
+
+.admin-checkbox-container-hide {
+    font-size: 20px;
+    opacity: 0;
 }
 
 #adminCheckBox {

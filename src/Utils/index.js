@@ -13,6 +13,17 @@ export const authCheck = async (jwt) => {
         },
       }
     );
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/family/authCheck`,
+      {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${jwt}`,
+        },
+      }
+    );
     const data = await response.json();
     return data;
   } catch (error) {
@@ -41,6 +52,20 @@ export const findAllMembers = async () => {
 
 export const loginFamily = async (username, password) => {
   try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/family/login`,
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      }
+    );
     const response = await fetch(
       `${process.env.REACT_APP_BASE_URL}/family/login`,
       {
@@ -93,6 +118,22 @@ export const registerFamily = async (username, email, password) => {
         }),
       }
     );
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/family/register`,
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          email: email,
+          password: password,
+          isAdmin: false,
+        }),
+      }
+    );
     const data = await response.json();
     return data;
   } catch (error) {
@@ -102,6 +143,20 @@ export const registerFamily = async (username, email, password) => {
 
 export const updateUsername = async (username, newUsername) => {
   try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/family/account/updateUsername`,
+      {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          newUsername: newUsername,
+        }),
+      }
+    );
     const response = await fetch(
       `${process.env.REACT_APP_BASE_URL}/family/account/updateUsername`,
       {
@@ -140,6 +195,21 @@ export const updatePassword = async (password, newPassword, username) => {
         }),
       }
     );
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/family/account/updatePassword`,
+      {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+          newPassword: newPassword,
+        }),
+      }
+    );
     const data = await response.json();
     console.log(data);
     return data;
@@ -150,6 +220,19 @@ export const updatePassword = async (password, newPassword, username) => {
 
 export const deleteFamily = async (username) => {
   try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/family/account/delete`,
+      {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+        }),
+      }
+    );
     const response = await fetch(
       `${process.env.REACT_APP_BASE_URL}/family/account/delete`,
       {
@@ -272,11 +355,12 @@ export const updatePoints = async (user, points, totalPoints) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: user.id,
+          id: user,
           newTotalPoints: newTotalPoints,
         }),
       }
     );
+
     const data = await response.json();
     console.log(data);
     return data;
@@ -285,7 +369,7 @@ export const updatePoints = async (user, points, totalPoints) => {
   }
 };
 
-export const assignMember = async (MemberId, taskid) => {
+export const assignMember = async (MemberId, taskid, action) => {
   try {
     const token = getTokenFromCookie("jwt_token");
     const response = await fetch(
@@ -333,6 +417,30 @@ export const editTaskDetails = async (id, taskname, points) => {
     );
     const data = await response.json();
     console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteTask = async (id) => {
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/task/deleteTask`,
+      {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          id: id,
+        }),
+      }
+    );
+    const data = await response.json();
     return data;
   } catch (error) {
     console.log(error);

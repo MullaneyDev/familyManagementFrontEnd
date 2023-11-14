@@ -16,6 +16,9 @@ const TaskCard = ({
   pointOptions,
   points,
   handleSetPoints,
+  handleTask,
+  handleDelete,
+  action,
 }) => {
   const [modalEditTask, setModalEditTask] = useState(false);
 
@@ -25,6 +28,7 @@ const TaskCard = ({
     handleEditTask(e, task.id, taskname, points);
     setModalEditTask(false);
   };
+
   return (
     <div className="TaskCard">
       <div className="TaskCardInner">
@@ -34,7 +38,7 @@ const TaskCard = ({
 
         <button
           className="Assigned"
-          onClick={(e) => handleAcceptTask(e, user.id, task.id)}
+          onClick={(e) => handleTask(e, user.id, task.id, "assign")}
         >
           Accept Task
         </button>
@@ -80,7 +84,9 @@ const TaskCard = ({
           </div>
         </Modal>
 
-        <button className="Delete">Delete Task</button>
+        <button className="Delete" onClick={(e) => handleDelete(e, task.id)}>
+          Delete Task
+        </button>
       </div>
     </div>
   );
