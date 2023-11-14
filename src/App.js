@@ -118,7 +118,7 @@ function App() {
           />
         </Routes>
         <nav>
-          <Link className="tasklink" to="/">
+          <Link className="tasklink" to="/" on>
             <h3>Tasks</h3>
             <img className="navimg" src={tasksimg} alt="Tasks" />
           </Link>

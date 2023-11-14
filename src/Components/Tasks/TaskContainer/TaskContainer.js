@@ -139,7 +139,7 @@ const TaskContainer = ({
           key={index}
           user={user}
           activeTasks={activeTasks}
-          setActiveTasks={activeTasks}
+          setActiveTasks={setActiveTasks}
           handleTask={handleTask}
           action={action}
         />
