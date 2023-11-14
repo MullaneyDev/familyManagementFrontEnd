@@ -1,6 +1,6 @@
 import React from "react";
 import "./ActiveTaskCard.css";
-import { updatePoints } from "../../../Utils";
+import { deleteTask, updatePoints } from "../../../Utils";
 
 const ActiveTaskCard = ({
   key,
@@ -21,12 +21,13 @@ const ActiveTaskCard = ({
     const points = task.points;
     const totalPoints = user.totalPoints;
     const response = await updatePoints(userId, points, totalPoints);
-    const memberarray = [...members]
-    memberarray.push(response.result)
-    setMembers(memberarray)
+    const memberArray = [...members]
+    memberArray.push(response.result)
+    setMembers(memberArray)
     const updateArray = [...activeTasks];
     updateArray.splice(key, 1);
     setActiveTasks(updateArray);
+    await deleteTask(task.id)
   };
 
   return (
