@@ -9,7 +9,6 @@ import { addFamilyTask } from "../../../Utils";
 import { useState } from "react";
 import Modal from "react-modal";
 
-
 const TaskContainer = ({
   activeTasks,
   setActiveTasks,
@@ -17,8 +16,8 @@ const TaskContainer = ({
   setNullTasks,
   setTasks,
   user,
+  action,
 }) => {
-  
   const [taskname, setTaskname] = useState();
   const [points, setPoints] = useState();
   const [errorMessage, setErrorMessage] = useState("");
@@ -67,23 +66,21 @@ const TaskContainer = ({
     { value: 150, display: 150 },
   ];
 
-
   const handleDelete = async (e, id) => {
     e.preventDefault();
     await deleteTask(id);
     const newTasks = nullTasks.filter((task) => task.id !== id);
     setNullTasks(newTasks);
-  }
+  };
 
-  const handleAcceptTask = async (e, MemberId, taskid) => {
+  const handleTask = async (e, MemberId, taskid, action) => {
     e.preventDefault();
     try {
-      const response = await assignMember(MemberId, taskid);
+      const response = await assignMember(MemberId, taskid, action);
       console.log(response);
     } catch (error) {
       console.error(error);
     }
-
   };
 
   if (!nullTasks) {
@@ -137,13 +134,14 @@ const TaskContainer = ({
       </Modal>
       <h1>My Challenges</h1>
       {activeTasks.map((task, index) => (
-
         <ActiveTaskCard
           task={task}
           key={index}
           user={user}
           activeTasks={activeTasks}
-          setActiveTasks={setActiveTasks}
+          setActiveTasks={activeTasks}
+          handleTask={handleTask}
+          action={action}
         />
       ))}
       <h2>Available Challenges</h2>
@@ -152,13 +150,13 @@ const TaskContainer = ({
           task={task}
           user={user}
           key={index}
-          handleAcceptTask={handleAcceptTask}
+          handleTask={handleTask}
           handleDelete={handleDelete}
+          action={action}
         />
-
       ))}
     </div>
   );
-}
+};
 
-export default TaskContainer
+export default TaskContainer;
