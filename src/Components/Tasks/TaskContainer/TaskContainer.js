@@ -17,6 +17,8 @@ const TaskContainer = ({
   setTasks,
   user,
   action,
+  members,
+  setMembers
 }) => {
   const [taskname, setTaskname] = useState();
   const [points, setPoints] = useState();
@@ -142,6 +144,8 @@ const TaskContainer = ({
           setActiveTasks={setActiveTasks}
           handleTask={handleTask}
           action={action}
+          members={members}
+          setMembers={setMembers}
         />
       ))}
       <h2>Available Challenges</h2>

@@ -2,9 +2,11 @@ import React from "react";
 import "./Leaderboard.css";
 import LeaderboardCard from "./LeaderboardCard";
 
-const Leaderboard = ({members}) => {
+const Leaderboard = ({ members }) => {
 
-  const membersOrdered = members.sort(function(a,b){return b.totalPoints-a.totalPoints})
+  const membersOrdered = members.sort(function (a, b) {
+    return b.totalPoints - a.totalPoints;
+  });
 
   return (
     <div className="leaderboard">
