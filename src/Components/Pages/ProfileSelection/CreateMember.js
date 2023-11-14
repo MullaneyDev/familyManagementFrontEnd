@@ -23,7 +23,7 @@ const CreateMember = ({
   const openModal = async (setter) => {
     await setter(true);
   };
-  console.log(members.filter((memberObject) => memberObject.admin).length);
+
   return (
     <div>
       <section className="top-page">
