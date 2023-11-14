@@ -3,6 +3,7 @@
     flex-direction: row;
     align-items: center;
     gap: 4px;
+    justify-content: center;
 }
 
 .toggle-theme-wrapper span {

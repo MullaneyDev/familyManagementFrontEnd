@@ -9,6 +9,7 @@ const CreateMember = ({
   changeHandler,
   setModalLogout,
   modalLogout,
+  members,
 }) => {
   const changeColor = async (value) => {
     setColour(value);
@@ -22,7 +23,7 @@ const CreateMember = ({
   const openModal = async (setter) => {
     await setter(true);
   };
-
+  console.log(members.filter((memberObject) => memberObject.admin).length);
   return (
     <div>
       <section className="top-page">
@@ -48,14 +49,19 @@ const CreateMember = ({
             required={true}
             onChange={(e) => changeHandler(e)}
           />
-          <label className="admin-checkbox-container">
-            Admin?
-            <input
-              type="checkbox"
-              id="adminCheckBox"
-              onClick={() => adminPriv()}
-            />
-          </label>
+          {members.filter((memberObject) => memberObject.admin).length === 0 ? (
+            <label className="admin-checkbox-container">
+              Admin?
+              <input
+                type="checkbox"
+                id="adminCheckBox"
+                onClick={() => adminPriv()}
+              />
+            </label>
+          ) : (
+            <div></div>
+          )}
+
           <select
             style={{ backgroundColor: colour }}
             onChange={(e) => changeColor(e.target.value)}
