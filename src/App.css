@@ -5,14 +5,18 @@
   text-align: center;
   align-content: center;
   align-items: center;
+  background-color: var(--background-color);
+  color: var(--font-color);
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
 }
+
 nav {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   height: 15vh;
   justify-content: space-around;
-  
+
 }
 
 .tasklink {
