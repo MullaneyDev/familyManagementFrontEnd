@@ -76,7 +76,7 @@ const TaskContainer = ({
   const handleTask = async (e, MemberId, taskid, action) => {
     e.preventDefault();
     try {
-      await assignMember(MemberId, taskid);
+      await assignMember(MemberId, taskid, action);
     } catch (error) {
       console.error(error);
     }
