@@ -15,12 +15,10 @@ const TaskContainer = ({
   setActiveTasks,
   nullTasks,
   setNullTasks,
-
   setTasks,
-
   user,
-
 }) => {
+  
   const [taskname, setTaskname] = useState();
   const [points, setPoints] = useState();
   const [errorMessage, setErrorMessage] = useState("");
@@ -72,16 +70,13 @@ const TaskContainer = ({
 
   const handleDelete = async (e, id) => {
     e.preventDefault();
-
-    const deletedTask = await deleteTask(id);
-
+    await deleteTask(id);
     const newTasks = nullTasks.filter((task) => task.id !== id);
-
     setNullTasks(newTasks);
+  }
 
   const handleAcceptTask = async (e, MemberId, taskid) => {
     e.preventDefault();
-
     try {
       const response = await assignMember(MemberId, taskid);
       console.log(response);
@@ -158,11 +153,12 @@ const TaskContainer = ({
           user={user}
           key={index}
           handleAcceptTask={handleAcceptTask}
+          handleDelete={handleDelete}
         />
 
       ))}
     </div>
   );
-};
+}
 
-export default TaskContainer;
+export default TaskContainer

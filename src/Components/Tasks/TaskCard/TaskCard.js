@@ -3,7 +3,7 @@ import "./TaskCard.css";
 
 
 
-const TaskCard = ({ user, task, mytask, handleAcceptTask }) => {
+const TaskCard = ({ user, task, handleAcceptTask, handleDelete }) => {
 
   return (
     <div className="TaskCard">
