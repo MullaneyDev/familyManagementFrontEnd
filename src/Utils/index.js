@@ -20,10 +20,10 @@ export const authCheck = async (jwt) => {
   }
 };
 
-export const findAllMembers = async () => {
+export const findFamilyMembers = async () => {
   try {
     const token = getTokenFromCookie("jwt_token");
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/member`, {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/member/familyMembers`, {
       method: "GET",
       mode: "cors",
       headers: {

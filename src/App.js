@@ -104,6 +104,7 @@ function App() {
               <LoggedIn
                 family={family}
                 members={members}
+                setMembers={setMembers}
                 user={user}
                 activeTasks={activeTasks}
                 setActiveTasks={setActiveTasks}
@@ -114,7 +115,7 @@ function App() {
           />
           <Route
             path="/leaderboard"
-            element={<Leaderboard members={members} />}
+            element={<Leaderboard members={members} setMembers={setMembers}/>}
           />
         </Routes>
         <nav>

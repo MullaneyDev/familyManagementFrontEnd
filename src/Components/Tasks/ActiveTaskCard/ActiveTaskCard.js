@@ -10,6 +10,8 @@ const ActiveTaskCard = ({
   setActiveTasks,
   handleTask,
   action,
+  members,
+  setMembers
 }) => {
   const colour = user.colour
 
@@ -18,7 +20,10 @@ const ActiveTaskCard = ({
     const userId = user.id;
     const points = task.points;
     const totalPoints = user.totalPoints;
-    await updatePoints(userId, points, totalPoints);
+    const response = await updatePoints(userId, points, totalPoints);
+    const memberarray = [...members]
+    memberarray.push(response.result)
+    setMembers(memberarray)
     const updateArray = [...activeTasks];
     updateArray.splice(key, 1);
     setActiveTasks(updateArray);
