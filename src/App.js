@@ -110,12 +110,13 @@ function App() {
                 setActiveTasks={setActiveTasks}
                 nullTasks={nullTasks}
                 setNullTasks={setNullTasks}
+                admin={admin}
               />
             }
           />
           <Route
             path="/leaderboard"
-            element={<Leaderboard members={members} setMembers={setMembers}/>}
+            element={<Leaderboard members={members} setMembers={setMembers} />}
           />
         </Routes>
         <nav>
