@@ -2,14 +2,17 @@ import { getTokenFromCookie, writeCookie } from "../Common";
 
 export const authCheck = async (jwt) => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/family/authCheck`, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${jwt}`,
-      },
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/family/authCheck`,
+      {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${jwt}`,
+        },
+      }
+    );
     const data = await response.json();
     return data;
   } catch (error) {
@@ -38,17 +41,20 @@ export const findAllMembers = async () => {
 
 export const loginFamily = async (username, password) => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/family/login`, {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/family/login`,
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      }
+    );
     const data = await response.json();
     console.log(data);
     if (
@@ -71,19 +77,22 @@ export const loginFamily = async (username, password) => {
 
 export const registerFamily = async (username, email, password) => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/family/register`, {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        email: email,
-        password: password,
-        isAdmin: false,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/family/register`,
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          email: email,
+          password: password,
+          isAdmin: false,
+        }),
+      }
+    );
     const data = await response.json();
     return data;
   } catch (error) {
@@ -93,17 +102,20 @@ export const registerFamily = async (username, email, password) => {
 
 export const updateUsername = async (username, newUsername) => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/family/account/updateUsername`, {
-      method: "PUT",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        newUsername: newUsername,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/family/account/updateUsername`,
+      {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          newUsername: newUsername,
+        }),
+      }
+    );
     const data = await response.json();
     return data;
   } catch (error) {
@@ -113,18 +125,21 @@ export const updateUsername = async (username, newUsername) => {
 
 export const updatePassword = async (password, newPassword, username) => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/family/account/updatePassword`, {
-      method: "PUT",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-        newPassword: newPassword,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/family/account/updatePassword`,
+      {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+          newPassword: newPassword,
+        }),
+      }
+    );
     const data = await response.json();
     console.log(data);
     return data;
@@ -135,16 +150,19 @@ export const updatePassword = async (password, newPassword, username) => {
 
 export const deleteFamily = async (username) => {
   try {
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/family/account/delete`, {
-      method: "DELETE",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/family/account/delete`,
+      {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+        }),
+      }
+    );
     const data = await response.json();
     return data;
   } catch (error) {
@@ -245,17 +263,20 @@ export const addFamilyTask = async (taskname, points) => {
 export const updatePoints = async (user, points, totalPoints) => {
   try {
     const newTotalPoints = totalPoints + points;
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/member/pointsUpdate`, {
-      method: "PUT",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: user.id,
-        newTotalPoints: newTotalPoints,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/member/pointsUpdate`,
+      {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: user.id,
+          newTotalPoints: newTotalPoints,
+        }),
+      }
+    );
     const data = await response.json();
     console.log(data);
     return data;
@@ -264,21 +285,25 @@ export const updatePoints = async (user, points, totalPoints) => {
   }
 };
 
-export const assignMember = async (MemberId, taskid) => {
+export const assignMember = async (MemberId, taskid, action) => {
   try {
     const token = getTokenFromCookie("jwt_token");
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/task/assignMember`, {
-      method: "PUT",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        MemberId: MemberId,
-        taskid: taskid,
-      }),
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/task/assignMember`,
+      {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          MemberId: MemberId,
+          taskid: taskid,
+          action: action,
+        }),
+      }
+    );
     const data = await response.json();
     console.log(data);
     return data;
