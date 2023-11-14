@@ -18,7 +18,8 @@ const TaskContainer = ({
   user,
   action,
   members,
-  setMembers
+  setMembers,
+  admin,
 }) => {
   const [taskname, setTaskname] = useState();
   const [points, setPoints] = useState();
@@ -105,54 +106,97 @@ const TaskContainer = ({
   if (!nullTasks) {
     return <p>loading</p>;
   }
+  if (admin) {
+    return (
+      <div className="TaskContainer">
+        <button
+          className="addtask-container"
+          onClick={() => openModal(setModalAddTask)}
+        >
+          Add New Family Task
+        </button>
+        <Modal
+          className="ModalStyle"
+          isOpen={modalAddTask}
+          onRequestClose={() => closeModal(setModalAddTask)}
+        >
+          <div className="addtask-container">
+            <form className="add-task" onSubmit={handleTaskSubmit}>
+              <label>Add a Family Task</label>
+              <input
+                type="text"
+                name="taskname"
+                className="input-field"
+                placeholder="New task info"
+                value={taskname}
+                required="true"
+                onChange={(e) => changeHandler(e)}
+              />
+
+              <select
+                required
+                value={points}
+                onChange={(e) => handleSetPoints(e.target.value)}
+              >
+                {pointOptions.map((option) => (
+                  <option
+                    disabled={option.disabled}
+                    key={option.value}
+                    value={option.value}
+                  >
+                    {option.display}
+                  </option>
+                ))}
+              </select>
+              <input type="submit" value="Add Task" />
+            </form>
+            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+          </div>
+        </Modal>
+
+        <h1>{user.name}'s Challenges</h1>
+        {activeTasks.map((task, index) => (
+          <ActiveTaskCard
+            task={task}
+            key={index}
+            user={user}
+            activeTasks={activeTasks}
+            setActiveTasks={setActiveTasks}
+            handleTask={handleTask}
+            action={action}
+            members={members}
+            setMembers={setMembers}
+            admin={admin}
+          />
+        ))}
+        <h2>Available Challenges</h2>
+        {nullTasks.map((task, index) => (
+          <TaskCard
+            task={task}
+            user={user}
+            key={index}
+            nullTasks={nullTasks}
+            setNullTasks={setNullTasks}
+            handleTask={handleTask}
+            handleDelete={handleDelete}
+            action={action}
+            handleEditTask={handleEditTask}
+            pointOptions={pointOptions}
+            changeHandler={changeHandler}
+            taskname={taskname}
+            setTaskname={setTaskname}
+            points={points}
+            setPoints={setPoints}
+            handleSetPoints={handleSetPoints}
+            admin={admin}
+          />
+        ))}
+      </div>
+    );
+  }
   return (
     <div className="TaskContainer">
-      <button
-        className="addtask-container"
-        onClick={() => openModal(setModalAddTask)}
-      >
-        Add New Family Task
-      </button>
-      <Modal
-        className="ModalStyle"
-        isOpen={modalAddTask}
-        onRequestClose={() => closeModal(setModalAddTask)}
-      >
-        <div className="addtask-container">
-          <form className="add-task" onSubmit={handleTaskSubmit}>
-            <label>Add a Family Task</label>
-            <input
-              type="text"
-              name="taskname"
-              className="input-field"
-              placeholder="New task info"
-              value={taskname}
-              required="true"
-              onChange={(e) => changeHandler(e)}
-            />
-
-            <select
-              required
-              value={points}
-              onChange={(e) => handleSetPoints(e.target.value)}
-            >
-              {pointOptions.map((option) => (
-                <option
-                  disabled={option.disabled}
-                  key={option.value}
-                  value={option.value}
-                >
-                  {option.display}
-                </option>
-              ))}
-            </select>
-            <input type="submit" value="Add Task" />
-          </form>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-        </div>
-      </Modal>
-
-      <h1>My Challenges</h1>
+      <h1>{user.name}'s Challenges</h1>
       {activeTasks.map((task, index) => (
         <ActiveTaskCard
           task={task}
@@ -164,6 +208,7 @@ const TaskContainer = ({
           action={action}
           members={members}
           setMembers={setMembers}
+          admin={admin}
         />
       ))}
       <h2>Available Challenges</h2>
@@ -185,6 +230,7 @@ const TaskContainer = ({
           points={points}
           setPoints={setPoints}
           handleSetPoints={handleSetPoints}
+          admin={admin}
         />
       ))}
     </div>

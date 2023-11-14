@@ -17,6 +17,7 @@ const LoggedIn = ({
   setActiveTasks,
   nullTasks,
   setNullTasks,
+  admin,
 }) => {
   return (
     <div>
@@ -35,6 +36,7 @@ const LoggedIn = ({
         setActiveTasks={setActiveTasks}
         nullTasks={nullTasks}
         setNullTasks={setNullTasks}
+        admin={admin}
       />
     </div>
   );
