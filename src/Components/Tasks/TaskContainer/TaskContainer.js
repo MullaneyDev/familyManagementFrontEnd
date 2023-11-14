@@ -143,7 +143,7 @@ const TaskContainer = ({
           key={index}
           user={user}
           activeTasks={activeTasks}
-          setActiveTasks={activeTasks}
+          setActiveTasks={setActiveTasks}
         />
       ))}
       <h2>Available Challenges</h2>
