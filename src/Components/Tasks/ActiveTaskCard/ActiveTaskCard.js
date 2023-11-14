@@ -11,6 +11,8 @@ const ActiveTaskCard = ({
   handleTask,
   action,
 }) => {
+  const colour = user.colour
+
   const completeTask = async (e,key) => {
     e.preventDefault()
     const userId = user.id;
@@ -23,13 +25,13 @@ const ActiveTaskCard = ({
   };
 
   return (
-    <div className="ActiveTaskCard">
+    <div className="ActiveTaskCard" style={{ backgroundColor: colour }}>
       <div className="ActiveTaskCardInner">
         <p>{task.taskname}</p>
 
         <p>{task.points}</p>
 
-        <button className="Done" onClick={(e) => completeTask(e,key)}>
+        <button className="Done" onClick={(e) => completeTask(e, key)}>
           Completed
         </button>
 
