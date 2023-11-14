@@ -313,6 +313,34 @@ export const assignMember = async (MemberId, taskid, action) => {
   }
 };
 
+export const editTaskDetails = async (id, taskname, points) => {
+  try {
+    console.log("UTILS BOII", id, taskname, points);
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/task/editTask`,
+      {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          id: id,
+          taskname: taskname,
+          points: parseInt(points),
+        }),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const deleteTask = async (id) => {
   try {
     const token = getTokenFromCookie("jwt_token");
