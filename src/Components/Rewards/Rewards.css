@@ -1,0 +1,34 @@
+.rewardWindow {
+  margin-top: 8vh;
+  justify-self: center;
+}
+
+.goldTier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25vw;
+  border-radius: 10px;
+  background-color: gold;
+  margin: 5px;
+}
+
+.silverTier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25vw;
+  border-radius: 10px;
+  background-color: silver;
+  margin: 5px;
+}
+
+.bronzeTier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25vw;
+  border-radius: 10px;
+  background-color: #cd7f32;
+  margin: 5px;
+}
