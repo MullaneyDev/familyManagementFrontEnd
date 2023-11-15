@@ -16,7 +16,7 @@ const ActiveTaskCard = ({
 }) => {
   const colour = user.colour;
 
-  const completeTask = async (e, key) => {
+  const completeTask = async (e, index) => {
     e.preventDefault();
     const userId = user.id;
     const points = task.points;
@@ -40,7 +40,7 @@ const ActiveTaskCard = ({
         <div className="button-container">
           <button
             className="complete-button-task"
-            onClick={(e) => completeTask(e, key)}
+            onClick={(e) => completeTask(e, index)}
           >
             Completed ✔️
           </button>
