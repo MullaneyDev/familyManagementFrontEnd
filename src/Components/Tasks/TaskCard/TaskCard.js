@@ -1,13 +1,11 @@
 import React from "react";
 import "./TaskCard.css";
-import { editTaskDetails } from "../../../Utils";
 import Modal from "react-modal";
 import { useState } from "react";
 
 const TaskCard = ({
   user,
   task,
-  handleAcceptTask,
   handleEditTask,
   taskname,
   setTaskname,
@@ -37,6 +35,8 @@ const TaskCard = ({
           <p>{task.taskname}</p>
 
           <p>{task.points}</p>
+          <div className="button-container">
+            
 
           <button
             className="Assigned"
