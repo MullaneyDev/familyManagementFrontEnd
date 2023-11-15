@@ -11,23 +11,24 @@ const ActiveTaskCard = ({
   handleTask,
   action,
   members,
-  setMembers
+  setMembers,
+  index,
 }) => {
-  const colour = user.colour
+  const colour = user.colour;
 
-  const completeTask = async (e,key) => {
-    e.preventDefault()
+  const completeTask = async (e, key) => {
+    e.preventDefault();
     const userId = user.id;
     const points = task.points;
     const totalPoints = user.totalPoints;
     const response = await updatePoints(userId, points, totalPoints);
-    const memberArray = [...members]
-    memberArray.push(response.result)
-    setMembers(memberArray)
+    const memberArray = [...members];
+    memberArray.push(response.result);
+    setMembers(memberArray);
     const updateArray = [...activeTasks];
     updateArray.splice(key, 1);
     setActiveTasks(updateArray);
-    await deleteTask(task.id)
+    await deleteTask(task.id);
   };
 
   return (
@@ -43,7 +44,7 @@ const ActiveTaskCard = ({
 
         <button
           className="Delete"
-          onClick={(e) => handleTask(e, user.id, task.id, "unassign")}
+          onClick={(e) => handleTask(e, user.id, task.id, "unassign", index)}
         >
           Recycle Task
         </button>

@@ -20,9 +20,9 @@ const TaskCard = ({
   handleDelete,
   action,
   admin,
+  index,
 }) => {
   const [modalEditTask, setModalEditTask] = useState(false);
-
   const tasknameDefault = task.taskname;
 
   const handleCloseOnSubmit = (e) => {
@@ -40,7 +40,7 @@ const TaskCard = ({
 
           <button
             className="Assigned"
-            onClick={(e) => handleTask(e, user.id, task.id, "assign")}
+            onClick={(e) => handleTask(e, user.id, task.id, "assign", index)}
           >
             Accept Task
           </button>
@@ -102,7 +102,7 @@ const TaskCard = ({
 
         <button
           className="Assigned"
-          onClick={(e) => handleTask(e, user.id, task.id, "assign")}
+          onClick={(e) => handleTask(e, user.id, task.id, "assign", index)}
         >
           Accept Task
         </button>
