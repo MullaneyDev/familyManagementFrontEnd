@@ -76,10 +76,19 @@ const TaskContainer = ({
     setNullTasks(newTasks);
   };
 
-  const handleTask = async (e, MemberId, taskid, action) => {
+  const handleTask = async (e, MemberId, taskid, action, index) => {
     e.preventDefault();
     try {
-      await assignMember(MemberId, taskid, action);
+      const response = await assignMember(MemberId, taskid, action);
+      let openNullTasks = [...nullTasks];
+      let openActiveTasks = [...activeTasks];
+      if (action === "unassign") {
+        openNullTasks.push(openActiveTasks.splice(index, 1)[0]);
+      } else if (action === "assign") {
+        openActiveTasks.push(openNullTasks.splice(index, 1)[0]);
+      }
+      setNullTasks(openNullTasks);
+      setActiveTasks(openActiveTasks);
     } catch (error) {
       console.error(error);
     }
@@ -209,6 +218,7 @@ const TaskContainer = ({
           members={members}
           setMembers={setMembers}
           admin={admin}
+          index={index}
         />
       ))}
       <h2>Available Challenges</h2>
@@ -231,6 +241,7 @@ const TaskContainer = ({
           setPoints={setPoints}
           handleSetPoints={handleSetPoints}
           admin={admin}
+          index={index}
         />
       ))}
     </div>
