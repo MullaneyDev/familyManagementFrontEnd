@@ -32,7 +32,6 @@ export const findFamilyMembers = async () => {
       },
     });
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -56,7 +55,6 @@ export const loginFamily = async (username, password) => {
       }
     );
     const data = await response.json();
-    console.log(data);
     if (
       data.message !== "Invalid username." &&
       data.message !== "Unauthorised Login!"
@@ -141,7 +139,6 @@ export const updatePassword = async (password, newPassword, username) => {
       }
     );
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -189,7 +186,6 @@ export const addMember = async (name, url, addAdmin, colour, totalPoints) => {
       }),
     });
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {}
 };
@@ -230,7 +226,6 @@ export const getFamilyTasks = async (user) => {
       }
     );
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -253,7 +248,6 @@ export const addFamilyTask = async (taskname, points) => {
       }),
     });
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -279,7 +273,6 @@ export const updatePoints = async (user, points, totalPoints) => {
     );
 
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -306,7 +299,6 @@ export const assignMember = async (MemberId, taskid, action) => {
       }
     );
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -315,7 +307,6 @@ export const assignMember = async (MemberId, taskid, action) => {
 
 export const editTaskDetails = async (id, taskname, points) => {
   try {
-    console.log("UTILS BOII", id, taskname, points);
     const token = getTokenFromCookie("jwt_token");
     const response = await fetch(
       `${process.env.REACT_APP_BASE_URL}/task/editTask`,
@@ -334,7 +325,6 @@ export const editTaskDetails = async (id, taskname, points) => {
       }
     );
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
