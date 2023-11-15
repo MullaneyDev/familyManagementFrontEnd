@@ -15,8 +15,8 @@ import tasksimg from "./assets/tasksimg.svg";
 import Calendar from "./Components/FullCalendar";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
-  const [admin, setAdmin] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [admin, setAdmin] = useState(false);
   const [family, setFamily] = useState({});
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});
