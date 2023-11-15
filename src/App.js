@@ -11,6 +11,7 @@ import Leaderboard from "./Components/Leaderboard/Leaderboard";
 
 import leadrboardimg from "./assets/leaderboardimg.svg";
 import tasksimg from "./assets/tasksimg.svg";
+import calendarimg from "./assets/calendar.svg";
 
 import Calendar from "./Components/FullCalendar";
 
@@ -127,12 +128,13 @@ function App() {
             <h3>Tasks</h3>
             <img className="navimg" src={tasksimg} alt="Tasks" />
           </Link>
+          <Link className="calendar" to="/calendar">
+            <h3>Calendar</h3>
+            <img className="navimg" src={calendarimg} alt="Calendar" />
+          </Link>
           <Link className="leaderboardlink" to="/leaderboard">
             <h3>Leaderboard</h3>
             <img className="navimg" src={leadrboardimg} alt="Leaderboard" />
-          </Link>
-          <Link className="calendar" to="/calendar">
-            <h3>Calendar</h3>
           </Link>
         </nav>
       </BrowserRouter>
