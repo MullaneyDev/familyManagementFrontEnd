@@ -26,7 +26,7 @@ const ActiveTaskCard = ({
     memberArray.push(response.result);
     setMembers(memberArray);
     const updateArray = [...activeTasks];
-    updateArray.splice(key, 1);
+    updateArray.splice(index, 1);
     setActiveTasks(updateArray);
     await deleteTask(task.id);
   };
