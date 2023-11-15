@@ -17,7 +17,11 @@
   margin-right: 3vw;
   justify-content: space-between;
 }
-.Buttons {
-  display: flex;
-  flex-direction: row;
+
+button {
+  border: none;
+  border-radius: 10px;
+  height: 80%;
+  width: 18%;
+  margin: 0px 5px;
 }
