@@ -8,13 +8,19 @@ import NotLoggedIn from "./Components/Pages/NotLoggedIn/NotLoggedIn";
 import LoggedIn from "./Components/Pages/LoggedIn/LoggedIn";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Leaderboard from "./Components/Leaderboard/Leaderboard";
+import Rewards from "./Components/Rewards/Rewards";
 
 import leadrboardimg from "./assets/leaderboardimg.svg";
 import tasksimg from "./assets/tasksimg.svg";
+import medal from "./assets/medal.svg";
+import calendarimg from "./assets/calendar.svg";
+
+import Calendar from "./Components/FullCalendar";
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [admin, setAdmin] = useState(true);
+  const [admin, setAdmin] = useState(false);
   const [family, setFamily] = useState({});
   const [members, setMembers] = useState([]);
   const [user, setUser] = useState({});
@@ -118,11 +124,21 @@ function App() {
             path="/leaderboard"
             element={<Leaderboard members={members} setMembers={setMembers} />}
           />
+          <Route path="/rewards" element={<Rewards />} />
+          <Route path="/calendar" element={<Calendar />} />
         </Routes>
         <nav>
           <Link className="tasklink" to="/" on>
             <h3>Tasks</h3>
             <img className="navimg" src={tasksimg} alt="Tasks" />
+          </Link>
+          <Link className="calendarlink" to="/calendar">
+            <h3>Calendar</h3>
+            <img className="navimg" src={calendarimg} alt="Calendar" />
+          </Link>
+          <Link className="rewardslink" to="/rewards">
+            <h3>Rewards</h3>
+            <img className="navimg" src={medal} alt="Rewards" />
           </Link>
           <Link className="leaderboardlink" to="/leaderboard">
             <h3>Leaderboard</h3>

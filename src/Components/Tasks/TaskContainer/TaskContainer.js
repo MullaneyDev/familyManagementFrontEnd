@@ -79,7 +79,7 @@ const TaskContainer = ({
   const handleTask = async (e, MemberId, taskid, action, index) => {
     e.preventDefault();
     try {
-      const response = await assignMember(MemberId, taskid, action);
+      await assignMember(MemberId, taskid, action);
       let openNullTasks = [...nullTasks];
       let openActiveTasks = [...activeTasks];
       if (action === "unassign") {
