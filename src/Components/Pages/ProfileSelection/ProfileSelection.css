@@ -20,11 +20,11 @@
 }
 
 .netflix-container {
+    display: grid;
     margin-top: 8vh;
     grid-row: 1;
     text-align: center;
     margin-bottom: 8vh;
-    display: grid;
     grid-template-columns: auto auto;
 }
 
