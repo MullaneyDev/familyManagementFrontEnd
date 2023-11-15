@@ -14,7 +14,6 @@ const TaskContainer = ({
   setActiveTasks,
   nullTasks,
   setNullTasks,
-  setTasks,
   user,
   action,
   members,
