@@ -8,9 +8,11 @@ import NotLoggedIn from "./Components/Pages/NotLoggedIn/NotLoggedIn";
 import LoggedIn from "./Components/Pages/LoggedIn/LoggedIn";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Leaderboard from "./Components/Leaderboard/Leaderboard";
+import Rewards from "./Components/Rewards/Rewards";
 
 import leadrboardimg from "./assets/leaderboardimg.svg";
 import tasksimg from "./assets/tasksimg.svg";
+import medal from "./assets/medal.svg";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -118,11 +120,16 @@ function App() {
             path="/leaderboard"
             element={<Leaderboard members={members} setMembers={setMembers} />}
           />
+          <Route path="/rewards" element={<Rewards />} />
         </Routes>
         <nav>
           <Link className="tasklink" to="/" on>
             <h3>Tasks</h3>
             <img className="navimg" src={tasksimg} alt="Tasks" />
+          </Link>
+          <Link className="rewardslink" to="/rewards">
+            <h3>Rewards</h3>
+            <img className="navimg" src={medal} alt="Rewards" />
           </Link>
           <Link className="leaderboardlink" to="/leaderboard">
             <h3>Leaderboard</h3>
