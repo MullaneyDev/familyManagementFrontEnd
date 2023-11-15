@@ -12,8 +12,10 @@ import Leaderboard from "./Components/Leaderboard/Leaderboard";
 import leadrboardimg from "./assets/leaderboardimg.svg";
 import tasksimg from "./assets/tasksimg.svg";
 
+import Calendar from "./Components/FullCalendar";
+
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [admin, setAdmin] = useState(true);
   const [family, setFamily] = useState({});
   const [members, setMembers] = useState([]);
@@ -118,6 +120,7 @@ function App() {
             path="/leaderboard"
             element={<Leaderboard members={members} setMembers={setMembers} />}
           />
+          <Route path="/calendar" element={<Calendar />} />
         </Routes>
         <nav>
           <Link className="tasklink" to="/" on>
@@ -127,6 +130,9 @@ function App() {
           <Link className="leaderboardlink" to="/leaderboard">
             <h3>Leaderboard</h3>
             <img className="navimg" src={leadrboardimg} alt="Leaderboard" />
+          </Link>
+          <Link className="calendar" to="/calendar">
+            <h3>Calendar</h3>
           </Link>
         </nav>
       </BrowserRouter>
