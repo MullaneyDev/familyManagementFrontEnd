@@ -19,15 +19,93 @@
   justify-content: space-between;
 }
 
-.TaskCard button {
-  border: none;
-  border-radius: 10px;
+.accept-task-btn {
+  outline: 0;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 2px solid #40934f;
+  color: white;
+
+  background: #40934f;
+  padding: 8px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
   height: 80%;
   width: 18%;
-  margin: 0px 5px;
+  margin-right: 1vw;
+  font-weight: bolder;
+}
+
+.accept-task-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.delete-btn-task {
+  outline: 0;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 2px solid #ff4742;
+  color: white;
+  background: #ff4742;
+  padding: 8px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+  height: 80%;
+  width: 18%;
+  margin-right: 1vw;
+  font-weight: bolder;
+}
+
+.delete-btn-task:hover {
+  background-color: white;
+  color: black;
+}
+
+.edit-btn-task {
+  outline: 0;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 2px solid rgb(255, 208, 66);
+  color: white;
+  background: rgb(255, 208, 66);
+  padding: 8px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+  height: 80%;
+  width: 18%;
+  margin-right: 1vw;
+  font-weight: bolder;
+}
+
+.edit-btn-task:hover {
+  background-color: white;
+  color: black;
 }
 
 .button-container {
   display: flex;
   justify-content: flex-end;
+}
+
+.save-edit-btn-task {
+  outline: 0;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 2px solid rgb(255, 208, 66);
+  color: white;
+  background: rgb(255, 208, 66);
+  padding: 8px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+  height: 100%;
+  width: 100%;
+  margin-right: 1vw;
+  font-weight: bolder;
+}
+
+.save-edit-btn-task:hover {
+  background-color: white;
+  color: black;
+  scale: 1.1;
 }

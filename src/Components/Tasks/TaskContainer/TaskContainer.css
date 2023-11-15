@@ -10,10 +10,59 @@
   font-family: var(--font-body);
 }
 
-.addtask-container {
-  display: inline-block;
-  outline: none;
+
+
+.addtask-btn:hover {
+  transform: scale(1.04);
+  background-color: rgb(107, 107, 228);
+}
+
+.add-task-input-btn {
   cursor: pointer;
+  display: inline-block;
+  outline: 0;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  padding: 9px 22px;
+  font-size: 22px;
+  height: 50px;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  line-height: normal;
+  background: linear-gradient(90deg, #5522fa 0, #0074e4 100%);
+  border-radius: 50px;
+  transition: color .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+
+.add-task-input-btn:hover {
+  box-shadow: 0 0 0 0.15rem #5ceace;
+  scale: 1.1;
+}
+
+.add-task {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 3vw;
+  grid-row-gap: 1vh;
+}
+
+.add-task-center {
+  text-align: center;
+}
+
+select {
+  font: inherit;
+}
+
+option {
+  height: 30px;
+}
+
+.addtask-btn {
+  cursor: pointer;
+  outline: none;
   font-size: 14px;
   line-height: 1;
   border-radius: 500px;
@@ -30,24 +79,4 @@
   color: #fff;
   background-color: var(--user-blue);
   margin-bottom: 1vh;
-}
-
-.addtask-container:hover {
-  transform: scale(1.04);
-  background-color: rgb(107, 107, 228);
-}
-
-.add-task {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-column-gap: 1vw;
-  grid-row-gap: 1vh;
-}
-
-select {
-  font: inherit;
-}
-
-option {
-  height: 30px;
 }

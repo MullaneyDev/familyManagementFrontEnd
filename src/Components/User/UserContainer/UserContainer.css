@@ -7,6 +7,7 @@
   align-content: center;
   margin-top: 30vh;
 }
+
 .Form {
   display: grid;
   grid-gap: 5px;
@@ -15,30 +16,41 @@
   justify-content: center;
   margin: 20px;
 }
+
 .logoLarge {
   max-width: 20vw;
   align-self: center;
 }
+
 .register {
   display: grid;
   border: solid var(--user-blue);
   border-radius: 10px;
 }
+
 .login {
   display: grid;
   border: solid var(--user-blue);
   border-radius: 10px;
 }
+
 .formHeader {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
+
 .Btn {
-    justify-self: center;
-    width: 10vw;
-    height: 5vh;
-    font-family: inherit;
-    font-size: x-large;
-    background-color: var(--user-blue);
-    border: solid var(--user-blue);
-    border-radius: 10px;
+  justify-self: center;
+  width: 10vw;
+  height: 5vh;
+  font-family: inherit;
+  font-size: x-large;
+  background-color: var(--user-blue);
+  border: solid var(--user-blue);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.Btn:hover {
+  scale: 1.1;
 }

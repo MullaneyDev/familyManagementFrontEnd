@@ -36,61 +36,69 @@ const TaskCard = ({
 
           <p>{task.points}</p>
           <div className="button-container">
-            
+            <button
+              className="accept-task-btn"
+              onClick={(e) => handleTask(e, user.id, task.id, "assign", index)}
+            >
+              Accept
+            </button>
 
-          <button
-            className="Assigned"
-            onClick={(e) => handleTask(e, user.id, task.id, "assign", index)}
-          >
-            Accept Task
-          </button>
+            <button
+              className="edit-btn-task"
+              onClick={() => setModalEditTask(true)}
+            >
+              Edit
+            </button>
+            <Modal
+              className="ModalStyle"
+              isOpen={modalEditTask}
+              onRequestClose={() => setModalEditTask(false)}
+            >
+              <div className="addtask-container">
+                <h3>Edit Task Details</h3>
+                <form className="add-task" onSubmit={handleCloseOnSubmit}>
+                  <input
+                    type="text"
+                    name="taskname"
+                    className="input-field"
+                    placeholder="Edit Task"
+                    defaultValue={tasknameDefault}
+                    required="true"
+                    onChange={(e) => changeHandler(e)}
+                  />
 
-          <button className="edit" onClick={() => setModalEditTask(true)}>
-            Edit
-          </button>
-          <Modal
-            className="ModalStyle"
-            isOpen={modalEditTask}
-            onRequestClose={() => setModalEditTask(false)}
-          >
-            <div className="addtask-container">
-              <form className="add-task" onSubmit={handleCloseOnSubmit}>
-                <label>Edit Task Details</label>
-                <input
-                  type="text"
-                  name="taskname"
-                  className="input-field"
-                  placeholder="Edit Task"
-                  defaultValue={tasknameDefault}
-                  required="true"
-                  onChange={(e) => changeHandler(e)}
-                />
+                  <select
+                    required
+                    defaultValue={task.points}
+                    onChange={(e) => handleSetPoints(e.target.value)}
+                  >
+                    {pointOptions.map((option) => (
+                      <option
+                        disabled={option.disabled}
+                        key={option.value}
+                        value={option.value}
+                      >
+                        {option.display}
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    className="save-edit-btn-task"
+                    type="submit"
+                    value="Save Edit"
+                  />
+                </form>
+              </div>
+            </Modal>
 
-                <select
-                  required
-                  defaultValue={task.points}
-                  onChange={(e) => handleSetPoints(e.target.value)}
-                >
-                  {pointOptions.map((option) => (
-                    <option
-                      disabled={option.disabled}
-                      key={option.value}
-                      value={option.value}
-                    >
-                      {option.display}
-                    </option>
-                  ))}
-                </select>
-                <input type="submit" value="Save Edit" />
-              </form>
-            </div>
-          </Modal>
-
-          <button className="Delete" onClick={(e) => handleDelete(e, task.id)}>
-            Delete Task
-          </button>
+            <button
+              className="delete-btn-task"
+              onClick={(e) => handleDelete(e, task.id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
-      </div>
       </div>
     );
   }
@@ -102,10 +110,10 @@ const TaskCard = ({
         <p>{task.points}</p>
 
         <button
-          className="Assigned"
+          className="accept-task-btn"
           onClick={(e) => handleTask(e, user.id, task.id, "assign", index)}
         >
-          Accept Task
+          Accept
         </button>
       </div>
     </div>

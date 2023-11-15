@@ -27,7 +27,18 @@
   font-family: var(--font-body);
   background-color: var(--user-blue);
   border: none;
+  cursor: pointer;
 }
+
+.accountBtn:hover {
+  border: 2px solid var(--user-blue);
+  scale: 1.1;
+}
+
 .avatar {
   max-height: 10vh;
+}
+
+.accountOptions {
+  cursor: pointer;
 }
