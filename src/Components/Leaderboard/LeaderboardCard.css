@@ -1,0 +1,12 @@
+.leaderboardCard {
+    display: grid;
+    grid-template-columns: 10vh 1fr 1fr 5vw;
+    grid-template-rows: 1fr;
+    border: solid white;
+    height: 10vh;
+    border-radius: 10px;
+    font-size: xx-large;
+}
+.avatar {
+    max-height: 10vh;
+}

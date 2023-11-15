@@ -1,0 +1,33 @@
+.ModalStyle {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: antiquewhite;
+  border: solid;
+  border-radius: 10px;
+  padding: 25px;
+  grid-gap: 5px;
+  column-gap: 10px;
+}
+
+.collapsible {
+  display: grid;
+  position: absolute;
+  width: 4vw;
+  align-self: bottom;
+  justify-self: end;
+  margin-right: 3vw;
+}
+
+.accountBtn {
+  font-family: var(--font-body);
+  background-color: var(--user-blue);
+  border: none;
+}
+.avatar {
+  max-height: 10vh;
+}

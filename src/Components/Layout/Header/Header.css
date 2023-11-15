@@ -1,0 +1,22 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  justify-content: space-around;
+  height: 6vh;
+  align-content: center;
+  color: #1b3358;
+  background-image: linear-gradient(var(--user-blue), white);
+  font-family: var(--font-brand);
+}
+
+.signIn {
+  font-family: var(--font-body);
+  align-self: center;
+}
+
+.accountOptions {
+  font-size: x-large;
+}

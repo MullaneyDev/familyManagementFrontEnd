@@ -1,0 +1,44 @@
+.userContainer {
+  display: grid;
+  grid-template-columns: 25vw 25vw 25vw;
+  grid-template-rows: 100%;
+  grid-gap: 5px;
+  justify-self: center;
+  align-content: center;
+  margin-top: 30vh;
+}
+.Form {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 80%;
+  align-content: center;
+  justify-content: center;
+  margin: 20px;
+}
+.logoLarge {
+  max-width: 20vw;
+  align-self: center;
+}
+.register {
+  display: grid;
+  border: solid var(--user-blue);
+  border-radius: 10px;
+}
+.login {
+  display: grid;
+  border: solid var(--user-blue);
+  border-radius: 10px;
+}
+.formHeader {
+    margin-bottom: 0px;
+}
+.Btn {
+    justify-self: center;
+    width: 10vw;
+    height: 5vh;
+    font-family: inherit;
+    font-size: x-large;
+    background-color: var(--user-blue);
+    border: solid var(--user-blue);
+    border-radius: 10px;
+}
