@@ -16,7 +16,18 @@
   margin-right: 3vw;
   justify-content: space-between;
 }
-.Buttons {
+button {
+  border: none;
+  border-radius: 10px;
+  height: 80%;
+  width: 50%;
+  margin: 0px 5px;
+}
+
+.button-container {
   display: flex;
-  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 50%;
+  height: 100%;
 }
