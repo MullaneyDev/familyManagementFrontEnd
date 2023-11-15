@@ -50,7 +50,7 @@ const ActiveTaskCard = ({
         >
           Recycle Task
         </button>
-
+        </div>
       </div>
     </div>
   );
