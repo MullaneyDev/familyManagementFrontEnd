@@ -45,6 +45,18 @@ nav {
   text-decoration: none;
 }
 
+.calendarlink {
+  height: 15vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: 5vh 10vh;
+  width: 20vw;
+  background-color: var(--user-blue);
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+}
 .navimg {
   height: 9vh;
 }
