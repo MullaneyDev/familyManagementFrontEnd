@@ -91,6 +91,7 @@ const TaskCard = ({
           </button>
         </div>
       </div>
+      </div>
     );
   }
   return (
