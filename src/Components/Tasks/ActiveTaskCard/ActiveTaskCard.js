@@ -3,13 +3,11 @@ import "./ActiveTaskCard.css";
 import { deleteTask, updatePoints } from "../../../Utils";
 
 const ActiveTaskCard = ({
-  key,
   task,
   user,
   activeTasks,
   setActiveTasks,
   handleTask,
-  action,
   members,
   setMembers,
   index,
