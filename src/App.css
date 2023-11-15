@@ -31,7 +31,8 @@ nav {
   text-decoration: none;
 }
 
-.leaderboardlink {
+.leaderboardlink,
+.rewardslink {
   height: 15vh;
   display: grid;
   justify-content: center;
