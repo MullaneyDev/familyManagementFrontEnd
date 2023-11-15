@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ProfileSelection.css";
-import { addMember, getFamilyTasks } from "../../../Utils";
+import { addMember } from "../../../Utils";
 import CreateMember from "./CreateMember";
 import ProfileCard from "./ProfileCard";
 
