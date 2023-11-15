@@ -7,6 +7,7 @@
   justify-content: space-between;
   border-radius: 10px;
 }
+
 .ActiveTaskCardInner {
   display: flex;
   align-items: center;
@@ -16,7 +17,9 @@
   margin-right: 3vw;
   justify-content: space-between;
 }
-button {
+
+.Done,
+.Delete {
   border: none;
   border-radius: 10px;
   height: 80%;

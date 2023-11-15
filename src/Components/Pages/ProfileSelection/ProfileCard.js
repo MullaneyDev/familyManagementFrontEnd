@@ -1,29 +1,45 @@
-import React, { useState } from 'react'
-import Modal from 'react-modal';
-import { deleteMember } from '../../../Utils';
+import React, { useState } from "react";
+import { deleteMember, getFamilyTasks } from "../../../Utils";
+import Modal from "react-modal";
 
-Modal.setAppElement("#root");
+const ProfileCard = ({
+  user,
+  i,
+  setColour,
+  setLoggedIn,
+  setUser,
+  setAdmin,
+  setActiveTasks,
+  setNullTasks,
+  members,
+  setMembers,
+}) => {
+  const [modalDelete, setModalDelete] = useState(false);
+  const loginHandler = async (user) => {
+    await setLoggedIn(true);
+    await setUser(user);
+    await setAdmin(user.admin);
+    const result = await getFamilyTasks(user);
+    await setActiveTasks(result.activeTasks);
+    await setNullTasks(result.nullTasks);
+  };
 
+  const deleteMemberOnClick = async (id, i) => {
+    let storedMember = [...members];
+    storedMember.splice(i, 1);
+    setMembers(storedMember);
+    setColour("");
+    setModalDelete(false);
+    await deleteMember(id);
+  };
 
-const ProfileCard = ({user, index, loginHandler, members, setMembers, setColour}) => {
-    const [modal, setModal] = useState(false)
-    const openModal = async () => {
-      await setModal(true);
-    };
+  const closeModal = async () => {
+    setModalDelete(false);
+  };
 
-    const closeModal = async () => {
-      await setModal(false);
-    };
-
-      const deleteMemberOnClick = async (id, i) => {
-        await deleteMember(id);
-        let storedMember = [...members];
-        storedMember.splice(i, 1);
-        setMembers(storedMember);
-        setColour("");
-        closeModal()
-      };
-
+  const openModal = async () => {
+    setModalDelete(true);
+  };
   return (
     <div className="indi-user-container">
       <img className="map-item-img" src={user.url} alt="avatar" />
@@ -32,22 +48,27 @@ const ProfileCard = ({user, index, loginHandler, members, setMembers, setColour}
       <button className="login-button" onClick={() => loginHandler(user)}>
         Login
       </button>
-      <button
-        className="delete-button"
-        onClick={() => openModal()}
-      >
+      <button className="delete-button" onClick={() => openModal()}>
         Delete
       </button>
       <Modal
-      className="ModalStyle"
-      isOpen={modal}
-      onRequestClose={() => closeModal()}>
+        className="ModalStyle"
+        isOpen={modalDelete}
+        onRequestClose={() => closeModal()}
+      >
         <>
-        <h2>Are you sure you want to delete?</h2>
-        <button onClick={() => deleteMemberOnClick(user.id, index)}>Confirm Delete</button></>
+          <h3>Are you sure you want to delete member</h3>
+          <h2>{`${user.name}`}</h2>
+          <button
+            className="delete-button"
+            onClick={() => deleteMemberOnClick(user.id, i)}
+          >
+            Confirm Delete
+          </button>
+        </>
       </Modal>
     </div>
   );
-}
+};
 
-export default ProfileCard
+export default ProfileCard;

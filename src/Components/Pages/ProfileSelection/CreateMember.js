@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 
 const CreateMember = ({
@@ -7,38 +7,35 @@ const CreateMember = ({
   colour,
   setColour,
   changeHandler,
-  setModalLogout,
-  modalLogout,
   members,
+  userModalLogout,
+  setUserModalLogout,
 }) => {
   const changeColor = async (value) => {
     setColour(value);
   };
 
-  const closeModal = async (setter) => {
-    await setter(false);
-    await setColour();
+  const closeModal = async () => {
+    setUserModalLogout(false);
+    setColour();
   };
 
-  const openModal = async (setter) => {
-    await setter(true);
+  const openModal = async () => {
+    setUserModalLogout(true);
   };
 
   return (
     <div>
       <section className="top-page">
         <h1>Who are you?</h1>
-        <button
-          className="create-new-user"
-          onClick={() => openModal(setModalLogout)}
-        >
+        <button className="create-new-user" onClick={() => openModal()}>
           Create New User
         </button>
       </section>
       <Modal
         className="ModalStyle"
-        isOpen={modalLogout}
-        onRequestClose={() => closeModal(setModalLogout)}
+        isOpen={userModalLogout}
+        onRequestClose={() => closeModal()}
       >
         <form className="add-member-container" onSubmit={handleAddMemberSubmit}>
           <input

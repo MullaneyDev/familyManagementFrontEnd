@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./ProfileSelection.css";
-import { addMember, deleteMember, getFamilyTasks } from "../../../Utils";
+import { addMember } from "../../../Utils";
 import CreateMember from "./CreateMember";
+import ProfileCard from "./ProfileCard";
 
 const ProfileSelection = ({
   setAdmin,
@@ -17,7 +18,7 @@ const ProfileSelection = ({
   const [addAdmin, setAddAdmin] = useState(false);
   const [colour, setColour] = useState();
   const [totalPoints, setTotalPoints] = useState(0);
-  const [modalLogout, setModalLogout] = useState(false);
+  const [userModalLogout, setUserModalLogout] = useState(false);
 
   const handleAddMemberSubmit = async (e) => {
     e.preventDefault();
@@ -26,17 +27,9 @@ const ProfileSelection = ({
     let storedMember = [...members];
     storedMember.push(response.result);
     setMembers(storedMember);
-    setModalLogout(false);
+    setUserModalLogout(false);
     setColour("");
     setAddAdmin(false);
-  };
-
-  const deleteMemberOnClick = async (id, i) => {
-    await deleteMember(id);
-    let storedMember = [...members];
-    storedMember.splice(i, 1);
-    setMembers(storedMember);
-    setColour("");
   };
 
   const changeHandler = (e) => {
@@ -44,15 +37,6 @@ const ProfileSelection = ({
     setUrl(
       `https://api.multiavatar.com/${e.target.value}.svg?apikey=yWrOSvTVeZ4RFA`
     );
-  };
-
-  const loginHandler = async (user) => {
-    await setLoggedIn(true);
-    await setUser(user);
-    await setAdmin(user.admin);
-    const result = await getFamilyTasks(user);
-    await setActiveTasks(result.activeTasks);
-    await setNullTasks(result.nullTasks);
   };
 
   const adminPriv = async () => {
@@ -67,32 +51,26 @@ const ProfileSelection = ({
         colour={colour}
         setColour={setColour}
         changeHandler={changeHandler}
-        setModalLogout={setModalLogout}
-        modalLogout={modalLogout}
         members={members}
+        setUserModalLogout={setUserModalLogout}
+        userModalLogout={userModalLogout}
       />
       <div className="netflix-container">
-        {members.map((user, i) => {
-          return (
-            <div key={i} className="indi-user-container">
-              <img className="map-item-img" src={user.url} alt="avatar" />
-              <h4>{user.name}</h4>
-              <h5>{user.admin ? "Admin ✔" : ""}</h5>
-              <button
-                className="login-button"
-                onClick={() => loginHandler(user)}
-              >
-                Login
-              </button>
-              <button
-                className="delete-button"
-                onClick={() => deleteMemberOnClick(user.id, i)}
-              >
-                Delete
-              </button>
-            </div>
-          );
-        })}
+        {members.map((user, i) => (
+          <ProfileCard
+            user={user}
+            key={i}
+            i={i}
+            setColour={setColour}
+            setLoggedIn={setLoggedIn}
+            setUser={setUser}
+            setAdmin={setAdmin}
+            setActiveTasks={setActiveTasks}
+            setNullTasks={setNullTasks}
+            members={members}
+            setMembers={setMembers}
+          />
+        ))}
       </div>
     </div>
   );
