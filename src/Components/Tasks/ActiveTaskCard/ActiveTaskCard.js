@@ -13,8 +13,6 @@ const ActiveTaskCard = ({
   members,
   setMembers,
   index,
-
-
 }) => {
   const colour = user.colour;
 
@@ -40,16 +38,19 @@ const ActiveTaskCard = ({
 
         <p>{task.points}</p>
         <div className="button-container">
-          <button className="Done" onClick={(e) => completeTask(e, key)}>
-            Completed
+          <button
+            className="complete-button-task"
+            onClick={(e) => completeTask(e, key)}
+          >
+            Completed ✔️
           </button>
 
-        <button
-          className="Delete"
-          onClick={(e) => handleTask(e, user.id, task.id, "unassign", index)}
-        >
-          Recycle Task
-        </button>
+          <button
+            className="recycle-button-task"
+            onClick={(e) => handleTask(e, user.id, task.id, "unassign", index)}
+          >
+            Recycle Task ♻️
+          </button>
         </div>
       </div>
     </div>

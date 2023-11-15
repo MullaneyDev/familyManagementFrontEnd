@@ -119,7 +119,7 @@ const TaskContainer = ({
     return (
       <div className="TaskContainer">
         <button
-          className="addtask-container"
+          className="addtask-btn"
           onClick={() => openModal(setModalAddTask)}
         >
           Add New Family Task
@@ -130,13 +130,13 @@ const TaskContainer = ({
           onRequestClose={() => closeModal(setModalAddTask)}
         >
           <div className="addtask-container">
+            <h3 className="add-task-center">Add a family Task</h3>
             <form className="add-task" onSubmit={handleTaskSubmit}>
-              <label>Add a Family Task</label>
               <input
                 type="text"
                 name="taskname"
                 className="input-field"
-                placeholder="New task info"
+                placeholder="New task name"
                 value={taskname}
                 required="true"
                 onChange={(e) => changeHandler(e)}
@@ -157,7 +157,11 @@ const TaskContainer = ({
                   </option>
                 ))}
               </select>
-              <input type="submit" value="Add Task" />
+              <input
+                className="add-task-input-btn"
+                type="submit"
+                value="Add Task"
+              />
             </form>
             {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
           </div>
