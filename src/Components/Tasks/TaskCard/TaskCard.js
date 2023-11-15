@@ -37,17 +37,18 @@ const TaskCard = ({
           <p>{task.taskname}</p>
 
           <p>{task.points}</p>
+          <div className="button-container">
+            <button
+              className="Assigned"
+              onClick={(e) => handleTask(e, user.id, task.id, "assign")}
+            >
+              Accept Task
+            </button>
 
-          <button
-            className="Assigned"
-            onClick={(e) => handleTask(e, user.id, task.id, "assign")}
-          >
-            Accept Task
-          </button>
-
-          <button className="edit" onClick={() => setModalEditTask(true)}>
-            Edit
-          </button>
+            <button className="edit" onClick={() => setModalEditTask(true)}>
+              Edit
+            </button>
+          </div>
           <Modal
             className="ModalStyle"
             isOpen={modalEditTask}
