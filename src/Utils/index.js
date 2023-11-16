@@ -311,6 +311,7 @@ export const assignMember = async (MemberId, taskid, action) => {
 
 export const editTaskDetails = async (id, taskname, points) => {
   try {
+    console.log("YOYOYO", id, taskname, points);
     const token = getTokenFromCookie("jwt_token");
     const response = await fetch(
       `${process.env.REACT_APP_BASE_URL}/task/editTask`,

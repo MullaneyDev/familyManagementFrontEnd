@@ -16,13 +16,28 @@ const TaskCard = ({
   handleDelete,
   admin,
   index,
+  nullTasks,
+  setNullTasks,
 }) => {
   const [modalEditTask, setModalEditTask] = useState(false);
-  const tasknameDefault = task.taskname;
+  const [tempTask, setTempTask] = useState({ ...task });
 
   const handleCloseOnSubmit = (e) => {
-    handleEditTask(e, task.id, taskname, points);
+    handleEditTask(e, task.id, tempTask.taskname, tempTask.points);
+
+    const newNullTasks = [...nullTasks];
+    const index = newNullTasks.findIndex((task) => task.id === tempTask.id);
+    newNullTasks[index] = tempTask;
+    setNullTasks(newNullTasks);
+
     setModalEditTask(false);
+  };
+
+  const tempHandler = (e) => {
+    setTempTask({ ...tempTask, taskname: e.target.value });
+  };
+  const handleTempPoints = (e) => {
+    setTempTask({ ...tempTask, points: e.target.value });
   };
 
   if (admin) {
@@ -59,15 +74,15 @@ const TaskCard = ({
                     name="taskname"
                     className="input-field"
                     placeholder="Edit Task"
-                    defaultValue={tasknameDefault}
+                    value={tempTask.taskname}
                     required="true"
-                    onChange={(e) => changeHandler(e)}
+                    onChange={(e) => tempHandler(e)}
                   />
 
                   <select
                     required
-                    defaultValue={task.points}
-                    onChange={(e) => handleSetPoints(e.target.value)}
+                    value={tempTask.points}
+                    onChange={(e) => handleTempPoints(e)}
                   >
                     {pointOptions.map((option) => (
                       <option
