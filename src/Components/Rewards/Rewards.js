@@ -22,7 +22,7 @@ const Rewards = ({ rewards, setRewards, admin, members, user }) => {
       setRewards(response.result);
     };
     getData();
-  }, []);
+  }, [setRewards]);
 
   const rewardsOrdered = rewards.sort(function (a, b) {
     return b.rewardPoints - a.rewardPoints;
