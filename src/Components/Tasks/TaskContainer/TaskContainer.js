@@ -14,7 +14,6 @@ const TaskContainer = ({
   setActiveTasks,
   nullTasks,
   setNullTasks,
-  setTasks,
   user,
   action,
   members,
@@ -180,6 +179,7 @@ const TaskContainer = ({
             members={members}
             setMembers={setMembers}
             admin={admin}
+            index={index}
           />
         ))}
         <h2>Available Challenges</h2>
@@ -202,6 +202,7 @@ const TaskContainer = ({
             setPoints={setPoints}
             handleSetPoints={handleSetPoints}
             admin={admin}
+            index={index}
           />
         ))}
       </div>

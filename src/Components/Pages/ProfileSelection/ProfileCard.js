@@ -58,7 +58,7 @@ const ProfileCard = ({
       >
         <>
           <h3>Are you sure you want to delete member</h3>
-          <h2>{`${user.name}`}</h2>
+          <h2>{user.name}</h2>
           <button
             className="delete-button"
             onClick={() => deleteMemberOnClick(user.id, i)}

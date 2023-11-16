@@ -3,30 +3,27 @@ import "./ActiveTaskCard.css";
 import { deleteTask, updatePoints } from "../../../Utils";
 
 const ActiveTaskCard = ({
-  key,
   task,
   user,
   activeTasks,
   setActiveTasks,
   handleTask,
-  action,
-  members,
   setMembers,
   index,
 }) => {
   const colour = user.colour;
 
-  const completeTask = async (e, key) => {
+  const completeTask = async (e, index) => {
     e.preventDefault();
     const userId = user.id;
     const points = task.points;
     const totalPoints = user.totalPoints;
-    const response = await updatePoints(userId, points, totalPoints);
-    const memberArray = [...members];
-    memberArray.push(response.result);
+    const FamilyId = user.FamilyId;
+    const response = await updatePoints(userId, points, totalPoints, FamilyId);
+    const memberArray = response.members;
     setMembers(memberArray);
     const updateArray = [...activeTasks];
-    updateArray.splice(key, 1);
+    updateArray.splice(index, 1);
     setActiveTasks(updateArray);
     await deleteTask(task.id);
   };
@@ -40,7 +37,7 @@ const ActiveTaskCard = ({
         <div className="button-container">
           <button
             className="complete-button-task"
-            onClick={(e) => completeTask(e, key)}
+            onClick={(e) => completeTask(e, index)}
           >
             Completed ✔️
           </button>

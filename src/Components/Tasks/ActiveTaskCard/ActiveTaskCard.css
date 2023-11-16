@@ -27,49 +27,40 @@
 }
 
 .complete-button-task {
-  cursor: pointer;
   display: inline-block;
-  outline: 0;
-  border: 0;
+  outline: none;
   cursor: pointer;
   font-weight: 600;
-  color: #fff;
-  font-size: 14px;
-  height: 80%;
-  width: 100%;
+  border-radius: 3px;
+  border: 0;
+  height: 4vh;
+  width: 10vw;
   margin-right: 1vw;
-  padding: 8px 24px;
-  border-radius: 50px;
-  background-image: linear-gradient(180deg, #35825e,
-      #3ce03c);
-  box-shadow: 0 4px 11px 0 rgb(37 44 97 / 15%), 0 1px 3px 0 rgb(93 100 148 / 20%);
-  transition: all .2s ease-out;
+  color: #000021;
+  background: #1de9b6;
+  font-size: 16px;
 }
 
 .complete-button-task:hover {
-  box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
-  height: 100%;
+  transition: all .1s ease;
+  box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
 }
 
 .recycle-button-task {
-  cursor: pointer;
   display: inline-block;
-  outline: 0;
-  border: 0;
+  outline: none;
   cursor: pointer;
   font-weight: 600;
-  color: #fff;
-  font-size: 14px;
-  height: 80%;
-  width: 100%;
-  padding: 8px 24px;
-  border-radius: 50px;
-  background-image: linear-gradient(180deg, rgb(127, 144, 73), #c2e03c);
-  box-shadow: 0 4px 11px 0 rgb(37 44 97 / 15%), 0 1px 3px 0 rgb(93 100 148 / 20%);
-  transition: all .2s ease-out;
+  border-radius: 3px;
+  border: 0;
+  height: 4vh;
+  width: 10vw;
+  color: #000021;
+  background: #1de9b6;
+  font-size: 16px;
 }
 
 .recycle-button-task:hover {
-  box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
-  height: 100%;
+  transition: all .1s ease;
+  box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
 }

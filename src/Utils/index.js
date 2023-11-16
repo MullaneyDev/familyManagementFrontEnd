@@ -257,7 +257,7 @@ export const addFamilyTask = async (taskname, points) => {
   }
 };
 
-export const updatePoints = async (user, points, totalPoints) => {
+export const updatePoints = async (user, points, totalPoints, FamilyId) => {
   try {
     const newTotalPoints = totalPoints + points;
     const response = await fetch(
@@ -269,6 +269,7 @@ export const updatePoints = async (user, points, totalPoints) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          FamilyId: FamilyId,
           id: user,
           newTotalPoints: newTotalPoints,
         }),
