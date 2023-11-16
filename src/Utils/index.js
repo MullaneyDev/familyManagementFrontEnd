@@ -23,14 +23,17 @@ export const authCheck = async (jwt) => {
 export const findFamilyMembers = async () => {
   try {
     const token = getTokenFromCookie("jwt_token");
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/member/familyMembers`, {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/member/familyMembers`,
+      {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     const data = await response.json();
     return data;
   } catch (error) {
@@ -348,6 +351,90 @@ export const deleteTask = async (id) => {
         }),
       }
     );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getRewards = async () => {
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/reward`, {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const addFamilyReward = async (tier, rewardPoints) => {
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/reward`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        tier: tier,
+        rewardPoints: parseInt(rewardPoints),
+      }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteReward = async (id) => {
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/reward`, {
+      method: "DELETE",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        id: id,
+      }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const editReward = async (id, tier, rewardPoints) => {
+  try {
+    const token = getTokenFromCookie("jwt_token");
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/reward`, {
+      method: "PUT",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        id: id,
+        tier: tier,
+        rewardPoints: parseInt(rewardPoints),
+      }),
+    });
     const data = await response.json();
     return data;
   } catch (error) {

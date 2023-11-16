@@ -126,7 +126,9 @@ function App() {
           />
           <Route
             path="/rewards"
-            element={<Rewards rewards={rewards} setRewards={setRewards} />}
+            element={
+              <Rewards rewards={rewards} setRewards={setRewards} user={user} />
+            }
           />
           <Route path="/calendar" element={<Calendar />} />
         </Routes>
