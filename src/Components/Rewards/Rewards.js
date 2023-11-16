@@ -1,7 +1,10 @@
 import React from "react";
-import "./Rewards.css"
+import "./Rewards.css";
 
 const Rewards = () => {
+  //useeffect to get
+  //add edit and delete protected by admin
+  // map through globalstate that will hold the get request
   return (
     <div className="rewardWindow">
       <h1>Rewards</h1>

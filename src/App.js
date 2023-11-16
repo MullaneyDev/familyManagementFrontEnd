@@ -17,7 +17,6 @@ import calendarimg from "./assets/calendar.svg";
 
 import Calendar from "./Components/FullCalendar";
 
-
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [admin, setAdmin] = useState(false);
@@ -28,6 +27,7 @@ function App() {
   const [activeTasks, setActiveTasks] = useState([]);
   const [nullTasks, setNullTasks] = useState([]);
   const [isDark, setIsDark] = useState(false);
+  const [rewards, setRewards] = useState([]);
 
   useEffect(() => {
     if (document.cookie) {
@@ -124,7 +124,10 @@ function App() {
             path="/leaderboard"
             element={<Leaderboard members={members} setMembers={setMembers} />}
           />
-          <Route path="/rewards" element={<Rewards />} />
+          <Route
+            path="/rewards"
+            element={<Rewards rewards={rewards} setRewards={setRewards} />}
+          />
           <Route path="/calendar" element={<Calendar />} />
         </Routes>
         <nav>
