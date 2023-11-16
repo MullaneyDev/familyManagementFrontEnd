@@ -8,7 +8,6 @@ const ActiveTaskCard = ({
   activeTasks,
   setActiveTasks,
   handleTask,
-  members,
   setMembers,
   index,
 }) => {
@@ -19,9 +18,9 @@ const ActiveTaskCard = ({
     const userId = user.id;
     const points = task.points;
     const totalPoints = user.totalPoints;
-    const response = await updatePoints(userId, points, totalPoints);
-    const memberArray = [...members];
-    memberArray.push(response.result);
+    const FamilyId = user.FamilyId;
+    const response = await updatePoints(userId, points, totalPoints, FamilyId);
+    const memberArray = response.members;
     setMembers(memberArray);
     const updateArray = [...activeTasks];
     updateArray.splice(index, 1);
