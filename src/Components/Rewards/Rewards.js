@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import RewardsCard from "./RewardsCard/RewardsCard";
 import Modal from "react-modal";
 
-const Rewards = ({ rewards, setRewards, admin }) => {
+const Rewards = ({ rewards, setRewards, admin, members, user }) => {
   const [tier, setTier] = useState();
   const [rewardPoints, setRewardPoints] = useState();
   const [isOpen, setIsOpen] = useState(false);
@@ -78,45 +78,51 @@ const Rewards = ({ rewards, setRewards, admin }) => {
     <div className="rewardWindow">
       <h1>Rewards</h1>
       <div className="addreward-container">
-        <h3 className="add-reward-center">Add a family Reward</h3>
-        <form className="add-reward" onSubmit={handleRewardSubmit}>
-          <input
-            type="text"
-            name="tier"
-            className="input-field"
-            placeholder="New reward"
-            value={tier}
-            required="true"
-            onChange={(e) => changeHandler(e)}
-          />
+        {user.admin === true ? (
+          <>
+            <h3 className="add-reward-center">Add a family Reward</h3>
+            <form className="add-reward" onSubmit={handleRewardSubmit}>
+              <input
+                type="text"
+                name="tier"
+                className="input-field"
+                placeholder="New reward"
+                value={tier}
+                required="true"
+                onChange={(e) => changeHandler(e)}
+              />
 
-          <select
-            required
-            value={rewardPoints}
-            onChange={(e) => handleSetPoints(e.target.value)}
-          >
-            {pointOptions.map((option) => (
-              <option
-                disabled={
-                  rewards.findIndex(
-                    (reward) => reward.rewardPoints === option.value
-                  ) === -1
-                    ? false
-                    : true
-                }
-                key={option.value}
-                value={option.value}
+              <select
+                required
+                value={rewardPoints}
+                onChange={(e) => handleSetPoints(e.target.value)}
               >
-                {option.display}
-              </option>
-            ))}
-          </select>
-          <input
-            className="add-reward-input-btn"
-            type="submit"
-            value="Add Reward"
-          />
-        </form>
+                {pointOptions.map((option) => (
+                  <option
+                    disabled={
+                      rewards.findIndex(
+                        (reward) => reward.rewardPoints === option.value
+                      ) === -1
+                        ? false
+                        : true
+                    }
+                    key={option.value}
+                    value={option.value}
+                  >
+                    {option.display}
+                  </option>
+                ))}
+              </select>
+              <input
+                className="add-reward-input-btn"
+                type="submit"
+                value="Add Reward"
+              />
+            </form>
+          </>
+        ) : (
+          <div></div>
+        )}
       </div>
       <div className="map-container-reward">
         {rewardsOrdered.map((reward, index) => (

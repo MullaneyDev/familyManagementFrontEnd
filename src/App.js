@@ -127,7 +127,12 @@ function App() {
           <Route
             path="/rewards"
             element={
-              <Rewards rewards={rewards} setRewards={setRewards} user={user} />
+              <Rewards
+                rewards={rewards}
+                setRewards={setRewards}
+                user={user}
+                members={members}
+              />
             }
           />
           <Route path="/calendar" element={<Calendar />} />

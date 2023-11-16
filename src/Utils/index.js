@@ -420,7 +420,6 @@ export const deleteReward = async (id) => {
 };
 
 export const editReward = async (id, tier, rewardPoints) => {
-  console.log(id, tier, rewardPoints);
   try {
     const token = getTokenFromCookie("jwt_token");
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/reward`, {
