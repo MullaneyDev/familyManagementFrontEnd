@@ -14,9 +14,9 @@ const ProfileSelection = ({
   setNullTasks,
 }) => {
   const [name, setName] = useState([]);
-  const [url, setUrl] = useState();
+  const [url, setUrl] = useState("");
   const [addAdmin, setAddAdmin] = useState(false);
-  const [colour, setColour] = useState();
+  const [colour, setColour] = useState("");
   const [totalPoints, setTotalPoints] = useState(0);
   const [userModalLogout, setUserModalLogout] = useState(false);
 
