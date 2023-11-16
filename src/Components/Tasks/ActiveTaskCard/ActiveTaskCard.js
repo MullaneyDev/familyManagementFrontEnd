@@ -39,14 +39,14 @@ const ActiveTaskCard = ({
             className="complete-button-task"
             onClick={(e) => completeTask(e, index)}
           >
-            Completed ✔️
+            Completed
           </button>
 
           <button
             className="recycle-button-task"
             onClick={(e) => handleTask(e, user.id, task.id, "unassign", index)}
           >
-            Recycle Task ♻️
+            Recycle
           </button>
         </div>
       </div>
