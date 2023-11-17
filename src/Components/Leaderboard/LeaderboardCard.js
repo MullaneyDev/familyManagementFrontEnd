@@ -24,7 +24,7 @@ const LeaderboardCard = ({ member }) => {
           ? "Kick Boxer"
           : member.totalPoints >= 900 && member.totalPoints < 1000
           ? "Box Office"
-          : member.totalPoints >= 1000 
+          : member.totalPoints >= 1000
           ? "Pandora's Box"
           : "Who are you?"}
       </p>

@@ -28,31 +28,32 @@
 
 .complete-button-task {
   cursor: pointer;
-  font-weight: 300;
   border-radius: 8px;
-  border: 0;
+  border: 2px solid #20e91d;
   padding: 6px;
   margin-right: 1vw;
   background: #20e91d;
-  font-size: 16px;
+  font-weight: bolder;
+  color: white;
 }
 
 .complete-button-task:hover {
-  transition: all .1s ease;
+  transition: all 0.1s ease;
   scale: 1.1;
 }
 
 .recycle-button-task {
   cursor: pointer;
-  font-weight: 300;
   border-radius: 8px;
-  border: 0;
+  border: 2px solid #e9911d;
+
   background: #e9911d;
-  font-size: 16px;
   padding: 6px;
+  font-weight: bolder;
+  color: white;
 }
 
 .recycle-button-task:hover {
-  transition: all .1s ease;
+  transition: all 0.1s ease;
   scale: 1.1;
 }
