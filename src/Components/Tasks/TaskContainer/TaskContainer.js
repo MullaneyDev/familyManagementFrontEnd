@@ -19,6 +19,7 @@ const TaskContainer = ({
   members,
   setMembers,
   admin,
+  setUser
 }) => {
   const [taskname, setTaskname] = useState();
   const [points, setPoints] = useState();
@@ -172,6 +173,7 @@ const TaskContainer = ({
             task={task}
             key={index}
             user={user}
+            setUser={setUser}
             activeTasks={activeTasks}
             setActiveTasks={setActiveTasks}
             handleTask={handleTask}

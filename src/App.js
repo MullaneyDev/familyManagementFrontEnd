@@ -112,6 +112,7 @@ function App() {
                 members={members}
                 setMembers={setMembers}
                 user={user}
+                setUser={setUser}
                 activeTasks={activeTasks}
                 setActiveTasks={setActiveTasks}
                 nullTasks={nullTasks}
