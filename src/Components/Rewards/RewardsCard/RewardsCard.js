@@ -15,6 +15,7 @@ const RewardsCard = ({
   handleDelete,
   setIsOpen,
   setDisplayed,
+  user,
 }) => {
   return (
     <div
@@ -45,22 +46,28 @@ const RewardsCard = ({
           </>
         )}
         <div className="reward-buttons">
-          <button
-            className="edit-btn-reward"
-            onClick={() => {
-              setIsOpen(true);
-              setDisplayed(reward);
-            }}
-          >
-            Edit
-          </button>
+          {user.admin === true ? (
+            <>
+              <button
+                className="edit-btn-reward"
+                onClick={() => {
+                  setIsOpen(true);
+                  setDisplayed(reward);
+                }}
+              >
+                Edit
+              </button>
 
-          <button
-            className="delete-btn-reward"
-            onClick={(e) => handleDelete(e, reward.id)}
-          >
-            Delete
-          </button>
+              <button
+                className="delete-btn-reward"
+                onClick={(e) => handleDelete(e, reward.id)}
+              >
+                Delete
+              </button>
+            </>
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
     </div>

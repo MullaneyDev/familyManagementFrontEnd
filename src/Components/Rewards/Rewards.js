@@ -133,6 +133,7 @@ const Rewards = ({ rewards, setRewards, admin, members, user }) => {
             handleDelete={handleDelete}
             setIsOpen={setIsOpen}
             setDisplayed={setDisplayed}
+            user={user}
           />
         ))}
       </div>
@@ -143,7 +144,7 @@ const Rewards = ({ rewards, setRewards, admin, members, user }) => {
         onRequestClose={() => setIsOpen(false)}
       >
         <div className="editreward-container">
-          <h3 className="edit-reward-center">Add a family Reward</h3>
+          <h3 className="edit-reward-center">Edit family Reward</h3>
           <form className="edit-reward" onSubmit={handleEdit}>
             <h4>{displayed.rewardPoints}</h4>
             <input
