@@ -22,6 +22,7 @@ const ActiveTaskCard = ({
     const FamilyId = user.FamilyId;
     const response = await updatePoints(userId, points, totalPoints, FamilyId);
     const memberArray = response.members;
+    console.log(response)
     setMembers(memberArray);
     setUser(response.user[0])
     setTotalPoints(response.user[0].totalPoints)

@@ -226,6 +226,7 @@ const TaskContainer = ({
           setMembers={setMembers}
           admin={admin}
           index={index}
+          setUser={setUser}
         />
       ))}
       <h2>Available Challenges</h2>
