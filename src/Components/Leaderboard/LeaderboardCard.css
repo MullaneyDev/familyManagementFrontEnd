@@ -1,12 +1,16 @@
 .leaderboardCard {
-    display: grid;
+  /* display: grid;
     grid-template-columns: 10vh 1fr 1fr 5vw;
-    grid-template-rows: 1fr;
-    border: solid white;
-    height: 10vh;
-    border-radius: 10px;
-    font-size: xx-large;
+    grid-template-rows: 1fr; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: solid white;
+  height: 10vh;
+  border-radius: 10px;
+  font-size: xx-large;
+  padding: 0 10px;
 }
 .avatar {
-    max-height: 10vh;
+  max-height: 10vh;
 }
